@@ -1,11 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { ReactNode } from "react";
 
-export function DeveloperCard() {
+type Props = {
+ children: ReactNode
+}
+
+export function DeveloperCard({children}: Props) {
   return (
     <section className="flex justify-center items-center">
       <Card className="p-4">
         <CardContent>
-          <p>Developer</p>
+          {children}
         </CardContent>
       </Card>
     </section>
