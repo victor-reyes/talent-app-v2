@@ -1,10 +1,10 @@
 
-import { DeveloperCard } from "@/features/design-system/developer-card";
+import { DeveloperCard } from "@/components/ui/developer-card";
 
 export default function Home() {
   return (
     <>
-      <DeveloperCard />
+      <DeveloperCard>hi</DeveloperCard>
     </>
   );
 }
