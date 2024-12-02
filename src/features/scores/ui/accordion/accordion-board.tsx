@@ -3,11 +3,11 @@ import { Communication } from "./communication";
 import { Planning } from "./planning";
 
 export function AccordionBoard() {
-    return (
-      <>
-        <Communication />
-        <Planning />
-        <Coding />
-      </>
-    )
-  }
+  return (
+    <>
+      <Communication />
+      <Planning />
+      <Coding />
+    </>
+  );
+}

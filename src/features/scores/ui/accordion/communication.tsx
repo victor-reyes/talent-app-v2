@@ -1,7 +1,3 @@
 export function Communication() {
-    return (
-      <>
-      Communication
-      </>
-    )
-  }
+  return <>Communication</>;
+}

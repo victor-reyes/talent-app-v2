@@ -1,7 +1,3 @@
 export function Coding() {
-    return (
-      <>
-      Coding
-      </>
-    )
-  }
+  return <>Coding</>;
+}
