@@ -5,6 +5,7 @@ export function calculateAverageLevel(communicationLevel: number, planningLevel:
 
     const level = sumLevel / 50;
 
-    return level;
+
+    return level; 
 }
 

@@ -29,8 +29,22 @@ test("It should return level 3", () => {
 
 test("It should return level 3", () => {
 
-    const result = calculateAverageLevel(67,87,92);
+    const result = calculateAverageLevel(100,100,100);
 
-    deepEqual(result, 4.92)
+    deepEqual(result, 6)
 
 });
+
+test("First user level is 4.46", () =>{
+    const firstUser = {
+        frontend: 67,
+        backend: 72,
+        charismatic: 70,
+        teamwork: 50,
+        design: 100,
+        management: 87
+      }
+    const result = calculateAverageLevel((firstUser.frontend + firstUser.backend) / 2, (firstUser.charismatic + firstUser.teamwork) /2, (firstUser.design + firstUser.management) / 2)
+    
+    deepEqual(result, 4.46)
+} )
