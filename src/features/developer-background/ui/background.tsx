@@ -1,5 +1,5 @@
 export function Background() {
-  return <></>;
+  return <>background</>;
 }
 
 export function BasicInfo(user: {
