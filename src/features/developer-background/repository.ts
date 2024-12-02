@@ -1,10 +1,13 @@
 import { db } from "@/db";
-import { developersTable } from "@/db/schema";
+import { DeveloperInsert, developersTable } from "@/db/schema";
 
 export function createRepository() {
   return {
     async getDevelopers() {
       return db.select().from(developersTable);
+    },
+    async addDeveloper(developer: DeveloperInsert) {
+      return db.insert(developersTable).values({ ...developer });
     },
   };
 }
