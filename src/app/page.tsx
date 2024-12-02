@@ -1,3 +1,5 @@
+import ProjectCard from "@/features/projects/components/project-card";
+
 export default function Home() {
-  return <div>Removed boiler plate</div>;
+  return <ProjectCard />;
 }
