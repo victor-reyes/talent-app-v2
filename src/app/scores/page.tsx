@@ -1,14 +1,15 @@
 import { DeveloperCard } from "@/components/ui/developer-card";
-import { HeaderH1 } from "@/components/ui/header/header-h1";
+import { HeaderH2 } from "@/components/ui/header/header-h2";
+import { AverageScore } from "@/features/scores/ui/average-score";
 
 
 
 export default function Page(){
     return (
     <DeveloperCard>
-        <HeaderH1>
-            Hej!
-        </HeaderH1>
-    {}
+        <HeaderH2>
+            Salt Scoring
+        </HeaderH2>
+        <AverageScore />
     </DeveloperCard >
 )}
