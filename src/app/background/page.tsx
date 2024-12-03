@@ -1,11 +1,11 @@
 import { DeveloperCard } from "@/components/ui/developer-card";
-import { DeveloperProfile } from "@/features/developer-background/ui";
+import { Background } from "@/features/background/ui";
 
 export default function Page() {
   return (
     <>
       <DeveloperCard>
-        <DeveloperProfile developer={mockDeveloper} />
+        <Background developer={mockDeveloper} />
       </DeveloperCard>
     </>
   );

@@ -19,7 +19,7 @@ type Props = {
   };
 };
 
-export function DeveloperProfile({ developer }: Props) {
+export function Background({ developer = mockDeveloper }: Props) {
   return (
     <div className="space-y-4 max-w-96">
       <BasicInfo
@@ -44,3 +44,30 @@ export function DeveloperProfile({ developer }: Props) {
     </div>
   );
 }
+
+const mockDeveloper = {
+  name: "John Doe",
+  title: "Software Engineer",
+  bio: "I'm a software engineer with 5 years of experience",
+  avatarURL: "https://avatars.githubusercontent.com/u/1?v=4",
+  languages: ["JavaScript", "TypeScript", "Python"],
+  educations: ["BSc in Computer Science"],
+  skills: [
+    "React",
+    "Next.js",
+    "Node.js",
+    "Django",
+    "Tailwind CSS",
+    "PostgreSQL",
+  ],
+  links: [
+    {
+      name: "Github" as "Github" | "LinkedIn",
+      url: "https://github.com/johndoe",
+    },
+    {
+      name: "LinkedIn" as "Github" | "LinkedIn",
+      url: "https://linkedin.com/johndoe",
+    },
+  ],
+};

@@ -1,8 +1,5 @@
 import { db } from "@/db";
-import {
-  DeveloperInsert,
-  developersTable,
-} from "@/features/developer-background/schema";
+import { DeveloperInsert, developersTable } from "@/features/background/schema";
 
 export function createRepository() {
   return {
