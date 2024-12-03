@@ -1,5 +1,6 @@
 import { getAllIssues, getDuration, getTotalOfCommits } from "./api/api";
 import { Db } from "./db/mockdb";
+import { secondsToDays } from "./logic";
 import { createProjectsRepository } from "./repository";
 
 export function createProjectService(db: Db) {
@@ -15,7 +16,7 @@ export function createProjectService(db: Db) {
       return {
         commits: commits,
         issues: issues.length,
-        duration: duration,
+        duration: secondsToDays(duration),
       };
     },
   };
