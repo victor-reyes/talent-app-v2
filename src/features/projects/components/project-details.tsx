@@ -55,11 +55,6 @@ export default function ProjectDetails({ project }: Props) {
                   <p className="font-semibold">{commits}</p>
                 </article>
                 <Separator orientation="vertical" />
-                <article className="flex flex-col items-center">
-                  <SiTestcafe />
-                  <p className="text-gray-400 text-sm">Tests</p>
-                  <p className="font-semibold">{tests}</p>
-                </article>
                 <Separator orientation="vertical" />
                 <article className="flex flex-col items-center">
                   <GoIssueOpened />
@@ -71,6 +66,11 @@ export default function ProjectDetails({ project }: Props) {
                   <CgPerformance />
                   <p className="text-gray-400 text-sm">Performance</p>
                   <p className="font-semibold">{performance}%</p>
+                </article>
+                <article className="flex flex-col items-center">
+                  <SiTestcafe />
+                  <p className="text-gray-400 text-sm">Tests</p>
+                  <p className="font-semibold">{tests}</p>
                 </article>
               </div>
             </div>
