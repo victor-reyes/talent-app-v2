@@ -1,10 +1,10 @@
 import React from "react";
-import { ProgressRing } from "./progress-ring";
+import { LevelRectangle } from "./level-rectangle";
 
 export function AverageScore() { 
   const percentage = Math.floor(Math.random() * 100);  
 
   return (
-    <ProgressRing percentage={percentage} />
+    <LevelRectangle percentage={percentage} />
   );
 }
