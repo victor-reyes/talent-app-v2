@@ -1,6 +1,6 @@
 "use client"
 
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
+import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart } from "recharts"
 
 import {
   CardContent,
@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/chart"
 
 const chartData = [
-  { month: "Frontend", desktop: 94 },
-  { month: "Backend", desktop: 92 },
-  { month: "Charismatic", desktop: 62},
-  { month: "Teamwork", desktop: 80},
-  { month: "Design", desktop: 72 },
-  { month: "Management", desktop: 80 },
+  { category: "Frontend", score: 94 },
+  { category: "Backend", score: 92 },
+  { category: "Charismatic", score: 62 },
+  { category: "Teamwork", score: 80 },
+  { category: "Design", score: 72 },
+  { category: "Management", score: 80 },
 ]
 
 const chartConfig = {
@@ -30,22 +30,24 @@ const chartConfig = {
 
 export function SpiderGraph() {
   return (
-      <CardContent className="pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto max-h-[250px]"
-        >
-          <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <PolarAngleAxis dataKey="month" />
-            <PolarGrid />
-            <Radar
-              dataKey="desktop"
-              fill="var(--color-desktop)"
-              fillOpacity={0.6}
-            />
-          </RadarChart>
-        </ChartContainer>
-      </CardContent>
+    <CardContent className="pb-0">
+      <ChartContainer
+        config={chartConfig}
+        className="mx-auto max-h-[250px]"
+      >
+        <RadarChart data={chartData} outerRadius="80%">
+          <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+          <PolarGrid />
+          <PolarAngleAxis dataKey="category" />
+          <PolarRadiusAxis domain={[0, 100]} />
+          <Radar
+            dataKey="score"
+            stroke="var(--color-desktop)"
+            fill="var(--color-desktop)"
+            fillOpacity={0.6}
+          />
+        </RadarChart>
+      </ChartContainer>
+    </CardContent>
   )
 }
