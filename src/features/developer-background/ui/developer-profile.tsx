@@ -2,6 +2,7 @@ import { CardContent } from "@/components/ui/card";
 import { Skills } from "./skills";
 import { Row } from "./row";
 import { DeveloperAvatar } from "./developer-avatar";
+import { SocialLink } from "./social-link";
 
 export function DeveloperProfile() {
   return (
@@ -42,6 +43,7 @@ export function BasicInfo(user: {
         <h2>{user.name}</h2>
         <h2>{user.shortBio}</h2>
       </div>
+      <SocialLink url={"https://github.com"} name={"Github"} />
     </div>
   );
 }
