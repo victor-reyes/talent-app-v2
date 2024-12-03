@@ -1,4 +1,3 @@
-import { CardContent } from "@/components/ui/card";
 import { Skills } from "./skills";
 import { Row } from "./row";
 import { SocialLink } from "./social-link";
