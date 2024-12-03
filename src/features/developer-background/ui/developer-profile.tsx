@@ -21,7 +21,7 @@ type Props = {
 
 export function DeveloperProfile({ developer }: Props) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 max-w-96">
       <BasicInfo
         name={developer.name}
         title={developer.title}
