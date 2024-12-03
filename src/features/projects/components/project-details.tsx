@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCodeCommit, FaGithub } from "react-icons/fa6";
+import { FaCodeCommit } from "react-icons/fa6";
 import { HeaderH3 } from "@/components/ui/header/header-h3";
 import Link from "next/link";
 import { GoIssueOpened } from "react-icons/go";
@@ -25,16 +25,12 @@ export default function ProjectDetails({ project }: Props) {
     project;
   return (
     <>
-    <div className="flex gap-4">
-      <HeaderH3>{title}</HeaderH3>
       <Link
         href={link}
-        className="mb-8 font-medium text-blue-600 dark:text-blue-500 hover:underline"
-      >
-        <FaGithub size={26} color="gray" />
-      </Link>
-  </div>
-  <section className="flex flex-col justify-center items-center">
+        >
+        <HeaderH3>{title}</HeaderH3>
+        {/* <FaGithub size={26} color="gray" /> */}
+  <section className="flex flex-col justify-center items-center mt-6">
   <article className="flex flex-col items-center mb-4">
     <GiDuration size={28} color="gray" />
     <p className="text-gray-400 text-lg">Duration</p>
@@ -69,6 +65,8 @@ export default function ProjectDetails({ project }: Props) {
     </div>
   </div>
 </section>
+      </Link>
+
 </>
   );
 }
