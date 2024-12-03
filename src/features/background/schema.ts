@@ -12,3 +12,4 @@ export const developersTable = pgTable("developers", {
 });
 
 export type DeveloperInsert = typeof developersTable.$inferInsert;
+export type DeveloperSelect = typeof developersTable.$inferSelect;
