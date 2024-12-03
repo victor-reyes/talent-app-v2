@@ -22,7 +22,7 @@ type Props = {
 
 export function Background({ developer = mockDeveloper }: Props) {
   return (
-    <div className="space-y-4 max-w-96">
+    <div className="space-y-4">
       <BasicInfo
         name={developer.name}
         title={developer.title}
