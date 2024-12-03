@@ -1,15 +1,9 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
 
 import {
-  Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
 import {
   ChartConfig,
@@ -17,13 +11,14 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { month: "Frontend", desktop: 94 },
+  { month: "Backend", desktop: 92 },
+  { month: "Charismatic", desktop: 62},
+  { month: "Teamwork", desktop: 80},
+  { month: "Design", desktop: 72 },
+  { month: "Management", desktop: 80 },
 ]
 
 const chartConfig = {
@@ -35,11 +30,10 @@ const chartConfig = {
 
 export function SpiderGraph() {
   return (
-    <Card>
       <CardContent className="pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto max-h-[250px]"
         >
           <RadarChart data={chartData}>
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
@@ -53,6 +47,5 @@ export function SpiderGraph() {
           </RadarChart>
         </ChartContainer>
       </CardContent>
-    </Card>
   )
 }

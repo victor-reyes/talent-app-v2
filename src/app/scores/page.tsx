@@ -7,11 +7,11 @@ import { SpiderGraph } from "@/features/scores/ui/spider-graph";
 
 export default function Page(){
     return (
-    <DeveloperCard>
+        <>
         <HeaderH2>
             Salt Scoring
         </HeaderH2>
         <AverageScore />
         <SpiderGraph/>
-    </DeveloperCard >
+        </>
 )}
