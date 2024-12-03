@@ -1,4 +1,5 @@
 import { CardContent } from "@/components/ui/card";
+import { Skills } from "./skills";
 
 export function DeveloperProfile() {
   return (
@@ -8,6 +9,7 @@ export function DeveloperProfile() {
         title={"Javascript Developer"}
         shortBio={"Stuff"}
       />
+      <Skills skills={["Javascript", "React", "Node"]} />
     </CardContent>
   );
 }
