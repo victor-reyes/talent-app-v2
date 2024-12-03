@@ -1,4 +1,3 @@
-//Make this generic later on, for now it's just a simple fetch
 export async function getTotalOfCommits(user: string, repo: string) {
   const response = await fetch(
     `https://api.github.com/repos/${user}/${repo}/stats/participation`

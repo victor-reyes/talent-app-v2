@@ -8,13 +8,13 @@ export function createProjectService(db: Db) {
     async getAll() {
       return await repository.getAll();
     },
-    async getApiResponse(user: string, repo: string) {
+    async getRepositoryInformation(user: string, repo: string) {
       const commits = await getTotalOfCommits(user, repo);
       const issues = await getAllIssues(user, repo);
       const duration = await getDuration(user, repo);
       return {
         commits: commits,
-        issues: issues,
+        issues: issues.length,
         duration: duration,
       };
     },
