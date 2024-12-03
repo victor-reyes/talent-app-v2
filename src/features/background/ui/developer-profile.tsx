@@ -4,7 +4,7 @@ import { SocialLink } from "./social-link";
 import { BasicInfo } from "./basic-info";
 
 type Props = {
-  developer: {
+  developer?: {
     avatarURL: string;
     name: string;
     title: string;
