@@ -3,6 +3,16 @@ import React from "react";
 export function AverageScore() {
   const percentage = Math.floor(Math.random() * 100);  
 
+  const getStrokeColor = (percentage) => {
+    if (percentage <= 25) return "#808080"; 
+    if (percentage <= 50) return "#4caf50"; 
+    if (percentage <= 75) return "#2196f3"; 
+    if (percentage <= 94) return "#9c27b0"; 
+    return "#ff7961";
+  };
+
+  const strokeColor = getStrokeColor(percentage);
+
   return (
     <div className="flex justify-start items-start">
       <div className="flex border-2 rounded-full py-1 px-2 items-center border-purple-500">
@@ -23,7 +33,7 @@ export function AverageScore() {
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
               fill="none"
-              stroke="#4caf50"
+              stroke={strokeColor}
               strokeWidth="2"
               strokeDasharray={`${percentage}, 100`}
               strokeLinecap="round"
