@@ -21,7 +21,7 @@ type Props = {
 
 export function DeveloperProfile({ developer }: Props) {
   return (
-    <>
+    <div className="space-y-4">
       <BasicInfo
         name={developer.name}
         title={developer.title}
@@ -29,16 +29,18 @@ export function DeveloperProfile({ developer }: Props) {
         avatarURL={developer.avatarURL}
       />
 
-      <Row title="Languages" content={developer.languages} />
-      <Row title="Education" content={developer.educations} />
-      <Skills skills={developer.skills} />
-      <ul className="flex gap-1 justify-end">
-        {developer.links.map((link) => (
-          <li key={link.name}>
-            <SocialLink name={link.name} url={link.url} />
-          </li>
-        ))}
-      </ul>
-    </>
+      <div>
+        <Row title="Languages" content={developer.languages} />
+        <Row title="Education" content={developer.educations} />
+        <Skills skills={developer.skills} />
+        <ul className="flex gap-1 justify-end">
+          {developer.links.map((link) => (
+            <li key={link.name}>
+              <SocialLink name={link.name} url={link.url} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
