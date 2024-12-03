@@ -22,7 +22,6 @@ export default async function ProjectDetails({ project }: Props) {
     project.username,
     project.repository
   );
-  console.log("repo:", repositoryInformation);
   const { username, repository } = project;
   return (
     <Card>
