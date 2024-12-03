@@ -4,24 +4,36 @@ import { Row } from "./row";
 import { DeveloperAvatar } from "./developer-avatar";
 import { SocialLink } from "./social-link";
 
-export function DeveloperProfile() {
+type Props = {
+  developer: {
+    avatarURL: string;
+    name: string;
+    title: string;
+    bio: string;
+    languages: string[];
+    educations: string[];
+    skills: string[];
+    links: {
+      name: "Github" | "LinkedIn";
+      url: string;
+    }[];
+  };
+};
+
+export function DeveloperProfile({ developer }: Props) {
   return (
     <CardContent>
       <BasicInfo
-        name={"John"}
-        title={"Javascript Developer"}
-        shortBio={"Stuff"}
+        name={developer.name}
+        title={developer.title}
+        bio={developer.bio}
+        avatarURL={developer.avatarURL}
+        links={developer.links}
       />
 
-      <Row
-        title="Languages"
-        content={["English", "Bulgarian", "Swedish", "Portuguese"]}
-      />
-      <Row
-        title="Education"
-        content={["BSc Computer Science", "Phd Bulgarian"]}
-      />
-      <Skills skills={["Javascript", "React", "Node"]} />
+      <Row title="Languages" content={developer.languages} />
+      <Row title="Education" content={developer.educations} />
+      <Skills skills={developer.skills} />
     </CardContent>
   );
 }
