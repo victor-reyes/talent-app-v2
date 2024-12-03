@@ -6,10 +6,12 @@ type Props = {
 export function Row({ title, content }: Props) {
   return (
     <section className="flex justify-between">
-      <h2>{title}</h2>
+      <h3 className="font-semibold">{title}:</h3>
       <div className="space-x-2">
         {content.map((item, index) => (
-          <span className="text-end " key={index}>{item}</span>
+          <span className="text-end " key={index}>
+            {item}
+          </span>
         ))}
       </div>
     </section>
