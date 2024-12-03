@@ -3,7 +3,7 @@ import React from "react";
 export function AverageScore() {
   const percentage = Math.floor(Math.random() * 100);  
 
-  const getStrokeColor = (percentage) => {
+  const getStrokeColor = (percentage: number) => {
     if (percentage <= 25) return "#808080"; 
     if (percentage <= 50) return "#4caf50"; 
     if (percentage <= 75) return "#2196f3"; 
