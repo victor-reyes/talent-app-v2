@@ -1,6 +1,5 @@
 import { addDeveloperAction } from "../actions";
 import { Pencil } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Pencil } from "lucide-react";
 
 export function EditInfoForm() {
   return (
