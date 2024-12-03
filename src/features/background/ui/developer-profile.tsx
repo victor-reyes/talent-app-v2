@@ -2,7 +2,6 @@ import { Skills } from "./skills";
 import { Row } from "./row";
 import { SocialLink } from "./social-link";
 import { BasicInfo } from "./basic-info";
-import { EditInfoForm } from "./form-info";
 
 type Props = {
   developer?: {
