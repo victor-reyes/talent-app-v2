@@ -24,13 +24,16 @@ export function EditInfoForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Pencil type="submit" />
+        <Pencil
+          className="hover:cursor-pointer hover:text-primary"
+          type="submit"
+        />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you are done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
