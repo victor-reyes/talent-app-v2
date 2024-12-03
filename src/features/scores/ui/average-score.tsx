@@ -5,7 +5,6 @@ export function AverageScore() {
         <div className="flex justify-center items-center border-4 rounded-full h-10 w-10 text-xs border-green-400">100%</div>
         <div className="font-semibold px-6">Level 3</div>
       </div>
-      swswsswwswsw
     </div>
   );
 }
