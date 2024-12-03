@@ -1,4 +1,4 @@
-import { DeveloperInsert } from "@/features/developer-background/schema";
+import { DeveloperInsert } from "@/features/background/schema";
 import { Repository } from "./repository";
 
 export function createService(repository: Repository) {

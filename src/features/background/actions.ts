@@ -1,6 +1,6 @@
 "use server";
 
-import { DeveloperInsert } from "@/features/developer-background/schema";
+import { DeveloperInsert } from "@/features/background/schema";
 import { developerInstance } from "./instance";
 
 export async function addDeveloperAction(formData: FormData) {
