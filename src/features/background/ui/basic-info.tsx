@@ -1,4 +1,5 @@
 import { DeveloperAvatar } from "./developer-avatar";
+import { EditInfoForm } from "./form-info";
 
 type Props = { name: string; title: string; bio: string; avatarURL: string };
 
@@ -11,6 +12,7 @@ export function BasicInfo({ name, title, bio, avatarURL }: Props) {
         <h2 className="font-normal text-sm">{title}</h2>
         <h2 className="font-light text-xs text-slate-600">{bio}</h2>
       </div>
+      <EditInfoForm />
     </div>
   );
 }
