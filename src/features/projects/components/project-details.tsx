@@ -27,7 +27,7 @@ export default function ProjectDetails({ project }: Props) {
   return (
       <Card>
         <CardHeader className="mb-0 pb-0">
-          <CardTitle>
+          <CardTitle className="pb-2">
             <div className="flex  gap-4">
               <HeaderH3>{title}</HeaderH3>
               <Link
@@ -48,13 +48,12 @@ export default function ProjectDetails({ project }: Props) {
             </article>
             <Separator className="my-4" />
             <div className="flex justify-between gap-6">
-              <div className="flex items-center justify-center gap-6">
+              <div className="flex items-center justify-center gap-2">
                 <article className="flex flex-col items-center">
                   <FaCodeCommit />
                   <p className="text-gray-400 text-sm">Commits</p>
                   <p className="font-semibold">{commits}</p>
                 </article>
-                <Separator orientation="vertical" />
                 <Separator orientation="vertical" />
                 <article className="flex flex-col items-center">
                   <GoIssueOpened />
@@ -66,6 +65,7 @@ export default function ProjectDetails({ project }: Props) {
                   <CgPerformance />
                   <p className="text-gray-400 text-sm">Performance</p>
                   <p className="font-semibold">{performance}%</p>
+                <Separator orientation="vertical" />
                 </article>
                 <article className="flex flex-col items-center">
                   <SiTestcafe />
