@@ -11,15 +11,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-{
-  /* <Pencil type="submit" />
-    <Form action={addDeveloperAction}>
-      <input type="text" name="name" />
-      <input type="text" name="title" />
-      <input type="text" name="bio" />
-    </Form> */
-}
-
 export function EditInfoForm() {
   return (
     <Dialog>
