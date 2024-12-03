@@ -1,3 +1,3 @@
 export function Coding() {
-  return <>Coding</>;
+  return <div>Coding</div>;
 }
