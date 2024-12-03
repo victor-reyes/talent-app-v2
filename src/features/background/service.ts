@@ -1,4 +1,4 @@
-import { DeveloperInsert } from "@/features/background/schema";
+import { DeveloperInsert, DeveloperSelect } from "@/features/background/schema";
 import { Repository } from "./repository";
 
 export function createService(repository: Repository) {
@@ -9,6 +9,9 @@ export function createService(repository: Repository) {
 
     async addDeveloper(developer: DeveloperInsert) {
       await repository.addDeveloper(developer);
+    },
+    async updateDeveloper(developer: DeveloperSelect) {
+      await repository.updateDeveloper(developer);
     },
   };
 }
