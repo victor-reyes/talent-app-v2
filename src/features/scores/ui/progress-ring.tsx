@@ -13,7 +13,7 @@ export function ProgressRing({ percentage }: Props) {
 
   const strokeColor = getStrokeColor(percentage);
   return (
-        <div className="relative flex justify-center items-center h-10 w-10">
+        <div className="relative flex justify-center items-center h-7 w-7 p-4">
           <svg className="absolute" viewBox="0 0 36 36">
             <path
               className="circle-bg"
@@ -36,7 +36,7 @@ export function ProgressRing({ percentage }: Props) {
               strokeLinecap="round"
             />
           </svg>
-          <div className="absolute text-xs font-bold">{`${percentage}%`}</div>
+          <div className="absolute text-[0.55rem] font-bold">{`${percentage}%`}</div>
         </div>
   );
 }
