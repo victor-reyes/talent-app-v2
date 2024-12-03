@@ -7,7 +7,7 @@ type Props = {
 
 export function DeveloperCard({children}: Props) {
   return (
-      <Card className="w-screen">
+      <Card>
         <CardContent>
           {children}
         </CardContent>
