@@ -1,6 +1,6 @@
 import Form from "next/form";
-import { Button } from "@/components/ui/button";
 import { addDeveloperAction } from "../actions";
+import { Pencil } from "lucide-react";
 
 export function FormInfo() {
   return (
@@ -8,7 +8,7 @@ export function FormInfo() {
       <input type="text" name="name" />
       <input type="text" name="title" />
       <input type="text" name="bio" />
-      <Button type="submit">Add Developer</Button>
+      <Pencil type="submit" />
     </Form>
   );
 }
