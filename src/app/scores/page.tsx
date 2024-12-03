@@ -1,4 +1,4 @@
-import { DeveloperCard } from "@/components/ui/developer-card";
+//import { DeveloperCard } from "@/components/ui/developer-card";
 import { HeaderH2 } from "@/components/ui/header/header-h2";
 import { AccordionBoard } from "@/features/scores/ui/accordion";
 import { AverageScore } from "@/features/scores/ui/average-score";
