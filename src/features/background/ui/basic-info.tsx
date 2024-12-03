@@ -1,5 +1,6 @@
 import { HeaderH2 } from "@/components/ui/header/header-h2";
 import { DeveloperAvatar } from "./developer-avatar";
+import { EditInfoForm } from "./form-info";
 
 type Props = { name: string; title: string; bio: string; avatarURL: string };
 
@@ -12,6 +13,7 @@ export function BasicInfo({ name, title, bio, avatarURL }: Props) {
         <HeaderH2>{name}</HeaderH2>
         <p className="font-light text-slate-600">{bio}</p>
       </div>
+      <EditInfoForm />
     </div>
   );
 }
