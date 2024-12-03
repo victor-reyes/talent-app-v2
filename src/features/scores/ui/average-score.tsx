@@ -1,7 +1,7 @@
 import React from "react";
 
 export function AverageScore() {
-  const percentage = 22;
+  const percentage = Math.floor(Math.random() * 100);  
 
   return (
     <div className="flex justify-start items-start">
