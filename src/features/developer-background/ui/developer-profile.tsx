@@ -28,12 +28,18 @@ export function DeveloperProfile({ developer }: Props) {
         title={developer.title}
         bio={developer.bio}
         avatarURL={developer.avatarURL}
-        links={developer.links}
       />
 
       <Row title="Languages" content={developer.languages} />
       <Row title="Education" content={developer.educations} />
       <Skills skills={developer.skills} />
+      <ul className="flex gap-1 justify-end">
+        {developer.links.map((link) => (
+          <li key={link.name}>
+            <SocialLink name={link.name} url={link.url} />
+          </li>
+        ))}
+      </ul>
     </CardContent>
   );
 }
@@ -43,7 +49,6 @@ export function BasicInfo(user: {
   title: string;
   bio: string;
   avatarURL: string;
-  links: { name: "Github" | "LinkedIn"; url: string }[];
 }) {
   return (
     <div className="flex gap-4">
@@ -53,13 +58,6 @@ export function BasicInfo(user: {
         <h2>{user.name}</h2>
         <h2>{user.bio}</h2>
       </div>
-      <ul>
-        {user.links.map((link) => (
-          <li key={link.name}>
-            <SocialLink name={link.name} url={link.url} />
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
