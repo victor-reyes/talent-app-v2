@@ -1,12 +1,15 @@
+
+import { HeaderH1 } from "@/components/ui/header/header-h1";
 import { AccordionBoard } from "./accordion/accordion-board";
 import { AverageScore } from "./average-score";
-import { Heading } from "./heading";
 import { SpiderGraph } from "./spider-graph";
 
 export function ScoreBoard() {
   return (
     <section>
-      <Heading title="Salt Scoring" />
+      <HeaderH1>
+        Salt Scoring
+        </HeaderH1>
       <AverageScore />
       <SpiderGraph />
       <AccordionBoard />
