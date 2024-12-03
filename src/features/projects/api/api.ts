@@ -15,7 +15,6 @@ export async function getTotalOfCommits(user: string, repo: string) {
       (acc: number, value: number) => acc + value,
       0
     );
-    console.log("total:", 0);
     return total;
   } catch (error) {
     console.error("Error fetching commit statistics:", error);
@@ -38,7 +37,7 @@ export async function getAllIssues(user: string, repo: string) {
     return data;
   } catch (error) {
     console.error("Error fetching issues:", error);
-    return [];
+    return 0;
   }
 }
 export async function getDuration(user: string, repo: string) {
@@ -56,7 +55,7 @@ export async function getDuration(user: string, repo: string) {
       new Date(lastCommit).getTime() - new Date(firstCommit).getTime();
     return duration;
   } catch (error) {
-    console.error("Error fetching issues:", error);
+    console.error("Error fetching duration:", error);
     return 0;
   }
 }
