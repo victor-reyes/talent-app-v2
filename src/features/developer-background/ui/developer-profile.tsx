@@ -29,7 +29,7 @@ export function DeveloperProfile() {
 export function BasicInfo(user: {
   name: string;
   title: string;
-  shortBio: string;
+  bio: string;
 }) {
   return (
     <div className="flex gap-4">
@@ -41,7 +41,7 @@ export function BasicInfo(user: {
       <div>
         <h2>{user.title}</h2>
         <h2>{user.name}</h2>
-        <h2>{user.shortBio}</h2>
+        <h2>{user.bio}</h2>
       </div>
       <SocialLink url={"https://github.com"} name={"Github"} />
     </div>
