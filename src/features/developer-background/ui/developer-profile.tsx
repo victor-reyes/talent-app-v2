@@ -1,5 +1,6 @@
 import { CardContent } from "@/components/ui/card";
 import { Skills } from "./skills";
+import { Row } from "./row";
 
 export function DeveloperProfile() {
   return (
@@ -9,6 +10,9 @@ export function DeveloperProfile() {
         title={"Javascript Developer"}
         shortBio={"Stuff"}
       />
+      
+      <Row title="Languages" content={["English", "Bulgarian", "Swedish", "Portuguese"]}/>
+      <Row title="Education" content={["BSc Computer Science", "Phd Bulgarian"]}/>
       <Skills skills={["Javascript", "React", "Node"]} />
     </CardContent>
   );

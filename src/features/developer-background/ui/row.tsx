@@ -5,11 +5,11 @@ type Props = {
 
 export function Row({ title, content }: Props) {
   return (
-    <section>
+    <section className="flex justify-between">
       <h2>{title}</h2>
-      <div>
+      <div className="space-x-2">
         {content.map((item, index) => (
-          <p key={index}>{item}</p>
+          <span className="text-end " key={index}>{item}</span>
         ))}
       </div>
     </section>
