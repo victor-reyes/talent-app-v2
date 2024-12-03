@@ -30,20 +30,24 @@ export function BasicInfo(user: {
   name: string;
   title: string;
   bio: string;
+  avatarURL: string;
+  links: { name: "Github" | "LinkedIn"; url: string }[];
 }) {
   return (
     <div className="flex gap-4">
-      <DeveloperAvatar
-        url={
-          "https://variety.com/wp-content/uploads/2021/04/Avatar.jpg?w=800&h=533&crop=1"
-        }
-      />
+      <DeveloperAvatar url={user.avatarURL} />
       <div>
         <h2>{user.title}</h2>
         <h2>{user.name}</h2>
         <h2>{user.bio}</h2>
       </div>
-      <SocialLink url={"https://github.com"} name={"Github"} />
+      <ul>
+        {user.links.map((link) => (
+          <li key={link.name}>
+            <SocialLink name={link.name} url={link.url} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
