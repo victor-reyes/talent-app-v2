@@ -18,7 +18,14 @@ const mockDeveloper = {
   avatarURL: "https://avatars.githubusercontent.com/u/1?v=4",
   languages: ["JavaScript", "TypeScript", "Python"],
   educations: ["BSc in Computer Science"],
-  skills: ["React", "Node.js", "Django"],
+  skills: [
+    "React",
+    "Next.js",
+    "Node.js",
+    "Django",
+    "Tailwind CSS",
+    "PostgreSQL",
+  ],
   links: [
     {
       name: "Github" as "Github" | "LinkedIn",
