@@ -22,7 +22,7 @@ type Props = {
 
 export function DeveloperProfile({ developer }: Props) {
   return (
-    <CardContent>
+    <>
       <BasicInfo
         name={developer.name}
         title={developer.title}
@@ -40,6 +40,6 @@ export function DeveloperProfile({ developer }: Props) {
           </li>
         ))}
       </ul>
-    </CardContent>
+    </>
   );
 }
