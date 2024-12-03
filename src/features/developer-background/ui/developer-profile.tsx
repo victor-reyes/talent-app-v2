@@ -1,8 +1,8 @@
 import { CardContent } from "@/components/ui/card";
 import { Skills } from "./skills";
 import { Row } from "./row";
-import { DeveloperAvatar } from "./developer-avatar";
 import { SocialLink } from "./social-link";
+import { BasicInfo } from "./basic-info";
 
 type Props = {
   developer: {
@@ -41,23 +41,5 @@ export function DeveloperProfile({ developer }: Props) {
         ))}
       </ul>
     </CardContent>
-  );
-}
-
-export function BasicInfo(user: {
-  name: string;
-  title: string;
-  bio: string;
-  avatarURL: string;
-}) {
-  return (
-    <div className="flex gap-4">
-      <DeveloperAvatar url={user.avatarURL} />
-      <div>
-        <h2>{user.title}</h2>
-        <h2>{user.name}</h2>
-        <h2>{user.bio}</h2>
-      </div>
-    </div>
   );
 }
