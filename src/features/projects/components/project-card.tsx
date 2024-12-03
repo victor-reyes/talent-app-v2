@@ -9,7 +9,7 @@ export async function ProjectCard() {
   // const data = await getTotalOfCommits();
   // console.log({ data });
   return (
-    <div className="w-screen">
+    <div>
       <HeaderH2>Projects</HeaderH2>
       <div className="flex flex-col items-center justify-center gap-4 mt-4">
       {projects.map((project, index) => (
