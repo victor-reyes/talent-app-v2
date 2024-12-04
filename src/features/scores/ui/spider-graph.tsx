@@ -3,7 +3,6 @@
 import {
   PolarAngleAxis,
   PolarGrid,
-  PolarRadiusAxis,
   Radar,
   RadarChart,
 } from "recharts";
@@ -15,15 +14,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { DeveloperScore } from "../types";
 
-const chartData = [
-  { category: "Frontend", score: 94 },
-  { category: "Backend", score: 92 },
-  { category: "Charismatic", score: 62 },
-  { category: "Teamwork", score: 80 },
-  { category: "Design", score: 72 },
-  { category: "Management", score: 80 },
-];
 
 const chartConfig = {
   desktop: {
@@ -32,7 +24,20 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function SpiderGraph() {
+type Props = {
+  developerScore: DeveloperScore
+}
+
+export function SpiderGraph({ developerScore }: Props) {
+  const chartData = [
+    { category: "Frontend", score: developerScore.frontend },
+    { category: "Backend", score: developerScore.backend },
+    { category: "Individual communication", score:developerScore.individualCommunication },
+    { category: "Team collaboration", score: developerScore.teamCollaboration },
+    { category: "Design", score: developerScore.design },
+    { category: "Management", score: developerScore.management },
+  ];  
+
   return (
     <CardContent className="">
       <ChartContainer config={chartConfig} className="mx-auto max-h-[250px]">
