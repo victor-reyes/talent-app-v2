@@ -51,9 +51,8 @@ const mockBackgrounds: MockBackground[] = [
 
 export function createRepository() {
   return {
-    async get() {
-      // return db.select().from(backgroundsTable);
-      // return mockBackground;
+    async getAll() {
+      return mockBackgrounds;
     },
     async getById(id: number) {
       return mockBackgrounds[id];
