@@ -1,5 +1,6 @@
+import dotenv from "dotenv";
 import { cache } from "react";
-
+dotenv.config();
 export const getTotalOfCommits = cache(async (user: string, repo: string) => {
   try {
     const response = await fetch(
@@ -77,3 +78,20 @@ export const getDuration = cache(async (user: string, repo: string) => {
     return 0;
   }
 });
+
+export const testPagePerformance = async (url: string) => {
+  const apiKey = process.env.GOOGLE_API_KEY;
+  const pageUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${apiKey}`;
+  let performanceScore = 0;
+
+  try {
+    const response = await fetch(pageUrl);
+    const data = await response.json();
+    performanceScore = data.lighthouseResult.categories.performance.score;
+  } catch (error) {
+    console.error("Error fetching performance score:", error);
+    return 0;
+  }
+
+  return performanceScore * 100;
+};

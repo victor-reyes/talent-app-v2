@@ -1,11 +1,16 @@
-import React from "react";
-import ProjectDetails from "./project-details";
-import { projectService } from "../instance";
 import { HeaderH2 } from "@/components/ui/header/header-h2";
 import { Separator } from "@/components/ui/separator";
+import { testPagePerformance } from "../api/api";
+import { projectService } from "../instance";
+import ProjectDetails from "./project-details";
 
 export async function ProjectCard() {
   const projects = await projectService.getAll();
+  const pagePerformanceTest = await testPagePerformance(
+    "https://www.alimohseni.se/"
+  );
+
+  console.log("pagePerformanceTest", pagePerformanceTest + " %");
   return (
     <div className="mt-4">
       <HeaderH2>Projects</HeaderH2>
