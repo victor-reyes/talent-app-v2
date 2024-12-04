@@ -68,11 +68,9 @@ export const getDuration = cache(async (user: string, repo: string) => {
       return 0;
     }
     const data = await response.json();
-    const firstCommit = data[data.length - 1].commit.author.date;
-    const lastCommit = data[0].commit.author.date;
-    const duration =
-      new Date(lastCommit).getTime() - new Date(firstCommit).getTime();
-    return duration;
+    const lastCommit = data[0].commit.author.date.split("T")[0];
+
+    return lastCommit;
   } catch (error) {
     console.error("Error fetching duration:", error);
     return 0;

@@ -1,6 +1,5 @@
 import { getAllIssues, getDuration, getTotalOfCommits } from "./api/api";
 import { Db } from "./db/mockdb";
-import { secondsToDays } from "./logic";
 import { createProjectsRepository } from "./repository";
 
 export function createProjectService(db: Db) {
@@ -12,11 +11,11 @@ export function createProjectService(db: Db) {
     async getRepositoryInformation(user: string, repo: string) {
       const commits = await getTotalOfCommits(user, repo);
       const issues = await getAllIssues(user, repo);
-      const duration = await getDuration(user, repo);
+      const lastCommit = await getDuration(user, repo);
       return {
         commits: commits,
         issues: issues.length,
-        duration: secondsToDays(duration),
+        lastCommit: lastCommit,
       };
     },
   };
