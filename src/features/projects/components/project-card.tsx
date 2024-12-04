@@ -18,7 +18,7 @@ export async function ProjectCard() {
         {projects.map((project, index) => (
           <div key={index}>
             <ProjectDetails project={project} />
-            <Separator className="my-8" />
+            <Separator className="mt-4 mb-6" />
           </div>
         ))}
       </div>
