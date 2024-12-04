@@ -8,15 +8,18 @@ export function BackgroundBasicInfo({ name, title, bio, avatarURL }: Props) {
   const isFeatureBioEnabled = process.env.NEXT_PUBLIC_FEATURE_BIO === "ON";
   return (
     <>
-      <section className="flex gap-6">
-        <BackgroundAvatar url={avatarURL} />
-        <div className="leading-5">
-          <p className="uppercase text-sm font-semibold">{title}</p>
-          <HeaderH2>{name}</HeaderH2>
-          {isFeatureBioEnabled && (
-            <p className="font-light text-slate-600">{bio}</p>
-          )}
+      <section className="flex justify-between">
+        <div className="flex gap-6">
+          <BackgroundAvatar url={avatarURL} />
+          <div>
+            <p className="uppercase text-sm font-semibold">{title}</p>
+            <HeaderH2>{name}</HeaderH2>
+            {isFeatureBioEnabled && (
+              <p className="font-light text-slate-600">{bio}</p>
+            )}
+          </div>
         </div>
+        
         <EditInfoForm />
       </section>
     </>
