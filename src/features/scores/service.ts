@@ -1,21 +1,4 @@
-
-const user = {
-  frontend: 67,
-  backend: 72,
-  individualCommunication: 70,
-  teamCollaboration: 50,
-  design: 100,
-  management: 87
-}
-
-type User = {
-  frontend: number;
-  backend: number;
-  individualCommunication: number;
-  teamCollaboration: number;
-  design: number;
-  management: number;
-}
+import { User } from "./types";
 
 export const createService = (user: User) => {
   return {
