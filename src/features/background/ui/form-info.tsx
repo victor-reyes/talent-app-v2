@@ -1,9 +1,7 @@
-import { addDeveloperAction } from "../actions";
+import { updateBackgroundAction } from "../actions";
 import { Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-
-} from "@/components/ui/dialog";
+import {} from "@/components/ui/dialog";
 import {
   Dialog,
   DialogContent,
@@ -36,35 +34,42 @@ export function EditInfoForm() {
             Make changes to your profile here. Click save when you´re done.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="name" className="text-right">
-              Name
-            </label>
-            <input
-              id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
+        <form action={updateBackgroundAction}>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <input
+                type="text"
+                name={"userId"}
+                defaultValue={"Peter"}
+                hidden
+              />
+              <label htmlFor="name" className="text-right">
+                Name
+              </label>
+              <input
+                name="name"
+                placeholder="Peter Duarte"
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label htmlFor="username" className="text-right">
+                Title
+              </label>
+              <input placeholder="title" name="title" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label htmlFor="bio" className="text-right">
+                Bio
+              </label>
+              <input placeholder="bio" name="bio" className="col-span-3" />
+            </div>
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="username" className="text-right">
-              Title
-            </label>
-            <input id="title" defaultValue="@peduarte" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <label htmlFor="bio" className="text-right">
-              Bio
-            </label>
-            <input id="bio" defaultValue="@peduarte" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit" formAction={addDeveloperAction}>
-            Save changes
-          </Button>
-        </DialogFooter>
+
+          <DialogFooter>
+            <Button type="submit">Save changes</Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );

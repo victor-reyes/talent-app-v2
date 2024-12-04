@@ -5,7 +5,7 @@ type Props = {
   url: string;
 };
 
-export function DeveloperAvatar({ url }: Props) {
+export function BackgroundAvatar({ url }: Props) {
   return (
     <Avatar>
       <AvatarImage src={url} />
