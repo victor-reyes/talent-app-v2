@@ -34,7 +34,6 @@ export function Background({ developer = mockDeveloper }: Props) {
         <Row title="Education" content={developer.educations} />
         <Skills skills={developer.skills} />
         <ul className="flex gap-1 justify-end mt-2">
-        <ul className="flex gap-1 justify-end mt-2">
           {developer.links.map((link) => (
             <li key={link.name}>
               <SocialLink name={link.name} url={link.url} />
