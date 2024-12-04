@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCodeCommit } from "react-icons/fa6";
+import { FaCodeCommit, FaGithub } from "react-icons/fa6";
 import { HeaderH3 } from "@/components/ui/header/header-h3";
 import Link from "next/link";
 import { GoIssueOpened } from "react-icons/go";
@@ -24,9 +24,10 @@ export default async function ProjectDetails({ project }: Props) {
   const { username, repository } = project;
   return (
     <>
-      <Link href={`https://github.com/${username}/${repository}`}>
+      <Link href={`https://github.com/${username}/${repository}`} className="flex gap-2">
         <HeaderH3>{repository}</HeaderH3>
-        {/* <FaGithub size={26} color="gray" /> */}
+        <FaGithub size={26} color="gray" />
+      </Link>
         <section className="flex flex-col justify-center items-center mt-6">
           <article className="flex flex-col items-center mb-4">
             <GiDuration size={28} color="gray" />
@@ -64,7 +65,6 @@ export default async function ProjectDetails({ project }: Props) {
             </div>
           </div>
         </section>
-      </Link>
     </>
   );
 }
