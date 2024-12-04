@@ -4,17 +4,21 @@ import { AccordionBoard } from "./accordion/accordion-board";
 import { AverageScore } from "./average-score";
 import { SpiderGraph } from "./spider-graph";
 import { HeaderH2 } from "@/components/ui/header/header-h2";
+import { scoresService } from "../instance";
 
-export function ScoreBoard() {
+export async function ScoreBoard() {
+  
+  const userScore = await scoresService.getDeveloperScoreById();
+
   return (
     <section>
       <Separator className="my-4" />
       <HeaderH2>
         Salt Scoring
         </HeaderH2>
-      <AverageScore />
+      <AverageScore averageScore={userScore.averageScore} />
       <SpiderGraph />
-      <AccordionBoard />
+      <AccordionBoard developerScore={userScore} />
     </section>
   );
 }
