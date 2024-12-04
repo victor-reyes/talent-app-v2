@@ -1,6 +1,6 @@
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
-export const developersTable = pgTable("developers", {
+export const backgroundsTable = pgTable("backgrounds", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar().notNull(),
   title: varchar().notNull(),
@@ -11,5 +11,5 @@ export const developersTable = pgTable("developers", {
   links: varchar().array().notNull(),
 });
 
-export type DeveloperInsert = typeof developersTable.$inferInsert;
-export type DeveloperSelect = typeof developersTable.$inferSelect;
+export type BackgroundInsert = typeof backgroundsTable.$inferInsert;
+export type BackgroundSelect = typeof backgroundsTable.$inferSelect;
