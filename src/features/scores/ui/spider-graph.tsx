@@ -38,13 +38,13 @@ export function SpiderGraph() {
       <ChartContainer config={chartConfig} className="mx-auto max-h-[250px]">
         <RadarChart data={chartData} outerRadius="80%">
           <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-          <PolarGrid />
-          <PolarAngleAxis dataKey="category" />
-          <PolarRadiusAxis domain={[0, 100]} />
+          <PolarGrid stroke="#d3d3d3" />
+          <PolarAngleAxis dataKey="category" stroke="#808080" />
+          <PolarRadiusAxis domain={[0, 100]} stroke="#808080" />
           <Radar
             dataKey="score"
-            stroke="var(--color-desktop)"
-            fill="var(--color-desktop)"
+            stroke="#a9a9a9" 
+            fill="#a9a9a9"
             fillOpacity={0.6}
           />
         </RadarChart>
