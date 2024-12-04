@@ -9,7 +9,7 @@ body {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --foreground: 216.9 19.1% 26.7%;
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
     --popover: 0 0% 100%;
@@ -33,9 +33,10 @@ body {
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --header: 20 15% 10%;
-    --paragraph: 20 10% 20%;
-    --paragraph-light: 20 5% 35%;
+    --header: 220.9 39.3% 11%;
+    --paragraph: 216.9 19.1% 26.7%;
+    --paragraph-light: 20 5% 50%;
+
   }
 
   .dark {
