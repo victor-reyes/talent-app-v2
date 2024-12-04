@@ -1,14 +1,14 @@
 "use server";
 
-import { DeveloperInsert } from "@/features/background/schema";
-import { developerInstance } from "./instance";
+import { backgroundsService } from "./instance";
+import { BackgroundInsert } from "./schema";
 
-export async function addDeveloperAction(formData: FormData) {
+export async function addBackgroundAction(formData: FormData) {
   const name = formData.get("name") as string;
   const title = formData.get("title") as string;
   const bio = formData.get("bio") as string;
 
-  const developer: DeveloperInsert = {
+  const background: BackgroundInsert = {
     name,
     title,
     bio,
@@ -18,9 +18,9 @@ export async function addDeveloperAction(formData: FormData) {
     links: [],
   };
 
-  await developerInstance.addDeveloper(developer);
+  await backgroundsService.add(background);
 }
 
-export async function updateDeveloperAction(formData: FormData) {
-  await developerInstance.updateDeveloper(formData);
+export async function updateBackgroundAction(formData: FormData) {
+  await backgroundsService.update(formData);
 }
