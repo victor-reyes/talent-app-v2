@@ -22,9 +22,5 @@ export async function addDeveloperAction(formData: FormData) {
 }
 
 export async function updateDeveloperAction(formData: FormData) {
-  const id = formData.get("userId") as string;
-  const name = formData.get("name") as string;
-  const title = formData.get("title") as string;
-  const bio = formData.get("bio") as string;
-  console.log({ id, name, title, bio });
+  await developerInstance.updateDeveloper(formData);
 }
