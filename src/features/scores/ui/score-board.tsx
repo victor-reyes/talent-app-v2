@@ -8,6 +8,7 @@ import { scoresService } from "../instance";
 
 export async function ScoreBoard() {
   
+
   const developerScore = await scoresService.getDeveloperScoreById();
 
   return (
