@@ -40,7 +40,6 @@ export function SpiderGraph() {
           <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
           <PolarGrid stroke="#d3d3d3" />
           <PolarAngleAxis dataKey="category" stroke="#808080" />
-          <PolarRadiusAxis domain={[0, 100]} stroke="#808080" />
           <Radar
             dataKey="score"
             stroke="#a9a9a9" 
