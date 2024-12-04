@@ -1,23 +1,21 @@
-import { User } from "./types";
+import { Developer } from "./types";
 
-export const createService = (user: User) => {
-
-
+export const createService = (developer: Developer) => {
 
   return {
     getDeveloperScoreById: async () => {
-      const programmingScore = (user.frontend + user.backend) / 2;
-      const planningScore = (user.management + user.design) / 2;
-      const communicationScore = (user.individualCommunication + user.teamCollaboration) / 2;
+      const programmingScore = (developer.frontend + developer.backend) / 2;
+      const planningScore = (developer.management + developer.design) / 2;
+      const communicationScore = (developer.individualCommunication + developer.teamCollaboration) / 2;
       const averageScore = Math.round((programmingScore + planningScore + communicationScore) / 3);
 
       return {
-        frontend: Math.round(user.frontend),
-        backend: Math.round(user.backend),
-        individualCommunication: Math.round(user.individualCommunication),
-        teamCollaboration: Math.round(user.teamCollaboration),
-        design: Math.round(user.design),
-        management: Math.round(user.management),
+        frontend: Math.round(developer.frontend),
+        backend: Math.round(developer.backend),
+        individualCommunication: Math.round(developer.individualCommunication),
+        teamCollaboration: Math.round(developer.teamCollaboration),
+        design: Math.round(developer.design),
+        management: Math.round(developer.management),
         programmingScore: Math.round(programmingScore),
         planningScore: Math.round(planningScore),
         communicationScore: Math.round(communicationScore),
