@@ -1,4 +1,4 @@
-export type Developer = {
+export type Background = {
   name: string;
   title: string;
   shortBio: string;
