@@ -79,6 +79,13 @@ export const getDuration = cache(async (user: string, repo: string) => {
 
 export const testPagePerformance = async (url: string) => {
   const apiKey = process.env.GOOGLE_API_KEY;
+  const isPerformanceFeatureEnabled =
+    process.env.PERFORMANCE_FEATURE_ENABLED === "true";
+
+  if (!isPerformanceFeatureEnabled || !apiKey) {
+    console.log("Skipping performance test");
+    return 0;
+  }
   const pageUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${apiKey}`;
   let performanceScore = 0;
 
