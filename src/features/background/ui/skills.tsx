@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 type Props = { skills: string[] };
 export function Skills({ skills }: Props) {
   return (
-    <article className="flex justify-start flex-wrap gap-1 mt-3">
+    <article className="flex justify-end flex-wrap gap-1 mt-3">
       {skills.map((skill) => (
         <Badge
           className="cursor-pointer"
