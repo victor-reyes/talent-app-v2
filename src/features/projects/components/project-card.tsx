@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { testPagePerformance } from "../api/api";
 import { projectService } from "../instance";
 import ProjectDetails from "./project-details";
+import AddProject from "./add-project";
 
 export async function ProjectCard() {
   const projects = await projectService.getAll();
@@ -22,6 +23,7 @@ export async function ProjectCard() {
           </div>
         ))}
       </div>
+      <AddProject />
     </div>
   );
 }
