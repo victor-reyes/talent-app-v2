@@ -17,7 +17,7 @@
     "@radix-ui/react-dialog": "^1.1.2",
 =======
     "@radix-ui/react-separator": "^1.1.0",
->>>>>>> 00e9b96 (updated-packed-json)
+    "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "chrome-launcher": "^1.1.2",
     "class-variance-authority": "^0.7.1",
