@@ -1,4 +1,4 @@
-import { updateDeveloperAction } from "../actions";
+import { updateBackgroundAction } from "../actions";
 import { Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {} from "@/components/ui/dialog";
@@ -34,7 +34,7 @@ export function EditInfoForm() {
             Make changes to your profile here. Click save when you´re done.
           </DialogDescription>
         </DialogHeader>
-        <form action={updateDeveloperAction}>
+        <form action={updateBackgroundAction}>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <input
