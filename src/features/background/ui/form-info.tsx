@@ -37,12 +37,7 @@ export function EditInfoForm() {
         <form action={updateBackgroundAction}>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <input
-                type="text"
-                name={"userId"}
-                defaultValue={"Peter"}
-                hidden
-              />
+              <input type="text" name={"userId"} defaultValue={1} hidden />
               <label htmlFor="name" className="text-right">
                 Name
               </label>
