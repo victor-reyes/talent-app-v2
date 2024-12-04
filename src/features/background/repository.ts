@@ -1,24 +1,20 @@
 import { db } from "@/db";
-import {
-  DeveloperInsert,
-  DeveloperSelect,
-  developersTable,
-} from "@/features/background/schema";
 import { eq } from "drizzle-orm";
+import { backgroundsTable, BackgroundInsert, BackgroundSelect } from "./schema";
 
 export function createRepository() {
   return {
-    async getDevelopers() {
-      return db.select().from(developersTable);
+    async get() {
+      return db.select().from(backgroundsTable);
     },
-    async addDeveloper(developer: DeveloperInsert) {
-      return db.insert(developersTable).values({ ...developer });
+    async add(background: BackgroundInsert) {
+      return db.insert(backgroundsTable).values({ ...background });
     },
-    async updateDeveloper(developer: DeveloperSelect) {
+    async update(background: BackgroundSelect) {
       return db
-        .update(developersTable)
-        .set({ ...developer })
-        .where(eq(developersTable.id, developer.id));
+        .update(backgroundsTable)
+        .set({ ...background })
+        .where(eq(backgroundsTable.id, background.id));
     },
   };
 }
