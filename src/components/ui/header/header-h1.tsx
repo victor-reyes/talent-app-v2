@@ -6,7 +6,7 @@ type Props = {
 }
 export function HeaderH1({children, textColor}:Props){
  return (
-   <h1 className={`text-4xl font-bold ${textColor}`}>
+   <h1 className={`text-3xl font-bold ${textColor}`}>
      {children}
    </h1>
  );

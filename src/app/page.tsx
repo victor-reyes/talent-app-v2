@@ -1,16 +1,16 @@
-
-import { DeveloperCard } from "@/features/design-system/developer-card";
-import { HeaderH1 } from "@/features/design-system/header/header-h1";
-import { HeaderH2 } from "@/features/design-system/header/header-h2";
-import { HeaderH3 } from "@/features/design-system/header/header-h3";
+import { DeveloperCard } from "@/components/ui/developer-card";
+import { Background } from "@/features/background/ui";
+import { ProjectCard } from "@/features/projects/components/project-card";
+import { ScoreBoard } from "@/features/scores";
 
 export default function Home() {
   return (
     <>
-      <DeveloperCard />
-      <HeaderH1>Header</HeaderH1>
-      <HeaderH2>Header2</HeaderH2>
-      <HeaderH3>Header3</HeaderH3>
+      <DeveloperCard>
+        <Background />
+        <ScoreBoard />
+        <ProjectCard />
+      </DeveloperCard>
     </>
   );
 }
