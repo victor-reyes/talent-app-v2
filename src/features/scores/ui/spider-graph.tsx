@@ -56,7 +56,7 @@ export function SpiderGraph({ developerScore }: Props) {
           <Radar
             dataKey="score"
             stroke="#a9a9a9"
-            fill="#a9a9a9"
+            fill="#6b7280"
             fillOpacity={0.6}
           />
         </RadarChart>
