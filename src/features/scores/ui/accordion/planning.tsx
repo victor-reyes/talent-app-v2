@@ -5,13 +5,18 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { ProgressRing } from "../progress-ring"
+import { DeveloperScore } from "../../types"
 
-export function Planning() {
+type Props = {
+  developerScore: DeveloperScore
+}
+
+export function Planning({developerScore}: Props) {
   return (
     <Accordion type="single" collapsible className="mx-auto max-w-96">
       <AccordionItem value="item-1">
         <AccordionTrigger>
-        <ProgressRing percentage={100}/>
+        <ProgressRing percentage={developerScore.planningScore}/>
         Planning
         </AccordionTrigger>
         <AccordionContent>
