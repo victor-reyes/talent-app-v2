@@ -6,12 +6,15 @@ export function createService(repository: Repository) {
     async get() {
       return repository.get();
     },
+    async getById(id: number) {
+      return repository.getById(id);
+    },
 
     async add(background: BackgroundInsert) {
       await repository.add(background);
     },
     async update(formData: FormData) {
-      const id = formData.get("userId") as string;
+      const id = Number(formData.get("userId"));
       const name = formData.get("name") as string;
       const title = formData.get("title") as string;
       const bio = formData.get("bio") as string;
