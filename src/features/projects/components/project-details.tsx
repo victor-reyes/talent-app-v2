@@ -55,7 +55,7 @@ export default async function ProjectDetails({ project }: Props) {
           <Separator orientation="horizontal" />
           <article className="flex flex-col items-center my-2">
             {/* <GoIssueOpened /> */}
-            <p className="text-gray-400 text-sm">Issues</p>
+            <p className="text-paragraphLight text-sm">Issues</p>
             <p className="font-semibold">{repositoryInformation.issues}</p>
           </article>
           <Separator orientation="horizontal" />
