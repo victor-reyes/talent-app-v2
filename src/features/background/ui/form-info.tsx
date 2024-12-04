@@ -1,5 +1,14 @@
 import { addDeveloperAction } from "../actions";
 import { Pencil } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,20 +20,40 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+<<<<<<< HEAD
+=======
+{
+  /* <Pencil type="submit" />
+    <Form action={addDeveloperAction}>
+      <input type="text" name="name" />
+      <input type="text" name="title" />
+      <input type="text" name="bio" />
+    </Form> */
+}
+
+>>>>>>> af65bf0 (using modal to edit developer info)
 export function EditInfoForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
+<<<<<<< HEAD
         <Pencil
           className="hover:cursor-pointer hover:text-primary"
           type="submit"
         />
+=======
+        <Pencil type="submit" />
+>>>>>>> af65bf0 (using modal to edit developer info)
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
+<<<<<<< HEAD
             Make changes to your profile here. Click save when you are done.
+=======
+            Make changes to your profile here. Click save when you're done.
+>>>>>>> af65bf0 (using modal to edit developer info)
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
