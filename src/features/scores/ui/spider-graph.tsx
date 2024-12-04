@@ -34,7 +34,7 @@ const chartConfig = {
 
 export function SpiderGraph() {
   return (
-    <CardContent className="pb-0">
+    <CardContent className="">
       <ChartContainer config={chartConfig} className="mx-auto max-h-[250px]">
         <RadarChart data={chartData} outerRadius="80%">
           <ChartTooltip cursor={false} content={<ChartTooltipContent />} />

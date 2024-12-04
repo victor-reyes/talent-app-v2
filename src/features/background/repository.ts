@@ -1,5 +1,10 @@
 import { db } from "@/db";
-import { DeveloperInsert, developersTable } from "@/features/background/schema";
+import {
+  DeveloperInsert,
+  DeveloperSelect,
+  developersTable,
+} from "@/features/background/schema";
+import { eq } from "drizzle-orm";
 
 export function createRepository() {
   return {
@@ -8,6 +13,12 @@ export function createRepository() {
     },
     async addDeveloper(developer: DeveloperInsert) {
       return db.insert(developersTable).values({ ...developer });
+    },
+    async updateDeveloper(developer: DeveloperSelect) {
+      return db
+        .update(developersTable)
+        .set({ ...developer })
+        .where(eq(developersTable.id, developer.id));
     },
   };
 }

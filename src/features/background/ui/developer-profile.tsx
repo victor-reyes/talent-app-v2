@@ -21,7 +21,7 @@ type Props = {
 
 export function Background({ developer = mockDeveloper }: Props) {
   return (
-    <div className="space-y-4 max-w-96">
+    <div className="space-y-4">
       <BasicInfo
         name={developer.name}
         title={developer.title}
@@ -33,7 +33,7 @@ export function Background({ developer = mockDeveloper }: Props) {
         <Row title="Languages" content={developer.languages} />
         <Row title="Education" content={developer.educations} />
         <Skills skills={developer.skills} />
-        <ul className="flex gap-1 justify-end">
+        <ul className="flex gap-1 justify-end mt-2">
           {developer.links.map((link) => (
             <li key={link.name}>
               <SocialLink name={link.name} url={link.url} />

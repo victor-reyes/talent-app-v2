@@ -7,12 +7,10 @@ type Props = {
 
 export function DeveloperCard({children}: Props) {
   return (
-    <section className="flex justify-center items-center">
-      <Card className="p-4">
-        <CardContent>
-          {children}
-        </CardContent>
+    <div className="md:flex md:flex-col md:justify-center md:items-center">
+      <Card className="md:w-3/12 ">
+        <CardContent>{children}</CardContent>
       </Card>
-    </section>
+    </div>
   );
 }
