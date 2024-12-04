@@ -1,8 +1,8 @@
 import { Skills } from "./skills";
 import { Row } from "./row";
 import { SocialLink } from "./social-link";
-import { BasicInfo } from "./basic-info";
-import { EditInfoForm } from "./form-info";
+import { BackgroundBasicInfo } from "./basic-info";
+
 
 type Props = {
   developer?: {
@@ -19,11 +19,12 @@ type Props = {
     }[];
   };
 };
-
+//check the types to not have duplicates
 export function Background({ developer = mockDeveloper }: Props) {
+  //backgroundsService.getbyid
   return (
     <div className="space-y-2 max-w-96">
-      <BasicInfo
+      <BackgroundBasicInfo
         name={developer.name}
         title={developer.title}
         bio={developer.bio}

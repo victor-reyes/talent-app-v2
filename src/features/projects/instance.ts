@@ -1,4 +1,4 @@
-import { db } from "./db/mockdb";
+import { mockdb as db } from "./db/mockdb";
 import { createProjectService } from "./service";
 
 export const projectService = createProjectService(db);
