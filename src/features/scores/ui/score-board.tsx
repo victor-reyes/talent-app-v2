@@ -8,7 +8,7 @@ import { scoresService } from "../instance";
 
 export async function ScoreBoard() {
   
-  const userScore = await scoresService.getDeveloperScoreById();
+  const developerScore = await scoresService.getDeveloperScoreById();
 
   return (
     <section>
@@ -16,9 +16,9 @@ export async function ScoreBoard() {
       <HeaderH2>
         Salt Scoring
         </HeaderH2>
-      <AverageScore averageScore={userScore.averageScore} />
-      <SpiderGraph />
-      <AccordionBoard developerScore={userScore} />
+      <AverageScore averageScore={developerScore.averageScore} />
+      <SpiderGraph developerScore={developerScore} />
+      <AccordionBoard developerScore={developerScore} />
     </section>
   );
 }
