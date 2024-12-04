@@ -1,13 +1,11 @@
 import React from "react";
 import ProjectDetails from "./project-details";
 import { projectService } from "../instance";
-import { getTotalOfCommits } from "../api/api";
 import { HeaderH2 } from "@/components/ui/header/header-h2";
 import { Separator } from "@/components/ui/separator";
 
 export async function ProjectCard() {
   const projects = await projectService.getAll();
-
   return (
     <div className="mt-4">
       <HeaderH2>Projects</HeaderH2>
