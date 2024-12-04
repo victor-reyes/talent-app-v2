@@ -16,7 +16,7 @@ export function EditInfoForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Pencil type="submit" />
+        <Pencil type="submit" size={16}/>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
