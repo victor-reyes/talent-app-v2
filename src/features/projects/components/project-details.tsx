@@ -5,9 +5,9 @@ import Link from "next/link";
 import { GoIssueOpened } from "react-icons/go";
 import { GiDuration } from "react-icons/gi";
 import { CgPerformance } from "react-icons/cg";
-import { SiTestcafe } from "react-icons/si";
 import { Separator } from "@/components/ui/separator";
 import { projectService } from "../instance";
+import Image from "next/image";
 
 type Project = {
   username: string;
@@ -26,22 +26,34 @@ export default async function ProjectDetails({ project }: Props) {
     <>
       <Link
         href={`https://github.com/${username}/${repository}`}
-        className="flex gap-2"
+        className="flex gap-2 ml-2"
       >
         <HeaderH3>{repository}</HeaderH3>
         <FaGithub size={26} color="gray" />
       </Link>
-      <section className="flex justify-between items-center mt-6">
-        <article className="flex flex-col items-center mb-4">
-          <GiDuration size={28} color="gray" />
-          <p className="text-gray-400 text-lg">Duration</p>
-          <p className="font-semibold text-xl">
-            {repositoryInformation.duration}
+      <section className="flex justify-between items-start mt-6 gap-4">
+        <div >
+          <Image
+            src="/restaurant1.png"
+            width={250}
+            height={240}
+            alt=""
+            className="m-2 object-cover rounded-lg"
+          />
+          <p className=" m-2 text-justify">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+            debitis sunt illo ex maiores error eos nostrum atque quasi sequi
+            tempore molestiae optio dolore facere aliquam, totam sint sed iste?
           </p>
-        </article>
-
-        <div className="flex justify-between gap-6">
-          <div className="flex flex-col items-center justify-center gap-4">
+        </div>
+ 
+          <div className="flex flex-col items-center justify-start gap-4 mt-2">
+            <article className="flex flex-col items-center">
+              <GiDuration />
+              <p className="text-gray-400 text-sm">Duration</p>
+              <p className="font-semibold">{repositoryInformation.duration}</p>
+            </article>
+            <Separator orientation="horizontal" />
             <article className="flex flex-col items-center">
               <FaCodeCommit />
               <p className="text-gray-400 text-sm">Commits</p>
@@ -60,7 +72,6 @@ export default async function ProjectDetails({ project }: Props) {
               <p className="font-semibold">56%</p>
             </article>
           </div>
-        </div>
       </section>
     </>
   );
