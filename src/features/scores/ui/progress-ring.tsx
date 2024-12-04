@@ -8,7 +8,7 @@ export function ProgressRing({ percentage }: Props) {
     if (percentage <= 50) return "#4caf50"; 
     if (percentage <= 69) return "#2196f3"; 
     if (percentage <= 79) return "#9c27b0"; 
-    if (percentage <= 89) return "#4b4b4";
+    if (percentage <= 89) return "#800080";
     return "#ff7961";
   };
 
