@@ -4,11 +4,12 @@ type Props = {
 
 export function ProgressRing({ percentage }: Props) {
   const getStrokeColor = (percentage: number) => {
-    if (percentage <= 25) return "#808080"; 
-    if (percentage <= 50) return "#4caf50"; 
-    if (percentage <= 75) return "#2196f3"; 
-    if (percentage <= 94) return "#9c27b0"; 
-    return "#ff7961";
+    if (percentage === 0) return "#808080";
+    if (percentage <= 25) return "#ff0000";
+    if (percentage <= 50) return "#ff7f00";
+    if (percentage <= 75) return "#ffff00";
+    if (percentage <= 90) return "#00ff00";
+    return "#808080";
   };
 
   const strokeColor = getStrokeColor(percentage);
