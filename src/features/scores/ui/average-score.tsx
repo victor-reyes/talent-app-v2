@@ -1,10 +1,14 @@
 import React from "react";
 import { LevelRectangle } from "./level-rectangle";
 
-export function AverageScore() { 
-  const percentage = Math.floor(Math.random() * 100);  
+type Props = {
+  averageScore: number;
+}
 
+
+export function AverageScore( { averageScore } : Props) { 
+  
   return (
-    <LevelRectangle percentage={percentage} />
+    <LevelRectangle percentage={averageScore} />
   );
 }

@@ -1,16 +1,26 @@
+import { Developer } from "./types";
 
-const firstUser = {
-  frontend: 67,
-  backend: 72,
-  charismatic: 70,
-  teamwork: 50,
-  design: 100,
-  management: 87
-}
+export const createService = (developer: Developer) => {
 
-
-export const createService = () => {
   return {
-    kada: "Says hello",
+    getDeveloperScoreById: async () => {
+      const programmingScore = (developer.frontend + developer.backend) / 2;
+      const planningScore = (developer.management + developer.design) / 2;
+      const communicationScore = (developer.individualCommunication + developer.teamCollaboration) / 2;
+      const averageScore = Math.round((programmingScore + planningScore + communicationScore) / 3);
+
+      return {
+        frontend: Math.round(developer.frontend),
+        backend: Math.round(developer.backend),
+        individualCommunication: Math.round(developer.individualCommunication),
+        teamCollaboration: Math.round(developer.teamCollaboration),
+        design: Math.round(developer.design),
+        management: Math.round(developer.management),
+        programmingScore: Math.round(programmingScore),
+        planningScore: Math.round(planningScore),
+        communicationScore: Math.round(communicationScore),
+        averageScore,
+      }
+    },
   }
 }
