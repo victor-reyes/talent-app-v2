@@ -32,7 +32,7 @@ export default async function ProjectDetails({ project }: Props) {
       <p className="ml-2 text-xs text-gray-400">
         Last commit {repositoryInformation.lastCommit}
       </p>
-      <section className="flex justify-between items-start mt-6 gap-2">
+      <section className="flex justify-between items-start mt-2 gap-2">
         <Image
           src="/restaurant1.png"
           width={250}
