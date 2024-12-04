@@ -15,12 +15,21 @@ export function Coding({ developerScore } : Props) {
   return (
     <Accordion type="single" collapsible className="mx-auto max-w-96">
       <AccordionItem value="item-1">
-        <AccordionTrigger>
+      <AccordionTrigger>
         <ProgressRing percentage={developerScore.programmingScore}/>
-        Coding
+        Programming
         </AccordionTrigger>
         <AccordionContent>
-          Coding data
+        <div className="flex flex-col mr-2 pl-8">
+        <span className="flex flex-row gap-4 pb-2 items-center">
+        <ProgressRing percentage={developerScore.backend}/>
+        Backend
+        </span>
+        <span className="flex flex-row gap-4 pb-2 items-center">
+        <ProgressRing percentage={developerScore.frontend}/>
+        Frontend
+        </span>
+        </div>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
