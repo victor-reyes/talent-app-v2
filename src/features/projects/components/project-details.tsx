@@ -1,72 +1,72 @@
 import React from "react";
-import { FaCodeCommit } from "react-icons/fa6";
+import Image from "next/image";
+import { FaGithub } from "react-icons/fa6";
 import { HeaderH3 } from "@/components/ui/header/header-h3";
 import Link from "next/link";
-import { GoIssueOpened } from "react-icons/go";
-import { GiDuration } from "react-icons/gi";
-import { CgPerformance } from "react-icons/cg";
-import { SiTestcafe } from "react-icons/si"
 import { Separator } from "@/components/ui/separator";
+import { projectService } from "../instance";
+import { ProjectDescription } from "./project-description";
+import { Pencil } from "lucide-react";
 
 type Project = {
-  title: string;
-  link: string;
-  commits: number;
-  issues: number;
-  duration: string;
-  performance: number;
-  tests: number;
+  username: string;
+  repository: string;
 };
 type Props = {
   project: Project;
 };
-export default function ProjectDetails({ project }: Props) {
-  const { title, link, commits, issues, duration, performance, tests } =
-    project;
+export default async function ProjectDetails({ project }: Props) {
+  const repositoryInformation = await projectService.getRepositoryInformation(
+    project.username,
+    project.repository
+  );
+  const { username, repository } = project;
   return (
     <>
-      <Link
-        href={link}
-        >
-        <HeaderH3>{title}</HeaderH3>
-        {/* <FaGithub size={26} color="gray" /> */}
-  <section className="flex flex-col justify-center items-center mt-6">
-  <article className="flex flex-col items-center mb-4">
-    <GiDuration size={28} color="gray" />
-    <p className="text-gray-400 text-lg">Duration</p>
-    <p className="font-semibold text-xl">{duration}</p>
-  </article>
-
-  <div className="flex justify-between gap-6">
-    <div className="flex items-center justify-center gap-4">
-      <article className="flex flex-col items-center">
-        <FaCodeCommit />
-        <p className="text-gray-400 text-sm">Commits</p>
-        <p className="font-semibold">{commits}</p>
-      </article>
-      <Separator orientation="vertical" />
-      <article className="flex flex-col items-center">
-        <GoIssueOpened />
-        <p className="text-gray-400 text-sm">Issues</p>
-        <p className="font-semibold">{issues}</p>
-      </article>
-      <Separator orientation="vertical" />
-      <article className="flex flex-col items-center">
-        <CgPerformance />
-        <p className="text-gray-400 text-sm">Performance</p>
-        <p className="font-semibold">{performance}%</p>
-      </article>
-      <Separator orientation="vertical" />
-      <article className="flex flex-col items-center">
-        <SiTestcafe />
-        <p className="text-gray-400 text-sm">Tests</p>
-        <p className="font-semibold">{tests}</p>
-      </article>
-    </div>
-  </div>
-</section>
-      </Link>
-
-</>
+      <div className="flex justify-between items-baseline">
+        <div className="flex flex-col ">
+          <Link
+            href={`https://github.com/${username}/${repository}`}
+            className="ml-2  opacity-80 hover:opacity-100"
+          >
+            <HeaderH3>{repository}</HeaderH3>
+            <p className="text-xs text-gray-400 flex items-center gap-2">
+              <FaGithub size={16} color="gray" />
+              Last commit {repositoryInformation.lastCommit}
+            </p>
+          </Link>
+        </div>
+        <Pencil className="mr-4 " size={16} />
+      </div>
+      <section className="flex justify-between items-start mt-2 gap-2">
+        <Image
+          src="/restaurant1.png"
+          width={250}
+          height={240}
+          alt=""
+          className="m-2 object-cover rounded-lg"
+        />
+        <div className="flex flex-col items-center justify-between gap-4 mt-2 mr-2">
+          <article className="flex flex-col items-center my-2">
+            {/* <FaCodeCommit /> */}
+            <p className="text-gray-400 text-sm">Commits</p>
+            <p className="font-semibold">{repositoryInformation.commits}</p>
+          </article>
+          <Separator orientation="horizontal" />
+          <article className="flex flex-col items-center my-2">
+            {/* <GoIssueOpened /> */}
+            <p className="text-gray-400 text-sm">Issues</p>
+            <p className="font-semibold">{repositoryInformation.issues}</p>
+          </article>
+          <Separator orientation="horizontal" />
+          <article className="flex flex-col items-center my-2">
+            {/* <CgPerformance /> */}
+            <p className="text-gray-400 text-sm">Performance</p>
+            <p className="font-semibold">56%</p>
+          </article>
+        </div>
+      </section>
+      <ProjectDescription />
+    </>
   );
 }

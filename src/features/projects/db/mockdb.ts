@@ -28,4 +28,15 @@ export const db = [
   },
 ];
 
-export type Db = typeof db;
+export const mockdb = [
+  {
+    username: "martensoderlind",
+    repository: "Final-weekend-assignment",
+  },
+  {
+    username: "martensoderlind",
+    repository: "Travel-time-quota",
+  },
+];
+
+export type Db = typeof mockdb;
