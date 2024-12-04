@@ -32,7 +32,7 @@ export function SpiderGraph({ developerScore }: Props) {
   const chartData = [
     { category: "Frontend", score: developerScore.frontend },
     { category: "Backend", score: developerScore.backend },
-    { category: "Individual communication", score:developerScore.individualCommunication },
+    { category: "Individual communication", score: developerScore.individualCommunication },
     { category: "Team collaboration", score: developerScore.teamCollaboration },
     { category: "Design", score: developerScore.design },
     { category: "Management", score: developerScore.management },
@@ -44,10 +44,18 @@ export function SpiderGraph({ developerScore }: Props) {
         <RadarChart data={chartData} outerRadius="80%">
           <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
           <PolarGrid stroke="#d3d3d3" />
-          <PolarAngleAxis dataKey="category" stroke="#808080" />
+          <PolarAngleAxis
+            dataKey="category"
+            stroke="#808080"
+            tick={{
+              dy: 5,  
+              fill: '#808080'
+            }}
+            tickLine={false}  
+          />
           <Radar
             dataKey="score"
-            stroke="#a9a9a9" 
+            stroke="#a9a9a9"
             fill="#a9a9a9"
             fillOpacity={0.6}
           />
