@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { projectService } from "../instance";
 import { ProjectDescription } from "./project-description";
+import { Pencil } from "lucide-react";
 
 type Project = {
   username: string;
@@ -22,16 +23,21 @@ export default async function ProjectDetails({ project }: Props) {
   const { username, repository } = project;
   return (
     <>
-      <Link
-        href={`https://github.com/${username}/${repository}`}
-        className="flex gap-2 ml-2  opacity-80 hover:opacity-100"
-      >
-        <HeaderH3>{repository}</HeaderH3>
-        <FaGithub size={26} color="gray" />
-      </Link>
-      <p className="ml-2 text-xs text-gray-400">
-        Last commit {repositoryInformation.lastCommit}
-      </p>
+      <div className="flex justify-between items-baseline">
+        <div className="flex flex-col ">
+          <Link
+            href={`https://github.com/${username}/${repository}`}
+            className="ml-2  opacity-80 hover:opacity-100"
+          >
+            <HeaderH3>{repository}</HeaderH3>
+            <p className="text-xs text-gray-400 flex items-center gap-2">
+              <FaGithub size={16} color="gray" />
+              Last commit {repositoryInformation.lastCommit}
+            </p>
+          </Link>
+        </div>
+        <Pencil className="mr-4 " size={16} />
+      </div>
       <section className="flex justify-between items-start mt-2 gap-2">
         <Image
           src="/restaurant1.png"
