@@ -1,7 +1,14 @@
-export async function getTotalOfCommits(user: string, repo: string) {
+import { cache } from "react";
+
+export const getTotalOfCommits = cache(async (user: string, repo: string) => {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${user}/${repo}/stats/participation`
+      `https://api.github.com/repos/${user}/${repo}/stats/participation`,
+      {
+        next: {
+          revalidate: 3600,
+        },
+      }
     );
     if (!response.ok) {
       console.log("not okey");
@@ -20,12 +27,17 @@ export async function getTotalOfCommits(user: string, repo: string) {
     console.error("Error fetching commit statistics:", error);
     return 0;
   }
-}
+});
 
-export async function getAllIssues(user: string, repo: string) {
+export const getAllIssues = cache(async (user: string, repo: string) => {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${user}/${repo}/issues`
+      `https://api.github.com/repos/${user}/${repo}/issues`,
+      {
+        next: {
+          revalidate: 3600,
+        },
+      }
     );
 
     if (!response.ok) {
@@ -39,11 +51,17 @@ export async function getAllIssues(user: string, repo: string) {
     console.error("Error fetching issues:", error);
     return 0;
   }
-}
-export async function getDuration(user: string, repo: string) {
+});
+
+export const getDuration = cache(async (user: string, repo: string) => {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${user}/${repo}/commits`
+      `https://api.github.com/repos/${user}/${repo}/commits`,
+      {
+        next: {
+          revalidate: 3600,
+        },
+      }
     );
     if (!response.ok) {
       return 0;
@@ -58,4 +76,4 @@ export async function getDuration(user: string, repo: string) {
     console.error("Error fetching duration:", error);
     return 0;
   }
-}
+});
