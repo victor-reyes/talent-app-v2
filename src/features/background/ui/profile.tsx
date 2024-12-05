@@ -25,8 +25,8 @@ export async function Background() {
         <ul className="flex gap-1 justify-end mt-2">
           {background.links &&
             background.links.map((link) => (
-              <li key={link}>
-                <SocialLink name={"Github"} url={link} />
+              <li key={link.url}>
+                <SocialLink name={link.name} url={link.url} />
               </li>
             ))}
         </ul>
