@@ -33,9 +33,12 @@ function seed() {
       skills: faker.helpers.arrayElements(skills, 10),
       links: faker.helpers
         .arrayElements([
-          { url: "github.com/faker", name: "Github" },
-          { url: "linkedin.com/faker", name: "LinkedIn" },
-          { url: "portfolio.com/faker", name: "Portfolio" },
+          { url: "https://github.com/alimohseni99", name: "Github" },
+          {
+            url: "https://www.linkedin.com/in/ali-mohseni-se",
+            name: "LinkedIn",
+          },
+          { url: "https://www.alimohseni.se/", name: "Portfolio" },
         ])
         .sort((a, b) => a.name.localeCompare(b.name)),
     };
