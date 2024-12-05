@@ -7,10 +7,10 @@ export function createProjectService(db: Db) {
   const client = createClient();
   const repository = createProjectsRepository(db);
   return {
-    async getAll() {
+    getAll: async () => {
       return await repository.getAll();
     },
-    async getRepositoryInformation(user: string, repo: string) {
+    getRepositoryInformation: async (user: string, repo: string) => {
       const commits = await client.getTotalOfCommits(user, repo);
       const issues = await client.getAllIssues(user, repo);
       const lastCommit = await client.getDuration(user, repo);
@@ -20,7 +20,7 @@ export function createProjectService(db: Db) {
         lastCommit: lastCommit,
       };
     },
-    async addProject(project: projectInsert) {
+    addProject: async (project: projectInsert) => {
       await repository.addProject(project);
     },
   };
