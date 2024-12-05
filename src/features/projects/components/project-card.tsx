@@ -1,13 +1,14 @@
 import { HeaderH2 } from "@/components/ui/header/header-h2";
 import { Separator } from "@/components/ui/separator";
-import { testPagePerformance } from "../api/api";
 import { projectService } from "../instance";
 import ProjectDetails from "./project-details";
 import AddProject from "./add-project";
+import { createClient } from "../api/api";
 
 export async function ProjectCard() {
+  const client = createClient()
   const projects = await projectService.getAll();
-  const pagePerformanceTest = await testPagePerformance(
+  const pagePerformanceTest = await client.testPagePerformance(
     "https://www.alimohseni.se/"
   );
 
