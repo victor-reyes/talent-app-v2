@@ -31,7 +31,13 @@ function seed() {
         2,
       ),
       skills: faker.helpers.arrayElements(skills, 10),
-      links: ["https://github.com", "https://linkedin.com/"],
+      links: faker.helpers
+        .arrayElements([
+          { url: "github.com/faker", name: "Github" },
+          { url: "linkedin.com/faker", name: "LinkedIn" },
+          { url: "portfolio.com/faker", name: "Portfolio" },
+        ])
+        .sort((a, b) => a.name.localeCompare(b.name)),
     };
   });
   backgrounds.forEach((background) => {
