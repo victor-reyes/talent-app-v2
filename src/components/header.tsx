@@ -1,27 +1,35 @@
 import { SignedOut, SignInButton, SignedIn, UserButton } from "@clerk/nextjs";
-import { auth, clerkClient } from "@clerk/nextjs/server";
+// import { auth, clerkClient } from "@clerk/nextjs/server";
+// import Link from "next/link";
 export async function Header() {
-  const { userId } = await auth();
+  // const { userId } = await auth();
 
-  const user = userId
-    ? await (await clerkClient()).users.getUser(userId)
-    : null;
+  // const user = userId
+  //   ? await (await clerkClient()).users.getUser(userId)
+  //   : null;
 
   return (
-    <header className="w-full h-16 px-8 bg-primary drop-shadow-md sticky top-0 z-50 text-white font-bold flex gap-2 justify-between items-center">
-      <div>
+    <nav className="w-full h-10 px-8 shadow-sm sticky top-0 z-10 flex gap-2 bg-background justify-end items-center">
+      {/* <div>
         {user && (
-          <span className="text-xl">
+          <span className="text-md">
             Welcome to {"</salt>"}, {user.fullName}!
           </span>
         )}
-      </div>
+      </div> */}
+     <div className="flex gap-6">
+      <div className="hover:bg-secondary py-1 px-2 rounded-lg text-sm">
       <SignedOut>
         <SignInButton />
-      </SignedOut>
+      </SignedOut>  
+      </div>
       <SignedIn>
         <UserButton />
       </SignedIn>
-    </header>
-  );
-}
+     </div>
+    </nav>
+  ); }
+ 
+
+
+    
