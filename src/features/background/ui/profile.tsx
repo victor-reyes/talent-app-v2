@@ -4,12 +4,8 @@ import { SocialLink } from "./social-link";
 import { BackgroundBasicInfo } from "./basic-info";
 import { backgroundsService } from "../instance";
 
-//check the types to not have duplicates
 export async function Background() {
   const background = await backgroundsService.getById(0);
-  //backgroundsService.getbyid
-  console.log(background);
-
   return (
     <div className="space-y-2 max-w-96">
       <BackgroundBasicInfo
@@ -18,7 +14,6 @@ export async function Background() {
         bio={background.bio}
         avatarURL={background.avatarURL}
       />
-
       <div>
         <Row title="Languages" content={background.languages} />
         <Row title="Education" content={background.educations} />
