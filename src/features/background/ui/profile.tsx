@@ -6,6 +6,10 @@ import { backgroundsService } from "../instance";
 
 export async function Background() {
   const background = (await backgroundsService.getById(1))[0];
+  if (!background) {
+    console.log("No background found");
+    return null;
+  }
   return (
     <div className="space-y-2 max-w-96">
       <BackgroundBasicInfo
