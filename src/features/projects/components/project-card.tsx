@@ -3,16 +3,10 @@ import { Separator } from "@/components/ui/separator";
 import { projectService } from "../instance";
 import ProjectDetails from "./project-details";
 import AddProject from "./add-project";
-import { createClient } from "../api/api";
 
 export async function ProjectCard() {
-  const client = createClient()
   const projects = await projectService.getAll();
-  const pagePerformanceTest = await client.testPagePerformance(
-    "https://www.alimohseni.se/"
-  );
 
-  console.log("pagePerformanceTest", pagePerformanceTest + " %");
   return (
     <div className="mt-4">
       <HeaderH2>Projects</HeaderH2>
