@@ -5,8 +5,8 @@ import { skills } from "./data";
 
 const repository = createRepository();
 
-function seed() {
-  const backgrounds: BackgroundInsert[] = Array.from({ length: 10 }, () => {
+function seed(count: number = 50) {
+  const backgrounds: BackgroundInsert[] = Array.from({ length: count }, () => {
     return {
       name: faker.person.fullName(),
       title: faker.person.jobType(),
