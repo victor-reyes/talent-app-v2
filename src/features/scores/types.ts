@@ -1,4 +1,5 @@
 export type DeveloperScore = {
+    planningScore: number;
     id: number;
     frontend: number;
     backend: number;
