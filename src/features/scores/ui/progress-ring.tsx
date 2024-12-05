@@ -37,7 +37,7 @@ export function ProgressRing({ percentage }: Props) {
               strokeLinecap="round"
             />
           </svg>
-          <div className="absolute text-[0.55rem] font-bold">{`${percentage}%`}</div>
+          <div className="absolute text-[0.55rem] font-bold">{`${percentage === 0 ? "NA" : percentage + "%"}`}</div>
         </div>
   );
 }
