@@ -5,10 +5,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ProgressRing } from "../progress-ring";
-import { DeveloperScore } from "../../types";
+import { CompleteDeveloperScore } from "../../types";
 
 type Props = {
-  developerScore: DeveloperScore;
+  developerScore: CompleteDeveloperScore;
 };
 
 export function Planning({ developerScore }: Props) {
