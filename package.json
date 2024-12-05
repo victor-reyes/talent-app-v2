@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "tsx src/features/background/seed.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.6.0",
