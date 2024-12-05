@@ -1,7 +1,7 @@
 import { Db } from "@/db";
 import { createRepository } from "./repository";
 import { calculateCategoriesScores } from "./logic";
-import { DeveloperScore } from "./types";
+import { DeveloperScore, NewDeveloperScores } from "./types";
 
 export const createService = (db: Db) => {
   const repository = createRepository(db);
@@ -47,8 +47,8 @@ export const createService = (db: Db) => {
         };
       }
     },
-    patchDeveloperScores: async (newDeveloperScores: DeveloperScore) => {
-      repository.patch()
+    patchDeveloperScores: async (userId: number, newDeveloperScores: NewDeveloperScores) => {
+      repository.updateScore(userId, newDeveloperScores)
     },
   };
 };
