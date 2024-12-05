@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
@@ -23,6 +24,7 @@ import {
   FileUploaderItem,
 } from "./file-upload";
 import { Textarea } from "@/components/ui/textarea";
+import { addProjectAction } from "../action";
 
 const formSchema = z.object({
   username: z.string(),
@@ -33,7 +35,7 @@ const formSchema = z.object({
 });
 
 export default function ProjectForm() {
-  const [files, setFiles] = useState<File[] | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
 
   const dropZoneConfig = {
     maxFiles: 5,
@@ -46,7 +48,7 @@ export default function ProjectForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log(values);
+      addProjectAction(values.username, values.repository, values.description);
       toast(
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(values, null, 2)}</code>

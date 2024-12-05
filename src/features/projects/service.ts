@@ -1,6 +1,7 @@
 import { Db } from "@/db";
 import { createClient } from "./api/api";
 import { createProjectsRepository } from "./repository";
+import { projectInsert } from "./db/schema";
 
 export function createProjectService(db: Db) {
   const client = createClient();
@@ -18,6 +19,9 @@ export function createProjectService(db: Db) {
         issues: issues.length,
         lastCommit: lastCommit,
       };
+    },
+    async addProject(project: projectInsert) {
+      await repository.addProject(project);
     },
   };
 }
