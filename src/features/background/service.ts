@@ -21,8 +21,10 @@ export function createService(repository: Repository) {
       const name = formData.get("name") as string;
       const title = formData.get("title") as string;
       const bio = formData.get("bio") as string;
+      const avatarUrl = formData.get("avatarUrl") as string;
       await repository.update({
         id,
+        avatarUrl,
         name,
         title,
         bio,
