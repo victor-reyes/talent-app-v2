@@ -3,10 +3,10 @@ import { projectInsert, projectTable } from "./db/schema";
 
 export function createProjectsRepository(db: Db) {
   return {
-    async getAll() {
+    getAll: async () => {
       return [];
     },
-    async addProject(project: projectInsert) {
+    addProject: async (project: projectInsert) => {
       await db.insert(projectTable).values(project);
     },
   };
