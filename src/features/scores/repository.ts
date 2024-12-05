@@ -1,11 +1,12 @@
 
 import { Db } from "@/db";
-import { developersScoresTable } from "./schema"
+import { scoresTable } from "./schema"
+import { eq } from "drizzle-orm";
 
 export function createRepository(db: Db) {
   return {
-    async getById() {
-      return db.select().from(developersScoresTable);
+    async getById(userId: number) {
+      return db.select().from(scoresTable).where(eq(scoresTable.id, userId));
     },
   };
 }

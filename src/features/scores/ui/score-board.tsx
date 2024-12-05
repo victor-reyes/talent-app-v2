@@ -6,7 +6,8 @@ import { HeaderH2 } from "@/components/ui/header/header-h2";
 import { scoresService } from "../instance";
 
 export async function ScoreBoard() {
-  const developerScore = await scoresService.getDeveloperScoreById();
+  const hardcodedUserId = 1;
+  const developerScore = await scoresService.getDeveloperScoreById(hardcodedUserId);
 
   return (
     <section>
