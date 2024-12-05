@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
@@ -16,17 +17,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Project } from "../types";
 
-type Project = {
-  username: string;
-  repository: string;
-  commits: string;
-  issues: string;
-  lastCommit: string;
-  description: string;
-};
+
 type Props = {
   project: Project;
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const formSchema = z.object({
@@ -37,7 +33,7 @@ const formSchema = z.object({
   description: z.string(),
 });
 
-export default function EditProjectDetails({ project }: Props) {
+export default function EditProjectDetails({ project, setShowDetails }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
