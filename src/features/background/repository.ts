@@ -55,16 +55,17 @@ export function createRepository() {
       return mockBackgrounds;
     },
     async getById(id: number) {
-      return mockBackgrounds[id];
+      return await db.select().from(backgroundsTable).where(eq(backgroundsTable.id, id));
     },
     async add(background: BackgroundInsert) {
       return db.insert(backgroundsTable).values({ ...background });
     },
     async update(background: BackgroundSelect) {
+const { id, ...rest } = background;
       return db
         .update(backgroundsTable)
-        .set({ ...background })
-        .where(eq(backgroundsTable.id, background.id));
+        .set({ ...rest })
+        .where(eq(backgroundsTable.id, id));
     },
   };
 }
