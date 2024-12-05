@@ -5,11 +5,12 @@ export async function updateScoresAction(formData: FormData) {
   const individualCommunication = formData.get(
     "individualCommunication"
   ) as string;
-  const teamCollaboration = formData.get("teamCollabortion") as string;
+  const teamCollaboration = formData.get("teamCollaboration") as string;
   const management = formData.get("management") as string;
   const design = formData.get("design") as string;
   const backend = formData.get("backend") as string;
   const frontend = formData.get("frontend") as string;
+
 
   const newDeveloperScores = {
     frontend: Number(frontend),
