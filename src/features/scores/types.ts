@@ -15,6 +15,7 @@ export type CompleteDeveloperScore = DeveloperScore & {
     averageScore: number;
 }
 
+export type NewDeveloperScores = Omit<DeveloperScore, "id">;
 
 
 // export type Developer = DeveloperScore & {
