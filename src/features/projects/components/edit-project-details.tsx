@@ -1,5 +1,5 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
 import { Separator } from "@/components/ui/separator";
@@ -17,12 +17,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Project } from "../types";
-
+import { Project, RepositoryInformation } from "../types";
+import { projectService } from "../instance";
 
 type Props = {
   project: Project;
-  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>;
+  setEditDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const formSchema = z.object({
@@ -33,7 +33,25 @@ const formSchema = z.object({
   description: z.string(),
 });
 
-export default function EditProjectDetails({ project, setShowDetails }: Props) {
+export default function EditProjectDetails({ project, setEditDetails }: Props) {
+  const [repositoryInformation, setRepositoryInformation] =
+    useState<RepositoryInformation | null>(null);
+  const { username, repository, description } = project;
+
+  useEffect(() => {
+    const fetchRepositoryInfo = async () => {
+      try {
+        const repositoryInformation =
+          await projectService.getRepositoryInformation(username, repository);
+        setRepositoryInformation(repositoryInformation);
+      } catch (error) {
+        console.error("Error fetching repository information:", error);
+      }
+    };
+
+    fetchRepositoryInfo();
+  }, [username, repository]);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -45,6 +63,11 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
       console.error("Form submission error", error);
     }
   }
+
+  function toggleEdit() {
+    setEditDetails(true);
+  }
+
   return (
     <>
       <Form {...form}>
@@ -74,11 +97,13 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
                 />
                 <p className="text-xs text-gray-400 flex items-center gap-2">
                   <FaGithub size={16} color="gray" />
-                  Last commit {project.lastCommit}
+                  Last commit {repositoryInformation!.lastCommit}
                 </p>
               </div>
             </div>
-            <Pencil className="mr-4 " size={16} />
+            <button onClick={toggleEdit}>
+              <Pencil className="mr-4 " size={16} />
+            </button>
           </div>
           <section className="flex justify-between items-start mt-2 gap-2">
             <Image
@@ -91,12 +116,14 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
             <div className="flex flex-col items-center justify-between gap-4 mt-2 mr-2">
               <article className="flex flex-col items-center my-2">
                 <p className="text-gray-400 text-sm">Commits</p>
-                <p className="font-semibold">{project.commits}</p>
+                <p className="font-semibold">
+                  {repositoryInformation!.commits}
+                </p>
               </article>
               <Separator orientation="horizontal" />
               <article className="flex flex-col items-center my-2">
                 <p className="text-gray-400 text-sm">Issues</p>
-                <p className="font-semibold">{project.issues}</p>
+                <p className="font-semibold">{repositoryInformation!.issues}</p>
               </article>
               <Separator orientation="horizontal" />
               <article className="flex flex-col items-center my-2">
@@ -113,7 +140,7 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
                 <FormLabel>Description</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder={project.description}
+                    placeholder={description}
                     className="resize-none"
                     {...field}
                   />

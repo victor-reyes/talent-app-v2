@@ -6,3 +6,9 @@ export type Project = {
   pictureURL: string | null;
   description: string;
 };
+
+export type RepositoryInformation = {
+  commits: number;
+  issues: number;
+  lastCommit: string;
+};
