@@ -7,15 +7,15 @@ import { Separator } from "@/components/ui/separator";
 import { projectService } from "../instance";
 import { ProjectDescription } from "./project-description";
 import { Pencil } from "lucide-react";
+import { Project } from "../types";
 
-type Project = {
-  username: string;
-  repository: string;
-};
+
 type Props = {
   project: Project;
+  setShowDetails: React.Dispatch<
+    React.SetStateAction<boolean>>
 };
-export default async function ProjectDetails({ project }: Props) {
+export default async function ProjectDetails({ project, setShowDetails }: Props) {
   const repositoryInformation = await projectService.getRepositoryInformation(
     project.username,
     project.repository

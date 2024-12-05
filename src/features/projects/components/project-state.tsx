@@ -1,6 +1,4 @@
 "use client"
-
-
 import ProjectDetails from "./project-details";
 import { useState } from "react";
 import EditProjectDetails from "./edit-project-details";
