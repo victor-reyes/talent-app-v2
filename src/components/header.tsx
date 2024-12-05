@@ -9,7 +9,7 @@ export async function Header() {
   //   : null;
 
   return (
-    <nav className="w-full h-10 px-8 shadow-sm sticky top-0 z-10 flex gap-2 bg-background justify-end items-center">
+    <nav className="w-full h-10 px-8 shadow-sm sticky top-0 z-10 flex gap-2 bg-background justify-between items-center">
       {/* <div>
         {user && (
           <span className="text-md">
@@ -17,16 +17,17 @@ export async function Header() {
           </span>
         )}
       </div> */}
-     <div className="flex gap-6">
-      <div className="hover:bg-secondary py-1 px-2 rounded-lg text-sm">
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>  
+      <span>&lt;salt/&gt;</span>
+      <div className="flex gap-6">
+        <div className="hover:bg-secondary py-1 px-2 rounded-lg text-sm">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+        </div>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-     </div>
     </nav>
   ); }
  
