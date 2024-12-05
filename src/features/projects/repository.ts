@@ -4,7 +4,7 @@ import { projectInsert, projectTable } from "./db/schema";
 export function createProjectsRepository(db: Db) {
   return {
     async getAll() {
-      return [];
+      return db.select().from(projectTable);
     },
     async addProject(project: projectInsert) {
       await db.insert(projectTable).values(project);
@@ -13,3 +13,4 @@ export function createProjectsRepository(db: Db) {
 }
 
 export type Repository = ReturnType<typeof createProjectsRepository>;
+ 
