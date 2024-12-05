@@ -5,5 +5,6 @@ export const repository = pgTable("repository", {
   username: varchar("username").notNull(),
   repository: varchar("repository").notNull(),
   pictureURL: varchar("url", { length: 500 }),
-  description: varchar().notNull(),
+  description: varchar("description").notNull(),
+  userId: uuid("userId").notNull().defaultRandom(),
 });
