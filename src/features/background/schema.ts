@@ -2,6 +2,7 @@ import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
 export const backgroundsTable = pgTable("backgrounds", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  avatarUrl: varchar().notNull().default("/avatar.png"),
   name: varchar().notNull(),
   title: varchar().notNull(),
   bio: varchar().notNull(),
