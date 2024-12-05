@@ -5,11 +5,13 @@ import { BackgroundBasicInfo } from "./basic-info";
 import { backgroundsService } from "../instance";
 
 export async function Background() {
-  const background = (await backgroundsService.getById(1))[0];
-  if (!background) {
-    console.log("No background found");
+  const backgrounds = await backgroundsService.getAll();
+  if (backgrounds.length === 0) {
+    console.log("No backgrounds found");
     return null;
   }
+  const background =
+    backgrounds[Math.floor(Math.random() * backgrounds.length)];
   return (
     <div className="space-y-2 max-w-96">
       <BackgroundBasicInfo
