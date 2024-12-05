@@ -1,5 +1,5 @@
+import { Db } from "@/db";
 import { createClient } from "./api/api";
-import { Db } from "./db/mockdb";
 import { createProjectsRepository } from "./repository";
 
 export function createProjectService(db: Db) {

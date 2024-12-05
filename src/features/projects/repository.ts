@@ -1,9 +1,9 @@
-import { Db } from "./db/mockdb";
+import { Db } from "@/db";
 
 export function createProjectsRepository(db: Db) {
   return {
     async getAll() {
-      return db;
+      return db.select.from();
     },
   };
 }
