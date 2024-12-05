@@ -6,6 +6,7 @@ export const projectTable = pgTable("project_table", {
   repository: varchar("repository").notNull(),
   pictureURL: varchar("url", { length: 500 }),
   description: varchar("description").notNull(),
+  performance: varchar("performance").notNull(),
   userId: uuid("userId").notNull().defaultRandom(),
 });
 

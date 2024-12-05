@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -10,55 +9,50 @@ import {
   Form,
   FormControl,
   FormDescription,
-  FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CloudUpload, Paperclip } from "lucide-react";
-import {
-  FileInput,
-  FileUploader,
-  FileUploaderContent,
-  FileUploaderItem,
-} from "./file-upload";
 import { Textarea } from "@/components/ui/textarea";
 import { addProjectAction } from "../action";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  username: z.string(),
-  repository: z.string(),
-  performance: z.string(),
-  file: z.string(),
-  description: z.string(),
+  username: z.string().nonempty({ message: "Username is required" }),
+  repository: z.string().nonempty({ message: "Repository is required" }),
+  performance: z.string().nonempty({ message: "Performance is required" }),
+  description: z.string().nonempty({ message: "Description is required" }),
 });
 
 export default function ProjectForm() {
-  const [files, setFiles] = useState<File[]>([]);
+  const { toast } = useToast();
 
-  const dropZoneConfig = {
-    maxFiles: 5,
-    maxSize: 1024 * 1024 * 4,
-    multiple: true,
-  };
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log("Form submitted with values:", values);
     try {
-      addProjectAction(values.username, values.repository, values.description);
-      toast(
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
+      await addProjectAction(
+        values.username,
+        values.repository,
+        values.description,
+        values.performance
       );
+      toast({
+        title: "Project added",
+        description: "Project added successfully",
+      });
+      form.reset();
     } catch (error) {
-      console.error("Form submission error", error);
-      toast.error("Failed to submit the form. Please try again.");
+      toast({
+        title: "Something went wrong",
+        description: error instanceof Error ? error.message : String(error),
+      });
     }
-  }
+  };
 
   return (
     <Form {...form}>
@@ -66,123 +60,64 @@ export default function ProjectForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8 max-w-3xl mx-auto py-10"
       >
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="" type="text" {...field} />
-              </FormControl>
-              <FormDescription>This is your Github username.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <FormItem>
+          <FormLabel>Username</FormLabel>
+          <FormControl>
+            <Input placeholder="" type="text" {...form.register("username")} />
+          </FormControl>
+          <FormDescription>This is your Github username.</FormDescription>
+          <FormMessage>{form.formState.errors.username?.message}</FormMessage>
+        </FormItem>
 
-        <FormField
-          control={form.control}
-          name="repository"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Repository</FormLabel>
-              <FormControl>
-                <Input placeholder="" type="text" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is the repository that tou want to display.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="performance"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Performance</FormLabel>
-              <FormControl>
-                <Input placeholder="" type="text" {...field} />
-              </FormControl>
-              <FormDescription>
-                The lighthouse performance of the project
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <FormItem>
+          <FormLabel>Repository</FormLabel>
+          <FormControl>
+            <Input
+              placeholder=""
+              type="text"
+              {...form.register("repository")}
+            />
+          </FormControl>
+          <FormDescription>
+            This is the repository that tou want to display.
+          </FormDescription>
+          <FormMessage>{form.formState.errors.repository?.message}</FormMessage>
+        </FormItem>
 
-        <FormField
-          control={form.control}
-          name="file"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Select File</FormLabel>
-              <FormControl>
-                <FileUploader
-                  value={files}
-                  onValueChange={setFiles}
-                  dropzoneOptions={dropZoneConfig}
-                  className="relative bg-background rounded-lg p-2"
-                >
-                  <FileInput
-                    id="fileInput"
-                    className="outline-dashed outline-1 outline-slate-500"
-                  >
-                    <div className="flex items-center justify-center flex-col p-8 w-full ">
-                      <CloudUpload className="text-gray-500 w-10 h-10" />
-                      <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
-                        <span className="font-semibold">Click to upload</span>
-                        &nbsp; or drag and drop
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
-                        SVG, PNG, JPG or GIF
-                      </p>
-                    </div>
-                  </FileInput>
-                  <FileUploaderContent>
-                    {files &&
-                      files.length > 0 &&
-                      files.map((file, i) => (
-                        <FileUploaderItem key={i} index={i}>
-                          <Paperclip className="h-4 w-4 stroke-current" />
-                          <span>{file.name}</span>
-                        </FileUploaderItem>
-                      ))}
-                  </FileUploaderContent>
-                </FileUploader>
-              </FormControl>
-              <FormDescription>
-                Select a picture of your project to upload.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <FormItem>
+          <FormLabel>Performance</FormLabel>
+          <FormControl>
+            <Input
+              placeholder=""
+              type="text"
+              {...form.register("performance")}
+            />
+          </FormControl>
+          <FormDescription>
+            The lighthouse performance of the project
+          </FormDescription>
+          <FormMessage>
+            {form.formState.errors.performance?.message}
+          </FormMessage>
+        </FormItem>
 
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Placeholder"
-                  className="resize-none"
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>
-                A brief description of your project.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
+        <FormItem>
+          <FormLabel>Description</FormLabel>
+          <FormControl>
+            <Textarea
+              placeholder="Placeholder"
+              className="resize-none"
+              {...form.register("description")}
+            />
+          </FormControl>
+          <FormDescription>
+            A brief description of your project.
+          </FormDescription>
+          <FormMessage>
+            {form.formState.errors.description?.message}
+          </FormMessage>
+        </FormItem>
+        <Button>Submit</Button>
       </form>
     </Form>
   );
