@@ -25,10 +25,11 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
-  name_7192746094: z.string(),
-  name_0044701205: z.string(),
-  name_7163577055: z.string(),
-  name_4779504136: z.string(),
+  username: z.string(),
+  repository: z.string(),
+  performance: z.string(),
+  file: z.string(),
+  description: z.string(),
 });
 
 export default function ProjectForm() {
@@ -65,7 +66,7 @@ export default function ProjectForm() {
       >
         <FormField
           control={form.control}
-          name="name_7192746094"
+          name="username"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
@@ -80,7 +81,7 @@ export default function ProjectForm() {
 
         <FormField
           control={form.control}
-          name="name_0044701205"
+          name="repository"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Repository</FormLabel>
@@ -94,10 +95,26 @@ export default function ProjectForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="performance"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Performance</FormLabel>
+              <FormControl>
+                <Input placeholder="" type="text" {...field} />
+              </FormControl>
+              <FormDescription>
+                The lighthouse performance of the project
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}
-          name="name_7163577055"
+          name="file"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Select File</FormLabel>
@@ -145,7 +162,7 @@ export default function ProjectForm() {
 
         <FormField
           control={form.control}
-          name="name_4779504136"
+          name="description"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Description</FormLabel>
