@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaBriefcase, FaGithub, FaLinkedin } from "react-icons/fa6";
+import type { SocialLink } from "../schema";
 
-type Props = { url: string; name: "Github" | "LinkedIn", size?: number};
+type Props = SocialLink & { size?: number };
 export function SocialLink({ url, name, size = 24 }: Props) {
   return (
     <>
@@ -13,6 +14,11 @@ export function SocialLink({ url, name, size = 24 }: Props) {
       {name === "LinkedIn" && (
         <Link href={url}>
           <FaLinkedin size={size} />
+        </Link>
+      )}
+      {name === "Portfolio" && (
+        <Link href={url}>
+          <FaBriefcase size={size} />
         </Link>
       )}
     </>
