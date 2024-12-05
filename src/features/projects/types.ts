@@ -1,8 +1,8 @@
 export type Project = {
+  id: string;
+  userId: string;
   username: string;
   repository: string;
-  commits: string;
-  issues: string;
-  lastCommit: string;
+  pictureURL: string | null;
   description: string;
 };
