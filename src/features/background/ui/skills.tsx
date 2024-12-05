@@ -1,7 +1,7 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 
-type Props = { skills: string[] };
+type Props = { skills: string[] | undefined };
 export function Skills({ skills }: Props) {
   return (
     <article className="flex justify-end flex-wrap gap-1 mt-3">

@@ -1,4 +1,5 @@
-import { HeaderH2 } from "@/components/ui/header/header-h2";
+
+import { H1 } from "@/components/ui/header/header-h1";
 import { BackgroundAvatar } from "./avatar";
 import { EditInfoForm } from "./form-info";
 
@@ -13,16 +14,15 @@ export function BackgroundBasicInfo({ name, title, bio, avatarURL }: Props) {
           <BackgroundAvatar url={avatarURL} />
           <div>
             <p className="uppercase text-sm font-semibold">{title}</p>
-            <HeaderH2>{name}</HeaderH2>
+            <H1>{name}</H1>
             {isFeatureBioEnabled && (
               <p className="font-light text-slate-600">{bio}</p>
             )}
           </div>
         </div>
-        
+
         <EditInfoForm />
       </section>
     </>
   );
 }
-
