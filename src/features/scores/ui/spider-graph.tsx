@@ -14,7 +14,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { DeveloperScore } from "../types";
+import type { CompleteDeveloperScore  } from "../types";
 
 
 const chartConfig = {
@@ -25,7 +25,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 type Props = {
-  developerScore: DeveloperScore
+  developerScore: CompleteDeveloperScore;
 }
 
 export function SpiderGraph({ developerScore }: Props) {
