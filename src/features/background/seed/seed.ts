@@ -48,4 +48,10 @@ function seed(count: number = 50) {
   });
 }
 
+async function getAvatars(count: number) {
+  const result = await fetch(`https://randomuser.me/api/?results=${count}`);
+  const data = await result.json();
+  return data.results.map((user) => user.picture.large);
+}
+
 seed();
