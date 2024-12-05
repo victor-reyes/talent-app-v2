@@ -2,6 +2,7 @@
 import { Db } from "@/db";
 import { scoresTable } from "./schema"
 import { eq } from "drizzle-orm";
+import { NewDeveloperScores } from "./types";
 
 
 export function createRepository(db: Db) {
