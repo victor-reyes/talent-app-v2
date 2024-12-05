@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
@@ -13,9 +14,11 @@ type Props = {
   project: Project;
   setEditDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 export default function ProjectDetails({ project, setEditDetails }: Props) {
   const [repositoryInformation, setRepositoryInformation] =
     useState<RepositoryInformation | null>(null);
+
   const { username, repository, description } = project;
 
   useEffect(() => {

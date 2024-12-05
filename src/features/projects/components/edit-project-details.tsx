@@ -26,16 +26,14 @@ type Props = {
 };
 
 const formSchema = z.object({
-  username: z.string(),
   repository: z.string(),
-  performance: z.string(),
-  file: z.string(),
   description: z.string(),
 });
 
 export default function EditProjectDetails({ project, setEditDetails }: Props) {
   const [repositoryInformation, setRepositoryInformation] =
     useState<RepositoryInformation | null>(null);
+
   const { username, repository, description } = project;
 
   useEffect(() => {
@@ -80,7 +78,7 @@ export default function EditProjectDetails({ project, setEditDetails }: Props) {
               <div className="ml-2  opacity-80 hover:opacity-100">
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="repository"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Repository</FormLabel>
