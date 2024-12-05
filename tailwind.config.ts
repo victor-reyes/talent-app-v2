@@ -7,6 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        paragraph: 'hsl(var(--paragraph))',
+        paragraphLight: 'hsl(var(--paragraph-light))',
+        header: 'hsl(var(--header))',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
