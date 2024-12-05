@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
-import { createRepository } from "./repository";
-import { BackgroundInsert } from "./schema";
+import { createRepository } from "../repository";
+import { BackgroundInsert } from "../schema";
 
 const repository = createRepository();
 
