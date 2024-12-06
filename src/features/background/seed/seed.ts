@@ -5,7 +5,7 @@ import { skills } from "./data";
 
 const repository = createRepository();
 
-export async function seed(count: number = 50) {
+export async function backgroundsSeed(count: number = 50) {
   const avatars = await getAvatars(count);
 
   const backgrounds: BackgroundInsert[] = Array.from(
@@ -56,5 +56,3 @@ async function getAvatars(count: number) {
     (user: { picture: { large: unknown } }) => user.picture.large
   );
 }
-
-seed();
