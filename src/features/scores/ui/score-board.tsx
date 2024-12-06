@@ -7,7 +7,7 @@ import { scoresService } from "../instance";
 
 
 export async function ScoreBoard() {
-  const hardcodedUserId = 2;
+  const hardcodedUserId = 1;
   const scores =
     await scoresService.getScoreById(hardcodedUserId);
 
