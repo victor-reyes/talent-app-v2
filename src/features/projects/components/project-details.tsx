@@ -1,42 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
 import { HeaderH3 } from "@/components/ui/header/header-h3";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import { projectService } from "../instance";
 import { ProjectDescription } from "./project-description";
 import { Pencil } from "lucide-react";
-import { Project, RepositoryInformation } from "../types";
+import { Project } from "../types";
 
 type Props = {
   project: Project;
-  setEditDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function ProjectDetails({ project, setEditDetails }: Props) {
-  const [repositoryInformation, setRepositoryInformation] =
-    useState<RepositoryInformation | null>(null);
-
-  const { username, repository, description } = project;
-
-  useEffect(() => {
-    const fetchRepositoryInfo = async () => {
-      try {
-        const repositoryInformation =
-          await projectService.getRepositoryInformation(username, repository);
-        setRepositoryInformation(repositoryInformation);
-      } catch (error) {
-        console.error("Error fetching repository information:", error);
-      }
-    };
-
-    fetchRepositoryInfo();
-  }, [username, repository]);
-
+export default function ProjectDetails({ project }: Props) {
   function toggleEdit() {
-    setEditDetails(false);
+    // setEditDetails(false);
+    //toggle of and toggle on
   }
 
   return (
@@ -44,13 +24,13 @@ export default function ProjectDetails({ project, setEditDetails }: Props) {
       <div className="flex justify-between items-baseline">
         <div className="flex flex-col ">
           <Link
-            href={`https://github.com/${username}/${repository}`}
+            href={`https://github.com/${project.username}/${project.repository}`}
             className="ml-2  opacity-80 hover:opacity-100"
           >
-            <HeaderH3>{repository}</HeaderH3>
+            <HeaderH3>{project.title}</HeaderH3>
             <p className="text-xs text-gray-400 flex items-center gap-2">
               <FaGithub size={16} color="gray" />
-              Last commit {repositoryInformation!.lastCommit}
+              Last commit {"Today"}
             </p>
           </Link>
         </div>
@@ -69,12 +49,12 @@ export default function ProjectDetails({ project, setEditDetails }: Props) {
         <div className="flex flex-col items-center justify-between gap-4 mt-2 mr-2">
           <article className="flex flex-col items-center my-2">
             <p className="text-gray-400 text-sm">Commits</p>
-            <p className="font-semibold">{repositoryInformation!.commits}</p>
+            <p className="font-semibold">{project.commits}</p>
           </article>
           <Separator orientation="horizontal" />
           <article className="flex flex-col items-center my-2">
             <p className="text-gray-400 text-sm">Issues</p>
-            <p className="font-semibold">{repositoryInformation!.issues}</p>
+            <p className="font-semibold">{project.issues}</p>
           </article>
           <Separator orientation="horizontal" />
           <article className="flex flex-col items-center my-2">
@@ -83,7 +63,7 @@ export default function ProjectDetails({ project, setEditDetails }: Props) {
           </article>
         </div>
       </section>
-      <ProjectDescription description={description} />
+      <ProjectDescription description={project.description} />
     </>
   );
 }

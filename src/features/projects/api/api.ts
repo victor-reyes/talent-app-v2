@@ -14,7 +14,7 @@ export const createClient = () => {
           }
         );
         if (!response.ok) {
-          console.log("not okey");
+          console.log("not okay");
           return 0;
         }
         const data = await response.json();

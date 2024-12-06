@@ -23,6 +23,8 @@ const formSchema = z.object({
   repository: z.string().nonempty({ message: "Repository is required" }),
   performance: z.string().nonempty({ message: "Performance is required" }),
   description: z.string().nonempty({ message: "Description is required" }),
+  commits: z.string().nonempty({ message: "Commits is required" }),
+  issues: z.string().nonempty({ message: "Issues is required" }),
 });
 
 export default function ProjectForm() {
@@ -39,7 +41,9 @@ export default function ProjectForm() {
         values.username,
         values.repository,
         values.description,
-        values.performance
+        values.performance,
+        values.commits,
+        values.issues
       );
       toast({
         title: "Project added",

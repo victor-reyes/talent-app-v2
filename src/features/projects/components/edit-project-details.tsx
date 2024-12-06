@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
@@ -22,7 +23,6 @@ import { projectService } from "../instance";
 
 type Props = {
   project: Project;
-  setEditDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const formSchema = z.object({
@@ -30,26 +30,7 @@ const formSchema = z.object({
   description: z.string(),
 });
 
-export default function EditProjectDetails({ project, setEditDetails }: Props) {
-  const [repositoryInformation, setRepositoryInformation] =
-    useState<RepositoryInformation | null>(null);
-
-  const { username, repository, description } = project;
-
-  useEffect(() => {
-    const fetchRepositoryInfo = async () => {
-      try {
-        const repositoryInformation =
-          await projectService.getRepositoryInformation(username, repository);
-        setRepositoryInformation(repositoryInformation);
-      } catch (error) {
-        console.error("Error fetching repository information:", error);
-      }
-    };
-
-    fetchRepositoryInfo();
-  }, [username, repository]);
-
+export default function EditProjectDetails({ project }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -63,7 +44,7 @@ export default function EditProjectDetails({ project, setEditDetails }: Props) {
   }
 
   function toggleEdit() {
-    setEditDetails(true);
+    // toggle of and toggle on
   }
 
   return (
@@ -95,7 +76,7 @@ export default function EditProjectDetails({ project, setEditDetails }: Props) {
                 />
                 <p className="text-xs text-gray-400 flex items-center gap-2">
                   <FaGithub size={16} color="gray" />
-                  Last commit {repositoryInformation!.lastCommit}
+                  Last commit {"Today"}
                 </p>
               </div>
             </div>
@@ -114,14 +95,12 @@ export default function EditProjectDetails({ project, setEditDetails }: Props) {
             <div className="flex flex-col items-center justify-between gap-4 mt-2 mr-2">
               <article className="flex flex-col items-center my-2">
                 <p className="text-gray-400 text-sm">Commits</p>
-                <p className="font-semibold">
-                  {repositoryInformation!.commits}
-                </p>
+                <p className="font-semibold">{project.commits}</p>
               </article>
               <Separator orientation="horizontal" />
               <article className="flex flex-col items-center my-2">
                 <p className="text-gray-400 text-sm">Issues</p>
-                <p className="font-semibold">{repositoryInformation!.issues}</p>
+                <p className="font-semibold">{project.issues}</p>
               </article>
               <Separator orientation="horizontal" />
               <article className="flex flex-col items-center my-2">
@@ -138,7 +117,7 @@ export default function EditProjectDetails({ project, setEditDetails }: Props) {
                 <FormLabel>Description</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder={description}
+                    placeholder={project.description}
                     className="resize-none"
                     {...field}
                   />
