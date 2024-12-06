@@ -1,16 +1,12 @@
 import { H2 } from "@/components/ui/header/header-h2";
 import { Separator } from "@/components/ui/separator";
-import { testPagePerformance } from "../api/api";
 import { projectService } from "../instance";
+import AddProject from "./add-project";
 import ProjectDetails from "./project-details";
 
 export async function ProjectCard() {
   const projects = await projectService.getAll();
-  const pagePerformanceTest = await testPagePerformance(
-    "https://www.alimohseni.se/"
-  );
 
-  console.log("pagePerformanceTest", pagePerformanceTest + " %");
   return (
     <div className="mt-4">
       <H2>Projects</H2>
@@ -22,6 +18,7 @@ export async function ProjectCard() {
           </div>
         ))}
       </div>
+      <AddProject />
     </div>
   );
 }
