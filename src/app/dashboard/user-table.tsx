@@ -15,6 +15,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Ellipsis, Pencil, Trash } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export type Developer = {
   name: string;
@@ -46,6 +55,28 @@ const columns: ColumnDef<Developer>[] = [
       const formattedDate = swedishFormatter.format(date);
 
       return <div className="text-slate-600">{formattedDate}</div>;
+    },
+  },
+  {
+    id: "actions",
+    cell: () => {
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Ellipsis size={16} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent side="left">
+            <DropdownMenuLabel>Chose an action</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Pencil /> Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Trash /> Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
     },
   },
 ];
