@@ -1,15 +1,9 @@
 import { H1 } from "@/components/ui/header/header-h1";
 import { H2 } from "@/components/ui/header/header-h2";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { UserTable } from "./user-table";
+import { DEVELOPERS } from "./data";
 
-const developers: User[] = [
-  { name: "John", course: "JavaScript" },
-  { name: "Jane", course: "Java" },
-  { name: "Doe", course: "C#" },
-  { name: "Peter", course: "JavaScript" },
-  { name: "Mary", course: "Java" },
-  { name: "Paul", course: "C#" },
-];
 export default function Page() {
   return (
     <div className="container mx-auto flex flex-col justify-center px-4 py-2">
@@ -22,7 +16,7 @@ export default function Page() {
         </TabsList>
 
         <TabsContent value="developers">
-          <List users={developers} />
+          <UserTable data={DEVELOPERS} />
         </TabsContent>
         <TabsContent value="core">List with core team.</TabsContent>
         <TabsContent value="customers">List with customers</TabsContent>
