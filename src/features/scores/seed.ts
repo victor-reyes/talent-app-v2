@@ -14,9 +14,4 @@ const seedDeveloperScores = async () => {
     await scoresService.addDeveloperScores(newDeveloperScore);
 };
 
-(async () => {
-
-    await seedDeveloperScores();
-    console.log("Seeding...");
-
-})();
+seedDeveloperScores();
