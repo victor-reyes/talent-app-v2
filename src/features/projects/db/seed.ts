@@ -1,6 +1,6 @@
 import { projectService } from "../../projects/instance";
 
-async function seed() {
+export async function seedProjects() {
   const projects = [
     {
       username: "Lawe Sangena",
@@ -12,7 +12,7 @@ async function seed() {
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: 99,
       commits: "100",
-      issues: "23",
+      issues: ["Test"],
       userId: "ee3447ab-b2a4-46bc-8013-094a5ea20245",
     },
     {
@@ -25,7 +25,7 @@ async function seed() {
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: 99,
       commits: "100",
-      issues: "23",
+      issues: ["Test"],
       userId: "8e4dce82-efbd-4907-abcc-604e9d51db50",
     },
   ];
@@ -33,4 +33,4 @@ async function seed() {
   projects.map(async (project) => await projectService.addProject(project));
 }
 
-seed().then(() => console.log("Project Table seeded"));
+seedProjects().then(() => console.log("Project Table seeded"));
