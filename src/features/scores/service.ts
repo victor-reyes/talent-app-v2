@@ -48,7 +48,10 @@ export const createService = (db: Db) => {
       }
     },
     patchDeveloperScores: async (userId: number, newDeveloperScores: NewDeveloperScores) => {
-      repository.updateScore(userId, newDeveloperScores)
+      await repository.updateScore(userId, newDeveloperScores)
     },
+    addDeveloperScores: async (newDeveloperScores: NewDeveloperScores) => {
+      await repository.addScore(newDeveloperScores);
+    }
   };
 };

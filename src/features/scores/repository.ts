@@ -12,6 +12,9 @@ export function createRepository(db: Db) {
     },
     async updateScore(userId: number, newDeveloperScores: NewDeveloperScores) {
       return db.update(scoresTable).set(newDeveloperScores).where(eq(scoresTable.id, userId))
+    },
+    async addScore(newDeveloperScores: NewDeveloperScores) {
+      return db.insert(scoresTable).values(newDeveloperScores);
     }
   };
 }
