@@ -59,7 +59,7 @@ export default function ProjectDetails({ project }: Props) {
           <Separator orientation="horizontal" />
           <article className="flex flex-col items-center my-2">
             <p className="text-gray-400 text-sm">Performance</p>
-            <p className="font-semibold">56%</p>
+            <p className="font-semibold">{project.performance}%</p>
           </article>
         </div>
       </section>
