@@ -14,7 +14,6 @@ export function createRepository(db: Db) {
         .where(eq(scoresTable.id, userId));
     },
     async addScore(newDeveloperScores: NewDeveloperScores) {
-      console.log(newDeveloperScores)
       await db.insert(scoresTable).values(newDeveloperScores);
     },
   };

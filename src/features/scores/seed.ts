@@ -2,12 +2,12 @@ import { scoresService } from "./instance";
 
 export const seedDeveloperScores = async () => {
     const newDeveloperScore = {
-        frontend: Math.floor(Math.random() * 101),
-        backend: Math.floor(Math.random() * 101),
-        individualCommunication: Math.floor(Math.random() * 101),
-        teamCollaboration: Math.floor(Math.random() * 101),
-        design: Math.floor(Math.random() * 101),
-        management: Math.floor(Math.random() * 101),
+        frontend: Math.round(Math.random() * 100),
+        backend: Math.round(Math.random() * 100),
+        individualCommunication: Math.round(Math.random() * 100),
+        teamCollaboration: Math.round(Math.random() * 100),
+        design: Math.round(Math.random() * 100),
+        management: Math.round(Math.random() * 100),
     };
     
     try {

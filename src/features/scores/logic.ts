@@ -22,9 +22,9 @@ export const calculateCategoriesScores = (developerScore: DeveloperScore) => {
   );
 
   return {
-    programmingScore,
-    planningScore,
-    communicationScore,
+    programmingScore: Math.round(programmingScore),
+    planningScore: Math.round(planningScore),
+    communicationScore: Math.round(communicationScore),
     averageScore,
   };
 };
