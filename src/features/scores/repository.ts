@@ -6,15 +6,16 @@ import { NewDeveloperScores } from "./types";
 export function createRepository(db: Db) {
   return {
     async getById(userId: number) {
-      return db.select().from(scoresTable).where(eq(scoresTable.id, userId));
+      return await db.select().from(scoresTable).where(eq(scoresTable.id, userId));
     },
     async updateScore(userId: number, newDeveloperScores: NewDeveloperScores) {
-      db.update(scoresTable)
+      await db.update(scoresTable)
         .set(newDeveloperScores)
         .where(eq(scoresTable.id, userId));
     },
     async addScore(newDeveloperScores: NewDeveloperScores) {
-      db.insert(scoresTable).values(newDeveloperScores);
+      console.log(newDeveloperScores)
+      await db.insert(scoresTable).values(newDeveloperScores);
     },
   };
 }
