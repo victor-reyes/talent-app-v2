@@ -47,6 +47,7 @@ export async function backgroundsSeed(count: number = 50) {
   backgrounds.forEach((background) => {
     repository.add(background);
   });
+  console.log("Done seeding Backgrounds...");
 }
 
 async function getAvatars(count: number) {
