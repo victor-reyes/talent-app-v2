@@ -1,7 +1,7 @@
 import { scoresService } from "./instance";
 
-export const seedDeveloperScores = async () => {
-    const newDeveloperScore = {
+export const seedScores = async () => {
+    const newScore = {
         frontend: Math.round(Math.random() * 100),
         backend: Math.round(Math.random() * 100),
         individualCommunication: Math.round(Math.random() * 100),
@@ -11,7 +11,7 @@ export const seedDeveloperScores = async () => {
     };
     
     try {
-        await scoresService.addDeveloperScores(newDeveloperScore);
+        await scoresService.addScores(newScore);
     } catch (error) {
         console.log("Something went wrong when seeding scores " + error);
     }

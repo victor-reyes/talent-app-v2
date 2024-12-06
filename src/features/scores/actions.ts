@@ -11,7 +11,7 @@ export async function updateScoresAction(formData: FormData) {
   const backend = formData.get("backend") as string;
   const frontend = formData.get("frontend") as string;
 
-  const newDeveloperScores = {
+  const newScores = {
     frontend: Number(frontend),
     backend: Number(backend),
     individualCommunication: Number(individualCommunication),
@@ -20,5 +20,5 @@ export async function updateScoresAction(formData: FormData) {
     management: Number(management),
   };
 
-  scoresService.patchDeveloperScores(2, newDeveloperScores);
+  scoresService.patchScores(2, newScores);
 }

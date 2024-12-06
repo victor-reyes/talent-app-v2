@@ -1,18 +1,18 @@
-import { CompleteDeveloperScore } from "../../types";
+import { CompleteScores } from "../../types";
 import { Coding } from "./coding";
 import { Communication } from "./communication";
 import { Planning } from "./planning";
 
 type Props = {
-  developerScore: CompleteDeveloperScore;
+  scores: CompleteScores;
 };
 
-export function AccordionBoard({ developerScore }: Props) {
+export function AccordionBoard({ scores: scores }: Props) {
   return (
     <>
-      <Communication developerScore={developerScore} />
-      <Planning developerScore={developerScore} />
-      <Coding developerScore={developerScore} />
+      <Communication scores={scores} />
+      <Planning scores={scores} />
+      <Coding scores={scores} />
     </>
   );
 }

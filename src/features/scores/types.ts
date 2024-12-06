@@ -1,4 +1,4 @@
-export type DeveloperScore = {
+export type Scores = {
   id: number;
   frontend: number;
   backend: number;
@@ -8,15 +8,11 @@ export type DeveloperScore = {
   management: number;
 };
 
-export type CompleteDeveloperScore = DeveloperScore & {
+export type CompleteScores = Scores & {
   programmingScore: number;
   planningScore: number;
   communicationScore: number;
   averageScore: number;
 };
 
-export type NewDeveloperScores = Omit<DeveloperScore, "id">;
-
-// export type Developer = DeveloperScore & {
-//     id: number;
-// }
+export type NewScores = Omit<Scores, "id">;

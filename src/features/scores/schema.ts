@@ -1,6 +1,6 @@
 import { integer, pgTable } from "drizzle-orm/pg-core";
 
-export const scoresTable = pgTable("developersScores", {
+export const scoresTable = pgTable("scores", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   frontend: integer().notNull(),
   backend: integer().notNull(),

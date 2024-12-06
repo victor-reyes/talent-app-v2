@@ -1,14 +1,15 @@
 import { Db } from "@/db";
 import { createRepository } from "./repository";
 import { calculateCategoriesScores } from "./logic";
-import { DeveloperScore, NewDeveloperScores } from "./types";
+import { NewScores, Scores } from "./types";
+
 
 export const createService = (db: Db) => {
   const repository = createRepository(db);
   return {
-    getDeveloperScoreById: async (userId: number) => {
+    getScoreById: async (userId: number) => {
       try {
-        const score = (await repository.getById(userId))[0] as DeveloperScore;
+        const score = (await repository.getById(userId))[0] as Scores;
 
         const {
           programmingScore,
@@ -47,11 +48,11 @@ export const createService = (db: Db) => {
         };
       }
     },
-    patchDeveloperScores: async (userId: number, newDeveloperScores: NewDeveloperScores) => {
-      await repository.updateScore(userId, newDeveloperScores)
+    patchScores: async (userId: number, newScores: NewScores) => {
+      await repository.updateScore(userId, newScores)
     },
-    addDeveloperScores: async (newDeveloperScores: NewDeveloperScores) => {
-      await repository.addScore(newDeveloperScores);
+    addScores: async (newScores: NewScores) => {
+      await repository.addScore(newScores);
     }
   };
 };

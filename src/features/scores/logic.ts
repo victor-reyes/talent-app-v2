@@ -1,21 +1,12 @@
-// export function calculateAverageLevel(communicationLevel: number, planningLevel: number, codingLevel: number) {
 
-import { DeveloperScore } from "./types";
 
-//     const sumLevel = communicationLevel + planningLevel + codingLevel;
-
-//     const level = sumLevel / 50;
-
-//     return level;
-// }
-
-export const calculateCategoriesScores = (developerScore: DeveloperScore) => {
+export const calculateCategoriesScores = (scores: Scores) => {
   const programmingScore =
-    (developerScore.frontend + developerScore.backend) / 2;
-  const planningScore = (developerScore.management + developerScore.design) / 2;
+    (scores.frontend + scores.backend) / 2;
+  const planningScore = (scores.management + scores.design) / 2;
   const communicationScore =
-    (developerScore.individualCommunication +
-      developerScore.teamCollaboration) /
+    (scores.individualCommunication +
+      scores.teamCollaboration) /
     2;
   const averageScore = Math.round(
     (programmingScore + planningScore + communicationScore) / 3

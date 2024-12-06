@@ -5,30 +5,30 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ProgressRing } from "../progress-ring";
-import { CompleteDeveloperScore } from "../../types";
+import { CompleteScores } from "../../types";
 
 type Props = {
-  developerScore: CompleteDeveloperScore;
+  scores: CompleteScores;
 };
 
-export function Communication({ developerScore }: Props) {
+export function Communication({ scores: scores }: Props) {
   return (
     <Accordion type="single" collapsible className="mx-auto max-w-96">
       <AccordionItem value="item-1">
         <AccordionTrigger>
-          <ProgressRing percentage={developerScore.communicationScore} />
+          <ProgressRing percentage={scores.communicationScore} />
           Communication
         </AccordionTrigger>
         <AccordionContent>
           <div className="flex flex-col mr-2 pl-8">
             <span className="flex flex-row gap-4 pb-2 items-center">
               <ProgressRing
-                percentage={developerScore.individualCommunication}
+                percentage={scores.individualCommunication}
               />
               Individual Communication
             </span>
             <span className="flex flex-row gap-4 pb-2 items-center">
-              <ProgressRing percentage={developerScore.teamCollaboration} />
+              <ProgressRing percentage={scores.teamCollaboration} />
               Team Collaboration
             </span>
           </div>

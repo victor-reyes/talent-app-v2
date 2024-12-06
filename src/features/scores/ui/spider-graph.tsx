@@ -9,7 +9,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import type { CompleteDeveloperScore } from "../types";
+import type { CompleteScores } from "../types";
 
 const chartConfig = {
   desktop: {
@@ -19,20 +19,20 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 type Props = {
-  developerScore: CompleteDeveloperScore;
+  scores: CompleteScores;
 };
 
-export function SpiderGraph({ developerScore }: Props) {
+export function SpiderGraph({ scores: scores }: Props) {
   const chartData = [
-    { category: "Frontend", score: developerScore.frontend },
-    { category: "Backend", score: developerScore.backend },
+    { category: "Frontend", score: scores.frontend },
+    { category: "Backend", score: scores.backend },
     {
       category: "Individual communication",
-      score: developerScore.individualCommunication,
+      score: scores.individualCommunication,
     },
-    { category: "Team collaboration", score: developerScore.teamCollaboration },
-    { category: "Design", score: developerScore.design },
-    { category: "Management", score: developerScore.management },
+    { category: "Team collaboration", score: scores.teamCollaboration },
+    { category: "Design", score: scores.design },
+    { category: "Management", score: scores.management },
   ];
 
   return (

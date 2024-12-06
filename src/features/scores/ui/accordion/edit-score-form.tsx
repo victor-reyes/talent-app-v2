@@ -12,23 +12,23 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { updateScoresAction } from "../../actions";
-import { DeveloperScore } from "../../types";
 import { useState } from "react";
+import { Scores } from "../../types";
 
 type Props = {
-  developerScore: DeveloperScore;
+  scores: Scores;
 };
-export function EditScoreForm({ developerScore }: Props) {
-  const [frontendValue, setFrontendValue] = useState(developerScore.frontend);
-  const [backendValue, setBackendValue] = useState(developerScore.backend);
+export function EditScoreForm({ scores: scores }: Props) {
+  const [frontendValue, setFrontendValue] = useState(scores.frontend);
+  const [backendValue, setBackendValue] = useState(scores.backend);
   const [teamCollaborationValue, setTeamCollaborationValue] = useState(
-    developerScore.teamCollaboration
+    scores.teamCollaboration
   );
-  const [designValue, setDesignValue] = useState(developerScore.design);
+  const [designValue, setDesignValue] = useState(scores.design);
   const [individualComunicationValue, setIndividualComunicationValue] =
-    useState(developerScore.individualCommunication);
+    useState(scores.individualCommunication);
   const [managementValue, setManagementValue] = useState(
-    developerScore.management
+    scores.management
   );
 
   return (

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const DeveloperScoreSchema = z.object({
+export const ScoreSchema = z.object({
   frontend: z.number().min(0).max(100),
   backend: z.number().min(0).max(100),
   teamCollaboration: z.number().min(0).max(100),
