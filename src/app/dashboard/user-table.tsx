@@ -16,9 +16,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-type User = { name: string; course: "JavaScript" | "Java" | "C#" };
+export type Developer = {
+  name: string;
+  course: "JavaScript" | "Java" | "C#" | "Cobolt";
+  jobStatus: string;
+  until: Date;
+};
 
-const columns: ColumnDef<User>[] = [
+const columns: ColumnDef<Developer>[] = [
   {
     accessorKey: "name",
     header: "Name",
