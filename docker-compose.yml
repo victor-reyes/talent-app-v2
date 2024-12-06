@@ -1,8 +1,10 @@
 services:
   postgres:
-    image: "postgres:latest"
-    container_name: "talent-dev-postgres"
+    image: postgres:latest
+    container_name: talent-dev-postgres
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD=password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      
