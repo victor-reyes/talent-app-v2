@@ -27,7 +27,7 @@ export function SpiderGraph({ scores: scores }: Props) {
     { category: "Frontend", score: scores.frontend },
     { category: "Backend", score: scores.backend },
     {
-      category: "Individual communication",
+      category: "Conversation",
       score: scores.individualCommunication,
     },
     { category: "Team collaboration", score: scores.teamCollaboration },

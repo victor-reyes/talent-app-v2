@@ -25,7 +25,7 @@ export function Communication({ scores: scores }: Props) {
               <ProgressRing
                 percentage={scores.individualCommunication}
               />
-              Individual Communication
+              Conversation
             </span>
             <span className="flex flex-row gap-4 pb-2 items-center">
               <ProgressRing percentage={scores.teamCollaboration} />
