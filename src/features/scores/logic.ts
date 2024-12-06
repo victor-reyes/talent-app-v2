@@ -1,4 +1,4 @@
-
+import { Scores } from "./types";
 
 export const calculateCategoriesScores = (scores: Scores) => {
   const programmingScore =
