@@ -5,7 +5,7 @@ import { DEVELOPERS } from "./data";
 
 export default function Page() {
   return (
-    <div className="container mx-auto flex flex-col justify-center px-4 py-2">
+    <div className="container mx-auto flex flex-col justify-center px-4 gap-4">
       <H1>Dashboard</H1>
       <Tabs defaultValue="developers" className="flex flex-col">
         <TabsList className="space-x-3 w-fit mx-auto">
