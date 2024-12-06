@@ -12,7 +12,7 @@ export async function ScoreBoard() {
     await scoresService.getScoreById(hardcodedUserId);
 
   return (
-    <section>
+    <section className="min-w-72">
       <Separator className="my-4" />
       <H2>Salt Scoring</H2>
       <AverageScore averageScore={scores.averageScore} />
