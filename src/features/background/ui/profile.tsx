@@ -5,14 +5,20 @@ import { BackgroundBasicInfo } from "./basic-info";
 import { backgroundsService } from "../instance";
 
 export async function Background() {
-  const background = await backgroundsService.getById(0);
+  const backgrounds = await backgroundsService.getAll();
+  if (backgrounds.length === 0) {
+    console.log("No backgrounds found");
+    return null;
+  }
+  const background =
+    backgrounds[Math.floor(Math.random() * backgrounds.length)];
   return (
     <div className="space-y-2 max-w-96">
       <BackgroundBasicInfo
         name={background.name}
         title={background.title}
         bio={background.bio}
-        avatarURL={background.avatarURL}
+        avatarURL={background.avatarUrl!}
       />
       <div>
         <Row title="Languages" content={background.languages} />
@@ -21,7 +27,7 @@ export async function Background() {
         <ul className="flex gap-1 justify-end mt-2">
           {background.links &&
             background.links.map((link) => (
-              <li key={link.name}>
+              <li key={link.url}>
                 <SocialLink name={link.name} url={link.url} />
               </li>
             ))}

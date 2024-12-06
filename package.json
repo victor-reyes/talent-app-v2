@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "tsx src/features/background/seed/seed.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.6.0",
@@ -32,6 +33,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.3.0",
     "@types/node": "^20",
     "@types/pg": "^8.11.10",
     "@types/react": "^18",
