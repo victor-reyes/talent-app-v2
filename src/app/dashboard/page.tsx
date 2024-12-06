@@ -1,5 +1,4 @@
 import { H1 } from "@/components/ui/header/header-h1";
-import { H2 } from "@/components/ui/header/header-h2";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserTable } from "./user-table";
 import { DEVELOPERS } from "./data";
