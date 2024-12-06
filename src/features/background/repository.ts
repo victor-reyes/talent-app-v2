@@ -19,8 +19,6 @@ export type MockBackground = {
   links?: Link[] | undefined;
 };
 
-
-
 export function createRepository() {
   return {
     async getAll() {
