@@ -2,74 +2,37 @@ import { Skills } from "./skills";
 import { Row } from "./row";
 import { SocialLink } from "./social-link";
 import { BackgroundBasicInfo } from "./basic-info";
+import { backgroundsService } from "../instance";
 
-
-type Props = {
-  developer?: {
-    avatarURL: string;
-    name: string;
-    title: string;
-    bio: string;
-    languages: string[];
-    educations: string[];
-    skills: string[];
-    links: {
-      name: "Github" | "LinkedIn";
-      url: string;
-    }[];
-  };
-};
-//check the types to not have duplicates
-export function Background({ developer = mockDeveloper }: Props) {
-  //backgroundsService.getbyid
+export async function Background() {
+  const backgrounds = await backgroundsService.getAll();
+  if (backgrounds.length === 0) {
+    console.log("No backgrounds found");
+    return null;
+  }
+  const background =
+    backgrounds[Math.floor(Math.random() * backgrounds.length)];
   return (
     <div className="space-y-2 max-w-96">
       <BackgroundBasicInfo
-        name={developer.name}
-        title={developer.title}
-        bio={developer.bio}
-        avatarURL={developer.avatarURL}
+        name={background.name}
+        title={background.title}
+        bio={background.bio}
+        avatarURL={background.avatarUrl!}
       />
-
       <div>
-        <Row title="Languages" content={developer.languages} />
-        <Row title="Education" content={developer.educations} />
-        <Skills skills={developer.skills} />
+        <Row title="Languages" content={background.languages} />
+        <Row title="Education" content={background.educations} />
+        <Skills skills={background.skills} />
         <ul className="flex gap-1 justify-end mt-2">
-          {developer.links.map((link) => (
-            <li key={link.name}>
-              <SocialLink name={link.name} url={link.url} />
-            </li>
-          ))}
+          {background.links &&
+            background.links.map((link) => (
+              <li key={link.url}>
+                <SocialLink name={link.name} url={link.url} />
+              </li>
+            ))}
         </ul>
       </div>
     </div>
   );
 }
-
-const mockDeveloper = {
-  name: "John Doe",
-  title: "Software Engineer",
-  bio: "I'm a software engineer with 5 years of experience",
-  avatarURL: "https://avatars.githubusercontent.com/u/1?v=4",
-  languages: ["JavaScript", "TypeScript", "Python"],
-  educations: ["BSc in Computer Science"],
-  skills: [
-    "React",
-    "Next.js",
-    "Node.js",
-    "Django",
-    "Tailwind CSS",
-    "PostgreSQL",
-  ],
-  links: [
-    {
-      name: "Github" as "Github" | "LinkedIn",
-      url: "https://github.com/johndoe",
-    },
-    {
-      name: "LinkedIn" as "Github" | "LinkedIn",
-      url: "https://linkedin.com/johndoe",
-    },
-  ],
-};

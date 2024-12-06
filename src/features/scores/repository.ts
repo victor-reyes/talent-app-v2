@@ -1,11 +1,20 @@
-
 import { Db } from "@/db";
-import { developersScoresTable } from "./schema"
+import { scoresTable } from "./schema";
+import { eq } from "drizzle-orm";
+import { NewDeveloperScores } from "./types";
 
 export function createRepository(db: Db) {
   return {
-    async getById() {
-      return db.select().from(developersScoresTable);
+    async getById(userId: number) {
+      return await db.select().from(scoresTable).where(eq(scoresTable.id, userId));
+    },
+    async updateScore(userId: number, newDeveloperScores: NewDeveloperScores) {
+      await db.update(scoresTable)
+        .set(newDeveloperScores)
+        .where(eq(scoresTable.id, userId));
+    },
+    async addScore(newDeveloperScores: NewDeveloperScores) {
+      await db.insert(scoresTable).values(newDeveloperScores);
     },
   };
 }

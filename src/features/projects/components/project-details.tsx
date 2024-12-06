@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
-import { HeaderH3 } from "@/components/ui/header/header-h3";
+import { H3 } from "@/components/ui/header/header-h3";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { ProjectDescription } from "./project-description";
@@ -27,7 +27,7 @@ export default function ProjectDetails({ project }: Props) {
             href={`https://github.com/${project.username}/${project.repository}`}
             className="ml-2  opacity-80 hover:opacity-100"
           >
-            <HeaderH3>{project.title}</HeaderH3>
+            <H3>{repository}</H3>
             <p className="text-xs text-gray-400 flex items-center gap-2">
               <FaGithub size={16} color="gray" />
               Last commit {"Today"}

@@ -1,6 +1,7 @@
-import { HeaderH2 } from "@/components/ui/header/header-h2";
+import { H1 } from "@/components/ui/header/header-h1";
 import { BackgroundAvatar } from "./avatar";
 import { EditInfoForm } from "./form-info";
+import InputDemonstration from "./search";
 
 type Props = { name: string; title: string; bio: string; avatarURL: string };
 
@@ -12,17 +13,17 @@ export function BackgroundBasicInfo({ name, title, bio, avatarURL }: Props) {
         <div className="flex gap-6">
           <BackgroundAvatar url={avatarURL} />
           <div>
+            <InputDemonstration />
             <p className="uppercase text-sm font-semibold">{title}</p>
-            <HeaderH2>{name}</HeaderH2>
+            <H1>{name}</H1>
             {isFeatureBioEnabled && (
               <p className="font-light text-slate-600">{bio}</p>
             )}
           </div>
         </div>
-        
+
         <EditInfoForm />
       </section>
     </>
   );
 }
-

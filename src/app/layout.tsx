@@ -5,8 +5,8 @@ import { Header } from "@/components/header";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
-  title: "Salt Talent App v.2.0",
-  description: "Made by JSFS 2024",
+  title: "Talent app",
+  description: "Created by Salt",
 };
 
 export default function RootLayout({

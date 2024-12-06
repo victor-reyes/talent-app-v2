@@ -2,6 +2,7 @@
 import { Badge } from "@/components/ui/badge";
 
 type Props = { skills: string[] };
+
 export function Skills({ skills }: Props) {
   return (
     <article className="flex justify-end flex-wrap gap-1 mt-3">

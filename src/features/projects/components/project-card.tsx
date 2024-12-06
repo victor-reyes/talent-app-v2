@@ -1,4 +1,4 @@
-import { HeaderH2 } from "@/components/ui/header/header-h2";
+import { H2 } from "@/components/ui/header/header-h2";
 import { Separator } from "@/components/ui/separator";
 import { projectService } from "../instance";
 import AddProject from "./add-project";
@@ -9,7 +9,7 @@ export async function ProjectCard() {
 
   return (
     <div className="mt-4">
-      <HeaderH2>Projects</HeaderH2>
+      <H2>Projects</H2>
       <div className="flex flex-col justify-center mt-4">
         {projects.map((project, index) => (
           <div key={index}>

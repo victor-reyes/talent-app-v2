@@ -4,7 +4,7 @@ type Props = {
  children: ReactNode
  textColor?: string,
 }
-export function HeaderH1({children, textColor}:Props){
+export function H1({children, textColor}:Props){
  return (
    <h1 className={`text-3xl font-bold ${textColor}`}>
      {children}
