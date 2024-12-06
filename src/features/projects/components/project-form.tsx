@@ -21,10 +21,9 @@ import { useToast } from "@/hooks/use-toast";
 const formSchema = z.object({
   username: z.string().nonempty({ message: "Username is required" }),
   repository: z.string().nonempty({ message: "Repository is required" }),
+  title: z.string().nonempty({ message: "Title is required" }),
   performance: z.string().nonempty({ message: "Performance is required" }),
   description: z.string().nonempty({ message: "Description is required" }),
-  commits: z.string().nonempty({ message: "Commits is required" }),
-  issues: z.string().nonempty({ message: "Issues is required" }),
 });
 
 export default function ProjectForm() {
@@ -40,10 +39,9 @@ export default function ProjectForm() {
       await addProjectAction(
         values.username,
         values.repository,
+        values.title,
         values.description,
-        values.performance,
-        values.commits,
-        values.issues
+        values.performance
       );
       toast({
         title: "Project added",
@@ -72,7 +70,6 @@ export default function ProjectForm() {
           <FormDescription>This is your Github username.</FormDescription>
           <FormMessage>{form.formState.errors.username?.message}</FormMessage>
         </FormItem>
-
         <FormItem>
           <FormLabel>Repository</FormLabel>
           <FormControl>
@@ -83,11 +80,20 @@ export default function ProjectForm() {
             />
           </FormControl>
           <FormDescription>
-            This is the repository that tou want to display.
+            This is the repository link that you want to display.
           </FormDescription>
           <FormMessage>{form.formState.errors.repository?.message}</FormMessage>
         </FormItem>
-
+        <FormItem>
+          <FormLabel>Title</FormLabel>
+          <FormControl>
+            <Input placeholder="" type="text" {...form.register("title")} />
+          </FormControl>
+          <FormDescription>
+            This is your Github repository title.
+          </FormDescription>
+          <FormMessage>{form.formState.errors.title?.message}</FormMessage>
+        </FormItem>
         <FormItem>
           <FormLabel>Performance</FormLabel>
           <FormControl>
@@ -104,7 +110,6 @@ export default function ProjectForm() {
             {form.formState.errors.performance?.message}
           </FormMessage>
         </FormItem>
-
         <FormItem>
           <FormLabel>Description</FormLabel>
           <FormControl>

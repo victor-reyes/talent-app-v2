@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
 import { Separator } from "@/components/ui/separator";
@@ -18,8 +17,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Project, RepositoryInformation } from "../types";
-import { projectService } from "../instance";
+import { Project } from "../types";
 
 type Props = {
   project: Project;
