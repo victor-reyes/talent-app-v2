@@ -32,6 +32,22 @@ const columns: ColumnDef<Developer>[] = [
     accessorKey: "course",
     header: "Course",
   },
+  {
+    accessorKey: "jobStatus",
+    header: "Job Status",
+  },
+  {
+    accessorKey: "until",
+    header: "Hired by",
+    cell: ({ row }) => {
+      const date = row.getValue("until") as Date;
+
+      const swedishFormatter = new Intl.DateTimeFormat("sv-SE");
+      const formattedDate = swedishFormatter.format(date);
+
+      return <div className="text-slate-600">{formattedDate}</div>;
+    },
+  },
 ];
 
 interface DataTableProps<TData, TValue> {
@@ -97,7 +113,7 @@ export function DataTable<TData, TValue>({
   );
 }
 
-export function UserTable({ data }: { data: User[] }) {
+export function UserTable({ data }: { data: Developer[] }) {
   return (
     <div className="container mx-auto py-10">
       <DataTable columns={columns} data={data} />
