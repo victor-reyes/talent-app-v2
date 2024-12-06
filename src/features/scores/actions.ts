@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { scoresService } from "./instance";
 
 export async function updateScoresAction(formData: FormData) {
@@ -10,7 +10,6 @@ export async function updateScoresAction(formData: FormData) {
   const design = formData.get("design") as string;
   const backend = formData.get("backend") as string;
   const frontend = formData.get("frontend") as string;
-
 
   const newDeveloperScores = {
     frontend: Number(frontend),

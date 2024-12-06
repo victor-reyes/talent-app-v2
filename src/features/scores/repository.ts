@@ -1,9 +1,7 @@
-
 import { Db } from "@/db";
-import { scoresTable } from "./schema"
+import { scoresTable } from "./schema";
 import { eq } from "drizzle-orm";
 import { NewDeveloperScores } from "./types";
-
 
 export function createRepository(db: Db) {
   return {
@@ -11,10 +9,12 @@ export function createRepository(db: Db) {
       return db.select().from(scoresTable).where(eq(scoresTable.id, userId));
     },
     async updateScore(userId: number, newDeveloperScores: NewDeveloperScores) {
-      db.update(scoresTable).set(newDeveloperScores).where(eq(scoresTable.id, userId))
+      db.update(scoresTable)
+        .set(newDeveloperScores)
+        .where(eq(scoresTable.id, userId));
     },
     async addScore(newDeveloperScores: NewDeveloperScores) {
       db.insert(scoresTable).values(newDeveloperScores);
-    }
+    },
   };
 }

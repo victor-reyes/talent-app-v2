@@ -7,8 +7,5 @@ export const scoresTable = pgTable("developersScores", {
   individualCommunication: integer().notNull(),
   teamCollaboration: integer().notNull(),
   design: integer().notNull(),
-  management: integer().notNull()
+  management: integer().notNull(),
 });
-
-
-

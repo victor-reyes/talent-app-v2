@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  PolarAngleAxis,
-  PolarGrid,
-  Radar,
-  RadarChart,
-} from "recharts";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 
 import { CardContent } from "@/components/ui/card";
 import {
@@ -14,8 +9,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import type { CompleteDeveloperScore  } from "../types";
-
+import type { CompleteDeveloperScore } from "../types";
 
 const chartConfig = {
   desktop: {
@@ -26,17 +20,20 @@ const chartConfig = {
 
 type Props = {
   developerScore: CompleteDeveloperScore;
-}
+};
 
 export function SpiderGraph({ developerScore }: Props) {
   const chartData = [
     { category: "Frontend", score: developerScore.frontend },
     { category: "Backend", score: developerScore.backend },
-    { category: "Individual communication", score: developerScore.individualCommunication },
+    {
+      category: "Individual communication",
+      score: developerScore.individualCommunication,
+    },
     { category: "Team collaboration", score: developerScore.teamCollaboration },
     { category: "Design", score: developerScore.design },
     { category: "Management", score: developerScore.management },
-  ];  
+  ];
 
   return (
     <CardContent className="">
@@ -48,10 +45,10 @@ export function SpiderGraph({ developerScore }: Props) {
             dataKey="category"
             stroke="#808080"
             tick={{
-              dy: 5,  
-              fill: '#808080'
+              dy: 5,
+              fill: "#808080",
             }}
-            tickLine={false}  
+            tickLine={false}
           />
           <Radar
             dataKey="score"

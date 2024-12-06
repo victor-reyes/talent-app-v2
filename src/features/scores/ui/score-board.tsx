@@ -8,7 +8,8 @@ import { EditScoreForm } from "./accordion/edit-score-form";
 
 export async function ScoreBoard() {
   const hardcodedUserId = 2;
-  const developerScore = await scoresService.getDeveloperScoreById(hardcodedUserId);
+  const developerScore =
+    await scoresService.getDeveloperScoreById(hardcodedUserId);
 
   return (
     <section>

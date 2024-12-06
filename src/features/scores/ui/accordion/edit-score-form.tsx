@@ -21,7 +21,9 @@ type Props = {
 export function EditScoreForm({ developerScore }: Props) {
   const [frontendValue, setFrontendValue] = useState(developerScore.frontend);
   const [backendValue, setBackendValue] = useState(developerScore.backend);
-  const [teamCollaborationValue, setTeamCollaborationValue] = useState(developerScore.teamCollaboration);
+  const [teamCollaborationValue, setTeamCollaborationValue] = useState(
+    developerScore.teamCollaboration
+  );
   const [designValue, setDesignValue] = useState(developerScore.design);
   const [individualComunicationValue, setIndividualComunicationValue] =
     useState(developerScore.individualCommunication);
