@@ -1,5 +1,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+const developers: User[] = [
+  { name: "John", course: "JavaScript" },
+  { name: "Jane", course: "Java" },
+  { name: "Doe", course: "C#" },
+  { name: "Peter", course: "JavaScript" },
+  { name: "Mary", course: "Java" },
+  { name: "Paul", course: "C#" },
+];
 export default function Page() {
   return (
     <div className="container mx-auto flex flex-col justify-center items-center">
