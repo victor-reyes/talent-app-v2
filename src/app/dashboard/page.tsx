@@ -18,3 +18,19 @@ export default function Page() {
     </div>
   );
 }
+
+type User = { name: string; course: "JavaScript" | "Java" | "C#" };
+type Props = { users: User[] };
+export function List({ users }: Props) {
+  return (
+    <>
+      <ul>
+        {users.map((user) => (
+          <li key={user.name}>
+            {user.name} - {user.course}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
