@@ -9,8 +9,7 @@ export const seedDeveloperScores = async () => {
         design: Math.floor(Math.random() * 101),
         management: Math.floor(Math.random() * 101),
     };
-
-
+    
     try {
         await scoresService.addDeveloperScores(newDeveloperScore);
     } catch (error) {
