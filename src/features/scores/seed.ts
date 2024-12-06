@@ -1,6 +1,6 @@
 import { scoresService } from "./instance";
 
-const seedDeveloperScores = async () => {
+export const seedDeveloperScores = async () => {
 
     const newDeveloperScore = {
         frontend: Math.floor(Math.random() * 101),
@@ -12,6 +12,5 @@ const seedDeveloperScores = async () => {
     };
 
     await scoresService.addDeveloperScores(newDeveloperScore);
+    console.log("Done seeding scores...")
 };
-
-seedDeveloperScores();
