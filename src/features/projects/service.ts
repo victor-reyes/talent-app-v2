@@ -20,8 +20,7 @@ export function createProjectService(db: Db) {
       const client = createClient();
       const commits = await client.getTotalOfCommits(username, title);
       const issuesArr = await client.getAllIssues(username, title);
-      const issues = issuesArr.length.toString();
-      console.log(issues);
+      const issues = issuesArr
       const newProject: projectInsert = {
         username,
         repository,
