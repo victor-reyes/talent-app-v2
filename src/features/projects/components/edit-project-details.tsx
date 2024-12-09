@@ -39,9 +39,12 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log(values);
+      await updateAction({
+        description: values.description,
+        title: values.title,
+      });
     } catch (error) {
       console.error("Form submission error", error);
     }
