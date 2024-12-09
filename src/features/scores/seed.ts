@@ -15,5 +15,4 @@ export const seedScores = async () => {
     } catch (error) {
         console.error("Something went wrong when seeding scores " + error);
     }
-    console.log("Seeding scores done.");
 };
