@@ -1,6 +1,6 @@
 import { DeveloperCard } from "@/components/ui/developer-card";
 import { Background } from "@/features/background/ui";
-import { ProjectCard } from "@/features/projects/components/project-card";
+import { Projects } from "@/features/projects/components/projects";
 import { ScoreBoard } from "@/features/scores";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       <DeveloperCard>
         <Background />
         <ScoreBoard />
-        <ProjectCard />
+        <Projects />
       </DeveloperCard>
     </>
   );

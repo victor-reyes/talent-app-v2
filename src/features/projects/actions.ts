@@ -22,7 +22,7 @@ export async function addProjectAction(
     performance,
   };
 
-  await projectService.addProject(project);
+  await projectService.add(project);
   revalidatePath("/")
 }
 

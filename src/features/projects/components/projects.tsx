@@ -4,7 +4,7 @@ import { projectService } from "../instance";
 import AddProject from "./add-project";
 import ProjectDetails from "./project-details";
 
-export async function ProjectCard() {
+export async function Projects() {
   const projects = await projectService.getAll();
 
   return (

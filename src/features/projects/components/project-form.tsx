@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { addProjectAction } from "../action";
+import { addProjectAction } from "../actions";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({

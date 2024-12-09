@@ -6,7 +6,7 @@ export function createProjectsRepository(db: Db) {
     async getAll() {
       return db.select().from(projectTable);
     },
-    addProject: async (project: projectInsert) => {
+    add: async (project: projectInsert) => {
       await db.insert(projectTable).values(project);
     },
   };

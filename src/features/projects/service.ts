@@ -1,8 +1,8 @@
 import { Db } from "@/db";
 import { createProjectsRepository } from "./repository";
 import { projectInsert } from "./db/schema";
-//import { createClient } from "./api/api";
-import { ProjectData } from "./action";
+// import { createClient } from "./api/api";
+import { ProjectData } from "./actions";
 
 export function createProjectService(db: Db) {
   const reps = createProjectsRepository(db);
@@ -10,7 +10,7 @@ export function createProjectService(db: Db) {
     getAll: async () => {
       return await reps.getAll();
     },
-    addProject: async ({
+    add: async ({
       username,
       repository,
       title,
@@ -33,7 +33,7 @@ export function createProjectService(db: Db) {
         commits,
       };
 
-      await reps.addProject(newProject);
+      await reps.add(newProject);
     },
   };
 }
