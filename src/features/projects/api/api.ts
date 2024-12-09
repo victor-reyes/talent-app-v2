@@ -2,80 +2,54 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const createClient = () => {
-  return {
-    getTotalOfCommits: async (user: string, repo: string) => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${user}/${repo}/stats/participation`,
-          {
-            next: {
-              revalidate: 3600,
-            },
-          }
-        );
-        if (!response.ok) {
-          return null;
-        }
-        const data = await response.json();
-        if (!data || !data.all || !Array.isArray(data.all)) {
-          return null;
-        }
-        const total = data.all.reduce(
-          (acc: number, value: number) => acc + value,
-          0
-        );
-        return total;
-      } catch (error) {
-        console.error("Error fetching commit statistics:", error);
+  const fetchResponse = async (url: string): Promise<any | null> => {
+    try {
+      const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        console.error(`Error: ${response.status} - ${response.statusText}`);
         return null;
       }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Something went wrong while fetching:", error);
+      return null;
+    }
+  };
+
+  return {
+    getTotalOfCommits: async (user: string, repo: string) => {
+      const url = `https://api.github.com/repos/${user}/${repo}/stats/participation`;
+      const data = await fetchResponse(url);
+
+      if (!data || !data.all) {
+        return null;
+      }
+
+      return data.all.reduce((acc: number, value: number) => acc + value, 0);
     },
 
     getAllIssues: async (user: string, repo: string) => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${user}/${repo}/issues`,
-          {
-            next: {
-              revalidate: 3600,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          return null;
-        }
-
-        const data = await response.json();
-
-        return data;
-      } catch (error) {
-        console.error("Error fetching issues:", error);
-        return null;
-      }
+      const url = `https://api.github.com/repos/${user}/${repo}/issues`;
+      return await fetchResponse(url);
     },
 
     getDuration: async (user: string, repo: string) => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${user}/${repo}/commits`,
-          {
-            next: {
-              revalidate: 3600,
-            },
-          }
-        );
-        if (!response.ok) {
-          return null;
-        }
-        const data = await response.json();
-        const lastCommit = data[0].commit.author.date.split("T")[0];
+      const url = `https://api.github.com/repos/${user}/${repo}/commits`;
+      const data = await fetchResponse(url);
 
-        return lastCommit;
-      } catch (error) {
-        console.error("Error fetching duration:", error);
+      if (!data || data.length === 0) {
         return null;
       }
+
+      return data[0].commit.author.date.split("T")[0];
     },
 
     testPagePerformance: async (url: string) => {
