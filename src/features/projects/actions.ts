@@ -14,6 +14,6 @@ export async function updateAction(updatedProject: UpdatedProject) {
   revalidatePath("/");
 }
 
-export async function deleteAction(id: any) {
+export async function deleteAction(id: string) {
   await projectService.delete(id);
 }

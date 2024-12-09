@@ -39,7 +39,7 @@ export function createService(db: Db) {
     update: async (updatedProject: UpdatedProject) => {
       await reps.update(updatedProject);
     },
-    delete: async (id: any) => {
+    delete: async (id: string) => {
       await reps.delete(id);
     },
     getImage: async (username: string, title: string, image: string) => {

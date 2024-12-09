@@ -1,6 +1,7 @@
 import { Db } from "@/db";
 import { projectInsert, projectTable } from "./db";
 import { eq } from "drizzle-orm";
+import { UpdatedProject } from "./types";
 
 export function createRepository(db: Db) {
   return {
@@ -10,7 +11,7 @@ export function createRepository(db: Db) {
     add: async (project: projectInsert) => {
       await db.insert(projectTable).values(project);
     },
-    update: async (updatedProject: any) => {
+    update: async (updatedProject: UpdatedProject) => {
       await db
         .update(projectTable)
         .set({
@@ -19,7 +20,7 @@ export function createRepository(db: Db) {
         })
         .where(eq(updatedProject.id, projectTable.id));
     },
-    delete: async (id: any) => {
+    delete: async (id: string) => {
       await db.delete(projectTable).where(eq(projectTable.id, id));
     },
   };

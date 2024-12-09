@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const createClient = () => {
-  const fetchResponse = async (url: string): Promise<any | null> => {
+  const fetchResponse = async (url: string): Promise<unknown | null> => {
     try {
       const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
 
