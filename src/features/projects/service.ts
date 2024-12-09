@@ -35,5 +35,8 @@ export function createService(db: Db) {
 
       await reps.add(newProject);
     },
+    update: async (updatedProject: any) => {
+      await reps.update(updatedProject);
+    },
   };
 }

@@ -19,6 +19,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Project } from "../types";
+import { updateAction } from "../actions";
 
 type Props = {
   project: Project;

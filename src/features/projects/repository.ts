@@ -1,5 +1,6 @@
 import { Db } from "@/db";
 import { projectInsert, projectTable } from "./db";
+import { eq } from "drizzle-orm";
 
 export function createRepository(db: Db) {
   return {
@@ -8,6 +9,15 @@ export function createRepository(db: Db) {
     },
     add: async (project: projectInsert) => {
       await db.insert(projectTable).values(project);
+    },
+    update: async (updatedProject: any) => {
+      await db
+        .update(projectTable)
+        .set({
+          description: updatedProject.description,
+          title: updatedProject.title,
+        })
+        .where(eq(updatedProject.id, projectTable.id));
     },
   };
 }
