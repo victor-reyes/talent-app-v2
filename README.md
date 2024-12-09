@@ -26,5 +26,8 @@ pnpm dev
 
 Create a Personal Access Token (PAT)
 
-Go to GitHub Personal Access Tokens. 2. Click on Generate new token. 3. Select the appropriate scope:
-• This is for reading public data only, you don’t need to select any scopes. 4. Copy your token – it will only be displayed once. Make sure to save it securely.
+1. Go to GitHub Personal Access Tokens.
+2. Click on Generate new token.
+3. Select the appropriate scope:
+   • This is for reading public data only, you don’t need to select any scopes.
+4. Copy your token – it will only be displayed once. Make sure to save it securely.
