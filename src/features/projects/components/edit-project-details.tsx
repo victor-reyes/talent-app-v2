@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
-import { Pencil } from "lucide-react";
+import { X } from "lucide-react";
 import { z } from "zod";
 import {
   Form,
@@ -21,6 +21,7 @@ import { Project } from "../types";
 
 type Props = {
   project: Project;
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const formSchema = z.object({
@@ -28,7 +29,7 @@ const formSchema = z.object({
   description: z.string(),
 });
 
-export default function EditProjectDetails({ project }: Props) {
+export default function EditProjectDetails({ project, setShowDetails }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -42,7 +43,7 @@ export default function EditProjectDetails({ project }: Props) {
   }
 
   function toggleEdit() {
-    // toggle of and toggle on
+   setShowDetails(false)
   }
 
   return (
@@ -79,7 +80,7 @@ export default function EditProjectDetails({ project }: Props) {
               </div>
             </div>
             <button onClick={toggleEdit}>
-              <Pencil className="mr-4 " size={16} />
+              <X className="mr-4 " size={16} />
             </button>
           </div>
           <section className="flex justify-between items-start mt-2 gap-2">
