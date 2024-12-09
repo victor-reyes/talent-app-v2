@@ -2,6 +2,7 @@ import { H1 } from "@/components/ui/header/header-h1";
 import { BackgroundAvatar } from "./avatar";
 import { EditInfoForm } from "./form-info";
 
+
 type Props = { name: string; title: string; bio: string; avatarURL: string };
 
 export function BackgroundBasicInfo({ name, title, bio, avatarURL }: Props) {
@@ -20,7 +21,7 @@ export function BackgroundBasicInfo({ name, title, bio, avatarURL }: Props) {
           </div>
         </div>
 
-        <EditInfoForm />
+        
       </section>
     </>
   );

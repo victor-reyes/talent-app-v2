@@ -1,27 +1,8 @@
-import { db } from "@/db";
+import { Db } from "@/db";
 import { eq } from "drizzle-orm";
-import { backgroundsTable, BackgroundInsert, BackgroundSelect } from "./schema";
+import { backgroundsTable, BackgroundInsert, BackgroundSelect, BackgroundUpdate } from "./schema";
 
-type Link = {
-  name: "Github" | "LinkedIn";
-  url: string;
-};
-
-export type MockBackground = {
-  id: number;
-  name: string;
-  title: string;
-  bio: string;
-  avatarURL: string;
-  languages?: string[] | undefined;
-  educations?: string[] | undefined;
-  skills?: string[];
-  links?: Link[] | undefined;
-};
-
-
-
-export function createRepository() {
+export function createRepository(db: Db) {
   return {
     async getAll() {
       return await db.select().from(backgroundsTable);
@@ -33,9 +14,9 @@ export function createRepository() {
         .where(eq(backgroundsTable.id, id));
     },
     async add(background: BackgroundInsert) {
-      return await db.insert(backgroundsTable).values({ ...background });
+      return await db.insert(backgroundsTable).values(background);
     },
-    async update(background: BackgroundSelect) {
+    async update(background: BackgroundUpdate) {
       const { id, ...rest } = background;
       return db
         .update(backgroundsTable)
