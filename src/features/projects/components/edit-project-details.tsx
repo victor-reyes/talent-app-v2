@@ -116,7 +116,7 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
        <FormDescription>A brief description of your project.</FormDescription>
        <FormMessage>{form.formState.errors.description?.message}</FormMessage>
      </FormItem>
-     <Button>Edit</Button>
+     <Button>Save</Button>
    </form>
  </Form>
     </>
