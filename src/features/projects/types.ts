@@ -1,4 +1,5 @@
 export type Project = {
+  id: string;
   userId: string;
   username: string;
   repository: string;
@@ -16,4 +17,10 @@ export type ProjectData = {
   title: string;
   description: string;
   performance: string;
+};
+
+export type UpdatedProject = {
+  description: string;
+  title: string;
+  id: string;
 };

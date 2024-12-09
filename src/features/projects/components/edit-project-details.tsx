@@ -20,10 +20,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Project } from "../types";
 import { updateAction } from "../actions";
-import { projectSelect } from "../db";
 
 type Props = {
-  project: projectSelect;
+  project: Project;
   setShowDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
