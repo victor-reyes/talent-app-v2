@@ -1,8 +1,9 @@
 import dotenv from "dotenv";
+import { ReactNode } from "react";
 dotenv.config();
 
 export const createClient = () => {
-  const fetchResponse = async (url: string): Promise<unknown | null> => {
+  const fetchResponse = async (url: string) => {
     try {
       const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
 
