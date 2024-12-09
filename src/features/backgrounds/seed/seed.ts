@@ -1,4 +1,4 @@
-import { faker, simpleFaker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 import { createRepository } from "../repository";
 import { BackgroundInsert } from "../schema";
 import { skills } from "./data";

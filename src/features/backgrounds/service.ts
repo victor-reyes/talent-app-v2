@@ -1,5 +1,5 @@
 import { Repository } from "./repository";
-import { BackgroundInsert, BackgroundSelect, BackgroundUpdate } from "./schema";
+import { BackgroundInsert, BackgroundUpdate } from "./schema";
 
 export function createBackgroundsService(repository: Repository) {
   return {
