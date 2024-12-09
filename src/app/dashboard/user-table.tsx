@@ -23,12 +23,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Arrow } from "@radix-ui/react-dropdown-menu";
+import { Switch } from "@/components/ui/switch";
 
 export type Developer = {
   name: string;
   course: "JavaScript" | "Java" | "C#" | "Cobolt";
   jobStatus: string;
   until: Date;
+  published: boolean;
 };
 
 const columns: ColumnDef<Developer>[] = [
@@ -50,6 +52,14 @@ const columns: ColumnDef<Developer>[] = [
       const formattedDate = swedishFormatter.format(date);
 
       return <div className="text-slate-600">{formattedDate}</div>;
+    },
+  },
+  {
+    id: "published_status",
+    header: "Published",
+    cell({ row }) {
+      const published = row.getValue("published_status") as boolean;
+      return <Switch className="scale-[0.6]"/>;
     },
   },
   {
@@ -106,7 +116,7 @@ export function DataTable<TData, TValue>({
                 return (
                   <TableHead
                     key={header.id}
-                    className="px-2 font-serif text-slate-900"
+                    className="px-1 font-serif text-slate-900 text-xs"
                   >
                     {header.isPlaceholder
                       ? null
@@ -128,7 +138,7 @@ export function DataTable<TData, TValue>({
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="px-2 text-xs">
+                  <TableCell key={cell.id} className="px-1 text-xs">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
