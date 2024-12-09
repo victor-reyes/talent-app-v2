@@ -1,7 +1,7 @@
 import { Db } from "@/db";
 import { projectInsert, projectTable } from "./db/schema";
 
-export function createProjectsRepository(db: Db) {
+export function createRepository(db: Db) {
   return {
     async getAll() {
       return db.select().from(projectTable);
@@ -12,5 +12,4 @@ export function createProjectsRepository(db: Db) {
   };
 }
 
-export type Repository = ReturnType<typeof createProjectsRepository>;
- 
+export type Repository = ReturnType<typeof createRepository>;

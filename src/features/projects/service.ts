@@ -1,11 +1,11 @@
 import { Db } from "@/db";
-import { createProjectsRepository } from "./repository";
+import { createRepository } from "./repository";
 import { projectInsert } from "./db/schema";
 // import { createClient } from "./api/api";
-import { ProjectData } from "./actions";
+import { ProjectData } from "./types";
 
-export function createProjectService(db: Db) {
-  const reps = createProjectsRepository(db);
+export function createService(db: Db) {
+  const reps = createRepository(db);
   return {
     getAll: async () => {
       return await reps.getAll();
@@ -20,9 +20,9 @@ export function createProjectService(db: Db) {
       //const client = createClient();
       //const commits = await client.getTotalOfCommits(username, title);
       //const issuesArr = await client.getAllIssues(username, title);
-      const commits = "120"
-      const issues = "52"
-      
+      const commits = "120";
+      const issues = "52";
+
       const newProject: projectInsert = {
         username,
         repository,

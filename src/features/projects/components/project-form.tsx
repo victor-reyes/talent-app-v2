@@ -35,13 +35,13 @@ export default function ProjectForm() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Form submitted with values:", values);
     try {
-      await addProjectAction(
-        values.username,
-        values.repository,
-        values.title,
-        values.description,
-        values.performance
-      );
+      await addProjectAction({
+        username: values.username,
+        repository: values.repository,
+        title: values.title,
+        description: values.description,
+        performance: values.performance,
+      });
       toast({
         title: "Project added",
         description: "Project added successfully",

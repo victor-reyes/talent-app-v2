@@ -4,8 +4,16 @@ export type Project = {
   repository: string;
   title: string;
   imageUrl: string | null;
-  performance: number;
+  performance: string;
   description: string;
   commits: string;
   issues: string;
+};
+
+export type ProjectData = {
+  username: string;
+  repository: string;
+  title: string;
+  description: string;
+  performance: string;
 };

@@ -26,6 +26,5 @@ export async function seedProjects() {
     },
   ];
 
-  projects.map(async (project) => await projectService.addProject(project));
+  projects.map(async (project) => await projectService.add(project));
 }
-

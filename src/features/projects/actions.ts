@@ -2,35 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { projectService } from "./instance";
+import { ProjectData } from "./types";
 
-
-
-export async function addProjectAction(
-  username: string,
-  repository: string,
-  title: string,
-  description: string,
-  performance: number
-) {
-  
-  
-  const project: ProjectData = {
-    username,
-    repository,
-    title,
-    description,
-    performance,
-  };
-
+export async function addProjectAction(project: ProjectData) {
   await projectService.add(project);
-  revalidatePath("/")
+  revalidatePath("/");
 }
-
-
-export type ProjectData = {
-  username: string;
-  repository: string;
-  title: string;
-  description: string;
-  performance: number;
-};
