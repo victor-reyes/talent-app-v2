@@ -2,8 +2,9 @@ import { faker, simpleFaker } from "@faker-js/faker";
 import { createRepository } from "../repository";
 import { BackgroundInsert } from "../schema";
 import { skills } from "./data";
+import { db } from "@/db";
 
-const repository = createRepository();
+const repository = createRepository(db);
 
 export async function backgroundsSeed(count: number = 50) {
   const avatars = await getAvatars(count);
@@ -32,8 +33,8 @@ export async function backgroundsSeed(count: number = 50) {
         ),
         skills: faker.helpers.arrayElements(skills, 10).map((skill) => {
           return {
-            id: faker.string.uuid(), 
-            text: skill, 
+            id: faker.string.uuid(),
+            text: skill,
           };
         }),
         links: faker.helpers
@@ -43,7 +44,7 @@ export async function backgroundsSeed(count: number = 50) {
               url: "https://www.linkedin.com/in/ali-mohseni-se",
               name: "LinkedIn",
             },
-            { url: "https://www.alimohseni.se/", name: "Portfolio" },
+            { url: "https://www.alimohseni.se/", name: "Resume" },
           ])
           .sort((a, b) => a.name.localeCompare(b.name)),
       };
