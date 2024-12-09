@@ -17,6 +17,6 @@ export type BackgroundInsert = typeof backgroundsTable.$inferInsert;
 export type BackgroundSelect = typeof backgroundsTable.$inferSelect;
 export type SocialLink = {
   url: string;
-  name: "Github" | "LinkedIn" | "Portfolio";
+  name: "Github" | "LinkedIn" | "Resume";
 };
 
