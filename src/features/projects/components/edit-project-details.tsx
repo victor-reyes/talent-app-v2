@@ -20,9 +20,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Project } from "../types";
 import { updateAction } from "../actions";
+import { projectSelect } from "../db";
 
 type Props = {
-  project: Project;
+  project: projectSelect;
   setShowDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -45,6 +46,7 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
       await updateAction({
         description: values.description,
         title: values.title,
+        id: project.id
       });
     } catch (error) {
       console.error("Form submission error", error);
