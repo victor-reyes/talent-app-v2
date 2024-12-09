@@ -1,4 +1,4 @@
-import { db } from "@/db";
+import { Db } from "@/db";
 import { eq } from "drizzle-orm";
 import { backgroundsTable, BackgroundInsert, BackgroundSelect } from "./schema";
 
@@ -19,7 +19,7 @@ export type MockBackground = {
   links?: Link[] | undefined;
 };
 
-export function createRepository() {
+export function createRepository(db: Db) {
   return {
     async getAll() {
       return await db.select().from(backgroundsTable);
