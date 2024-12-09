@@ -15,15 +15,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Ellipsis, Pencil, Trash } from "lucide-react";
+import { CircleUserRound, Ellipsis, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
+import { Arrow } from "@radix-ui/react-dropdown-menu";
 
 export type Developer = {
   name: string;
@@ -65,14 +66,19 @@ const columns: ColumnDef<Developer>[] = [
           <DropdownMenuTrigger asChild>
             <Ellipsis size={16} />
           </DropdownMenuTrigger>
-          <DropdownMenuContent side="left">
-            <DropdownMenuLabel>Chose an action</DropdownMenuLabel>
-            <DropdownMenuSeparator />
+          <DropdownMenuContent side="left" className="min-w-24">
+            <Arrow />
             <DropdownMenuItem>
-              <Pencil /> Edit
+              <CircleUserRound />
+              Profile
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex">
+              <Pencil />
+              Edit
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Trash /> Delete
+              <Trash />
+              Remove
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
