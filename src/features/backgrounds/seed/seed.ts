@@ -2,10 +2,11 @@ import { faker } from "@faker-js/faker";
 import { createRepository } from "../repository";
 import { BackgroundInsert } from "../schema";
 import { skills } from "./data";
+import { db } from "@/db";
 
-const repository = createRepository();
+const repository = createRepository(db);
 
-export async function seed(count: number = 50) {
+export async function backgroundsSeed(count: number = 50) {
   const avatars = await getAvatars(count);
 
   const backgrounds: BackgroundInsert[] = Array.from(
@@ -30,7 +31,12 @@ export async function seed(count: number = 50) {
           ],
           2
         ),
-        skills: faker.helpers.arrayElements(skills, 10),
+        skills: faker.helpers.arrayElements(skills, 10).map((skill) => {
+          return {
+            id: faker.string.uuid(),
+            text: skill,
+          };
+        }),
         links: faker.helpers
           .arrayElements([
             { url: "https://github.com/alimohseni99", name: "Github" },
@@ -38,7 +44,7 @@ export async function seed(count: number = 50) {
               url: "https://www.linkedin.com/in/ali-mohseni-se",
               name: "LinkedIn",
             },
-            { url: "https://www.alimohseni.se/", name: "Portfolio" },
+            { url: "https://www.alimohseni.se/", name: "Resume" },
           ])
           .sort((a, b) => a.name.localeCompare(b.name)),
       };
@@ -47,6 +53,7 @@ export async function seed(count: number = 50) {
   backgrounds.forEach((background) => {
     repository.add(background);
   });
+  console.log("Done seeding Backgrounds...");
 }
 
 async function getAvatars(count: number) {
@@ -56,5 +63,3 @@ async function getAvatars(count: number) {
     (user: { picture: { large: unknown } }) => user.picture.large
   );
 }
-
-seed();
