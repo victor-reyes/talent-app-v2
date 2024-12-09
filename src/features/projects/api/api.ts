@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import { ReactNode } from "react";
 dotenv.config();
 
 export const createClient = () => {
