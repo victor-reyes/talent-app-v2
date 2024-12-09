@@ -14,12 +14,11 @@ export const createClient = () => {
           }
         );
         if (!response.ok) {
-          console.log("not okay");
-          return 0;
+          return null;
         }
         const data = await response.json();
         if (!data || !data.all || !Array.isArray(data.all)) {
-          return 0;
+          return null;
         }
         const total = data.all.reduce(
           (acc: number, value: number) => acc + value,
@@ -28,7 +27,7 @@ export const createClient = () => {
         return total;
       } catch (error) {
         console.error("Error fetching commit statistics:", error);
-        return 0;
+        return null;
       }
     },
 
@@ -44,7 +43,7 @@ export const createClient = () => {
         );
 
         if (!response.ok) {
-          return 0;
+          return null;
         }
 
         const data = await response.json();
@@ -52,7 +51,7 @@ export const createClient = () => {
         return data;
       } catch (error) {
         console.error("Error fetching issues:", error);
-        return 0;
+        return null;
       }
     },
 
@@ -67,7 +66,7 @@ export const createClient = () => {
           }
         );
         if (!response.ok) {
-          return 0;
+          return null;
         }
         const data = await response.json();
         const lastCommit = data[0].commit.author.date.split("T")[0];
@@ -75,7 +74,7 @@ export const createClient = () => {
         return lastCommit;
       } catch (error) {
         console.error("Error fetching duration:", error);
-        return 0;
+        return null;
       }
     },
 
@@ -86,7 +85,7 @@ export const createClient = () => {
 
       if (!isPerformanceFeatureEnabled || !apiKey) {
         console.log("Skipping performance test");
-        return 0;
+        return null;
       }
       const pageUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${apiKey}`;
       let performanceScore = 0;
@@ -97,7 +96,7 @@ export const createClient = () => {
         performanceScore = data.lighthouseResult.categories.performance.score;
       } catch (error) {
         console.error("Error fetching performance score:", error);
-        return 0;
+        return null;
       }
 
       return performanceScore * 100;

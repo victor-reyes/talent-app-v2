@@ -18,11 +18,11 @@ import { addProjectAction } from "../actions";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  username: z.string().nonempty({ message: "Username is required" }),
-  repository: z.string().nonempty({ message: "Repository is required" }),
-  title: z.string().nonempty({ message: "Title is required" }),
-  performance: z.string().nonempty({ message: "Performance is required" }),
-  description: z.string().nonempty({ message: "Description is required" }),
+  username: z.string().min(1, { message: "Username is required" }),
+  repository: z.string().min(1, { message: "Repository is required" }),
+  title: z.string().min(1, { message: "Title is required" }),
+  performance: z.string().min(1, { message: "Performance is required" }),
+  description: z.string().min(1, { message: "Description is required" }),
 });
 
 export default function ProjectForm() {
