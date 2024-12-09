@@ -1,6 +1,6 @@
 import { Db } from "@/db";
 import { eq } from "drizzle-orm";
-import { backgroundsTable, BackgroundInsert, BackgroundSelect, BackgroundUpdate } from "./schema";
+import { backgroundsTable, BackgroundInsert, BackgroundUpdate } from "./schema";
 
 export function createRepository(db: Db) {
   return {
