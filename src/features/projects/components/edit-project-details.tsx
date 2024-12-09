@@ -33,7 +33,12 @@ const formSchema = z.object({
 export default function EditProjectDetails({ project, setShowDetails }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-  });
+   defaultValues: {
+    title: project.title,
+    description: project.description,
+  },
+}
+  );
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -60,7 +65,7 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
      <FormItem>
        <FormLabel>Title</FormLabel>
        <FormControl>
-         <Input placeholder={project.title} type="text" {...form.register("title")} />
+         <Input type="text" {...form.register("title")} />
        </FormControl>
        <FormDescription>This is your Github repository title.</FormDescription>
        <FormMessage>{form.formState.errors.title?.message}</FormMessage>
@@ -104,7 +109,6 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
        <FormLabel>Description</FormLabel>
        <FormControl>
          <Textarea
-           placeholder={project.description}
            className="resize-none"
            {...form.register("description")}
          />
