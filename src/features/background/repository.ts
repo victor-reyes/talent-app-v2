@@ -2,23 +2,6 @@ import { Db } from "@/db";
 import { eq } from "drizzle-orm";
 import { backgroundsTable, BackgroundInsert, BackgroundSelect } from "./schema";
 
-type Link = {
-  name: "Github" | "LinkedIn";
-  url: string;
-};
-
-export type MockBackground = {
-  id: number;
-  name: string;
-  title: string;
-  bio: string;
-  avatarURL: string;
-  languages?: string[] | undefined;
-  educations?: string[] | undefined;
-  skills?: string[];
-  links?: Link[] | undefined;
-};
-
 export function createRepository(db: Db) {
   return {
     async getAll() {
