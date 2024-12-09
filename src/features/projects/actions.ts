@@ -10,6 +10,7 @@ export async function addProjectAction(project: ProjectData) {
 }
 
 export async function updateAction(updatedProject: UpdatedProject) {
+  console.log(updatedProject.id);
   await projectService.update(updatedProject);
   revalidatePath("/");
 }

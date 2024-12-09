@@ -20,7 +20,7 @@ export type ProjectData = {
 };
 
 export type UpdatedProject = {
+  id: string;
   description: string;
   title: string;
-  id: string;
 };

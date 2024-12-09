@@ -20,6 +20,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Project } from "../types";
 import { updateAction, deleteAction } from "../actions";
+import { UpdatedProject } from "../types";
 
 type Props = {
   project: Project;
@@ -41,12 +42,13 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    const updatedProject = {
+      description: values.description,
+      title: values.title,
+      id: project.id,
+    };
     try {
-      await updateAction({
-        description: values.description,
-        title: values.title,
-        id: project.id,
-      });
+      await updateAction(updatedProject);
       setShowDetails(true);
     } catch (error) {
       console.error("Form submission error", error);
