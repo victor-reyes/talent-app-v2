@@ -11,8 +11,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { BackgroundSelect } from "../schema";
 
-export function EditInfoForm() {
+type Props = { background: BackgroundSelect };
+export function EditInfoForm({background}: Props) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -28,13 +30,13 @@ export function EditInfoForm() {
         <form action={updateBackgroundAction}>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <input type="text" name={"userId"} defaultValue={1} hidden />
+              <input type="text" name={"userId"} defaultValue={background.id} hidden />
               <label htmlFor="name" className="text-right">
                 Name
               </label>
               <input
                 name="name"
-                placeholder="Peter Duarte"
+                placeholder={background.name}
                 className="col-span-3"
               />
             </div>
@@ -42,13 +44,13 @@ export function EditInfoForm() {
               <label htmlFor="username" className="text-right">
                 Title
               </label>
-              <input placeholder="title" name="title" className="col-span-3" />
+              <input placeholder={background.title} name="title" className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <label htmlFor="bio" className="text-right">
                 Bio
               </label>
-              <input placeholder="bio" name="bio" className="col-span-3" />
+              <input placeholder={background.bio} name="bio" className="col-span-3" />
             </div>
           </div>
 

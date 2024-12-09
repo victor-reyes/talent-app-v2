@@ -33,12 +33,11 @@ const formSchema = z.object({
 export default function EditProjectDetails({ project, setShowDetails }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-   defaultValues: {
-    title: project.title,
-    description: project.description,
-  },
-}
-  );
+    defaultValues: {
+      title: project.title,
+      description: project.description,
+    },
+  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -49,32 +48,36 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
   }
 
   function toggleEdit() {
-   setShowDetails(false)
+    setShowDetails(true);
   }
 
   return (
     <>
- <Form {...form}>
-   <form
-     onSubmit={form.handleSubmit(onSubmit)}
-     className="space-y-8 max-w-3xl mx-auto py-10"
-   >
-     <div className="flex justify-between items-baseline">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 max-w-3xl mx-auto py-10"
+        >
+          <div className="flex justify-between items-baseline">
             <div className="flex flex-col ">
               <div className="ml-2  opacity-80 hover:opacity-100">
-     <FormItem>
-       <FormLabel>Title</FormLabel>
-       <FormControl>
-         <Input type="text" {...form.register("title")} />
-       </FormControl>
-       <FormDescription>This is your Github repository title.</FormDescription>
-       <FormMessage>{form.formState.errors.title?.message}</FormMessage>
-     </FormItem>
-      <p className="text-xs text-gray-400 flex items-center gap-2">
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input type="text" {...form.register("title")} />
+                  </FormControl>
+                  <FormDescription>
+                    This is your Github repository title.
+                  </FormDescription>
+                  <FormMessage>
+                    {form.formState.errors.title?.message}
+                  </FormMessage>
+                </FormItem>
+                <p className="text-xs text-gray-400 flex items-center gap-2">
                   <FaGithub size={16} color="gray" />
                   Last commit {"Today"}
                 </p>
-                 </div>
+              </div>
             </div>
             <button onClick={toggleEdit}>
               <X className="mr-4 " size={16} />
@@ -105,20 +108,24 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
               </article>
             </div>
           </section>
-     <FormItem>
-       <FormLabel>Description</FormLabel>
-       <FormControl>
-         <Textarea
-           className="resize-none"
-           {...form.register("description")}
-         />
-       </FormControl>
-       <FormDescription>A brief description of your project.</FormDescription>
-       <FormMessage>{form.formState.errors.description?.message}</FormMessage>
-     </FormItem>
-     <Button>Save</Button>
-   </form>
- </Form>
+          <FormItem>
+            <FormLabel>Description</FormLabel>
+            <FormControl>
+              <Textarea
+                className="resize-none"
+                {...form.register("description")}
+              />
+            </FormControl>
+            <FormDescription>
+              A brief description of your project.
+            </FormDescription>
+            <FormMessage>
+              {form.formState.errors.description?.message}
+            </FormMessage>
+          </FormItem>
+          <Button>Save</Button>
+        </form>
+      </Form>
     </>
   );
 }

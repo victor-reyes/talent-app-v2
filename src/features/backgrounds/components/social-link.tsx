@@ -16,7 +16,7 @@ export function SocialLink({ url, name, size = 24 }: Props) {
           <FaLinkedin size={size} />
         </Link>
       )}
-      {name === "Portfolio" && (
+      {name === "Resume" && (
         <Link href={url}>
           <FaBriefcase size={size} />
         </Link>
