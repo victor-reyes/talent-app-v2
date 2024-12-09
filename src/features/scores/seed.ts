@@ -13,7 +13,7 @@ export const seedScores = async () => {
     try {
         await scoresService.addScores(newScore);
     } catch (error) {
-        console.log("Something went wrong when seeding scores " + error);
+        console.error("Something went wrong when seeding scores " + error);
     }
-    console.log("Done seeding scores...");
+    console.log("Seeding scores done.");
 };
