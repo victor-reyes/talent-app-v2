@@ -1,5 +1,7 @@
 import { db } from "@/db";
 import { createRepository } from "./repository";
-import { createService } from "./service";
+import { createBackgroundsService } from "./service";
 
-export const backgroundsService = createService(createRepository(db));
+export const backgroundsService = createBackgroundsService(
+  createRepository(db),
+);

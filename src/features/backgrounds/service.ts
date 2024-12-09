@@ -1,7 +1,7 @@
 import { Repository } from "./repository";
 import { BackgroundInsert } from "./schema";
 
-export function createService(repository: Repository) {
+export function createBackgroundsService(repository: Repository) {
   return {
     async getAll() {
       return repository.getAll();
