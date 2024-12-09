@@ -1,4 +1,4 @@
-import { backgroundsSeed } from "@/features/background/seed/seed";
+import { backgroundsSeed } from "@/features/backgrounds/seed/seed";
 import { seedScores } from "@/features/scores/seed";
 import { seedProjects } from "@/features/projects/db/seed";
 
