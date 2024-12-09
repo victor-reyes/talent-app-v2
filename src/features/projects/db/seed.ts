@@ -11,8 +11,6 @@ export async function seedProjects() {
       imageUrl:
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: 99,
-      commits: "100",
-      issues: ["Test"],
       userId: "ee3447ab-b2a4-46bc-8013-094a5ea20245",
     },
     {
@@ -24,8 +22,6 @@ export async function seedProjects() {
       imageUrl:
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: 99,
-      commits: "100",
-      issues: ["Test"],
       userId: "8e4dce82-efbd-4907-abcc-604e9d51db50",
     },
   ];
@@ -33,4 +29,3 @@ export async function seedProjects() {
   projects.map(async (project) => await projectService.addProject(project));
 }
 
-seedProjects().then(() => console.log("Project Table seeded"));

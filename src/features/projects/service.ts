@@ -1,7 +1,7 @@
 import { Db } from "@/db";
 import { createProjectsRepository } from "./repository";
 import { projectInsert } from "./db/schema";
-import { createClient } from "./api/api";
+//import { createClient } from "./api/api";
 import { ProjectData } from "./action";
 
 export function createProjectService(db: Db) {
@@ -17,10 +17,12 @@ export function createProjectService(db: Db) {
       description,
       performance,
     }: ProjectData) => {
-      const client = createClient();
-      const commits = await client.getTotalOfCommits(username, title);
-      const issuesArr = await client.getAllIssues(username, title);
-      const issues = issuesArr
+      //const client = createClient();
+      //const commits = await client.getTotalOfCommits(username, title);
+      //const issuesArr = await client.getAllIssues(username, title);
+      const commits = "120"
+      const issues = "52"
+      
       const newProject: projectInsert = {
         username,
         repository,
@@ -30,8 +32,6 @@ export function createProjectService(db: Db) {
         issues,
         commits,
       };
-
-      console.log(newProject.issues);
 
       await reps.addProject(newProject);
     },
