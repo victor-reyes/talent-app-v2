@@ -1,10 +1,9 @@
 import { Separator } from "@/components/ui/separator";
-import { AccordionBoard } from "./accordion/category-groups";
 import { AverageScore } from "./average-score";
 import { SpiderGraph } from "./spider-graph";
 import { H2 } from "@/components/ui/header/header-h2";
 import { scoresService } from "../instance";
-
+import { CategoryGroups } from "./accordion";
 
 export async function ScoreBoard() {
   const hardcodedUserId = 1;
@@ -17,7 +16,7 @@ export async function ScoreBoard() {
       <H2>Salt Scoring</H2>
       <AverageScore averageScore={scores.averageScore} />
       <SpiderGraph scores={scores} />
-      <AccordionBoard scores={scores} />
+      <CategoryGroups scores={scores} />
     </section>
   );
 }
