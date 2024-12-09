@@ -47,6 +47,7 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
         title: values.title,
         id: project.id
       });
+      setShowDetails(true);
     } catch (error) {
       console.error("Form submission error", error);
     }
