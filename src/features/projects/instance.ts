@@ -1,4 +1,4 @@
 import { db } from "@/db";
-import { createProjectService } from "./service";
+import { createService } from "./service";
 
-export const projectService = createProjectService(db);
+export const projectService = createService(db);

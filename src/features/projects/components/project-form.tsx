@@ -3,7 +3,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -11,19 +10,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { addProjectAction } from "../action";
+  Button,
+  Input,
+  Textarea,
+} from "@/components";
+import { addProjectAction } from "../actions";
 import { useToast } from "@/hooks/use-toast";
-
-const formSchema = z.object({
-  username: z.string().nonempty({ message: "Username is required" }),
-  repository: z.string().nonempty({ message: "Repository is required" }),
-  title: z.string().nonempty({ message: "Title is required" }),
-  performance: z.string().nonempty({ message: "Performance is required" }),
-  description: z.string().nonempty({ message: "Description is required" }),
-});
+import { formSchema } from "../validation";
 
 export default function ProjectForm() {
   const { toast } = useToast();
@@ -35,13 +28,13 @@ export default function ProjectForm() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log("Form submitted with values:", values);
     try {
-      await addProjectAction(
-        values.username,
-        values.repository,
-        values.title,
-        values.description,
-        Number(values.performance)
-      );
+      await addProjectAction({
+        username: values.username,
+        repository: values.repository,
+        title: values.title,
+        description: values.description,
+        performance: values.performance,
+      });
       toast({
         title: "Project added",
         description: "Project added successfully",

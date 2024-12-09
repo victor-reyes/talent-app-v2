@@ -2,21 +2,20 @@
 
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
-import { H3 } from "@/components/ui/header/header-h3";
+import { H3, Separator } from "@/components";
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
 import { ProjectDescription } from "./project-description";
 import { Pencil } from "lucide-react";
 import { Project } from "../types";
 
 type Props = {
   project: Project;
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-export default function ProjectDetails({ project }: Props) {
+export default function ProjectDetails({ project, setShowDetails }: Props) {
   function toggleEdit() {
-    // setEditDetails(false);
-    //toggle of and toggle on
+    setShowDetails(false)
   }
 
   return (

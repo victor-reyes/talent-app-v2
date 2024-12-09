@@ -2,81 +2,54 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const createClient = () => {
+  const fetchResponse = async (url: string): Promise<any | null> => {
+    try {
+      const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        console.error(`Error: ${response.status} - ${response.statusText}`);
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Something went wrong while fetching:", error);
+      return null;
+    }
+  };
+
   return {
     getTotalOfCommits: async (user: string, repo: string) => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${user}/${repo}/stats/participation`,
-          {
-            next: {
-              revalidate: 3600,
-            },
-          }
-        );
-        if (!response.ok) {
-          console.log("not okay");
-          return 0;
-        }
-        const data = await response.json();
-        if (!data || !data.all || !Array.isArray(data.all)) {
-          return 0;
-        }
-        const total = data.all.reduce(
-          (acc: number, value: number) => acc + value,
-          0
-        );
-        return total;
-      } catch (error) {
-        console.error("Error fetching commit statistics:", error);
-        return 0;
+      const url = `https://api.github.com/repos/${user}/${repo}/stats/participation`;
+      const data = await fetchResponse(url);
+
+      if (!data || !data.all) {
+        return null;
       }
+
+      return data.all.reduce((acc: number, value: number) => acc + value, 0);
     },
 
     getAllIssues: async (user: string, repo: string) => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${user}/${repo}/issues`,
-          {
-            next: {
-              revalidate: 3600,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          return 0;
-        }
-
-        const data = await response.json();
-
-        return data;
-      } catch (error) {
-        console.error("Error fetching issues:", error);
-        return 0;
-      }
+      const url = `https://api.github.com/repos/${user}/${repo}/issues`;
+      return await fetchResponse(url);
     },
 
     getDuration: async (user: string, repo: string) => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${user}/${repo}/commits`,
-          {
-            next: {
-              revalidate: 3600,
-            },
-          }
-        );
-        if (!response.ok) {
-          return 0;
-        }
-        const data = await response.json();
-        const lastCommit = data[0].commit.author.date.split("T")[0];
+      const url = `https://api.github.com/repos/${user}/${repo}/commits`;
+      const data = await fetchResponse(url);
 
-        return lastCommit;
-      } catch (error) {
-        console.error("Error fetching duration:", error);
-        return 0;
+      if (!data || data.length === 0) {
+        return null;
       }
+
+      return data[0].commit.author.date.split("T")[0];
     },
 
     testPagePerformance: async (url: string) => {
@@ -86,7 +59,7 @@ export const createClient = () => {
 
       if (!isPerformanceFeatureEnabled || !apiKey) {
         console.log("Skipping performance test");
-        return 0;
+        return null;
       }
       const pageUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${apiKey}`;
       let performanceScore = 0;
@@ -97,10 +70,34 @@ export const createClient = () => {
         performanceScore = data.lighthouseResult.categories.performance.score;
       } catch (error) {
         console.error("Error fetching performance score:", error);
-        return 0;
+        return null;
       }
 
       return performanceScore * 100;
+    },
+    getImage: async (user: string, repo: string, image: string) => {
+      const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+      try {
+        const response = await fetch(
+          `https://raw.githubusercontent.com/${user}/${repo}/main/${image}`,
+          {
+            headers: {
+              Authorization: `token ${token}`,
+            },
+            next: {
+              revalidate: 3600,
+            },
+          }
+        );
+        if (!response.ok) {
+          return null;
+        }
+
+        return response;
+      } catch (error) {
+        console.error("Error fetching image:", error);
+        return;
+      }
     },
   };
 };

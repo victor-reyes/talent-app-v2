@@ -2,47 +2,63 @@
 
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
-import { Separator } from "@/components/ui/separator";
-import { Pencil } from "lucide-react";
+import { X } from "lucide-react";
 import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+  Input,
+  Textarea,
+  Separator,
+  FormDescription,
+  Button,
+} from "@/components";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Project } from "../types";
+import { updateAction, deleteAction } from "../actions";
 
 type Props = {
   project: Project;
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const formSchema = z.object({
-  repository: z.string(),
+  title: z.string(),
   description: z.string(),
 });
 
-export default function EditProjectDetails({ project }: Props) {
+export default function EditProjectDetails({ project, setShowDetails }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: project.title,
+      description: project.description,
+    },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log(values);
+      await updateAction({
+        description: values.description,
+        title: values.title,
+        id: project.id,
+      });
+      setShowDetails(true);
     } catch (error) {
       console.error("Form submission error", error);
     }
   }
 
   function toggleEdit() {
-    // toggle of and toggle on
+    setShowDetails(true);
+  }
+
+  async function deleteProject() {
+    await deleteAction(project.id);
   }
 
   return (
@@ -55,23 +71,18 @@ export default function EditProjectDetails({ project }: Props) {
           <div className="flex justify-between items-baseline">
             <div className="flex flex-col ">
               <div className="ml-2  opacity-80 hover:opacity-100">
-                <FormField
-                  control={form.control}
-                  name="repository"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Repository</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder={project.repository}
-                          type="text"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input type="text" {...form.register("title")} />
+                  </FormControl>
+                  <FormDescription>
+                    This is your Github repository title.
+                  </FormDescription>
+                  <FormMessage>
+                    {form.formState.errors.title?.message}
+                  </FormMessage>
+                </FormItem>
                 <p className="text-xs text-gray-400 flex items-center gap-2">
                   <FaGithub size={16} color="gray" />
                   Last commit {"Today"}
@@ -79,7 +90,7 @@ export default function EditProjectDetails({ project }: Props) {
               </div>
             </div>
             <button onClick={toggleEdit}>
-              <Pencil className="mr-4 " size={16} />
+              <X className="mr-4 " size={16} />
             </button>
           </div>
           <section className="flex justify-between items-start mt-2 gap-2">
@@ -107,23 +118,25 @@ export default function EditProjectDetails({ project }: Props) {
               </article>
             </div>
           </section>
-          <FormField
-            control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder={project.description}
-                    className="resize-none"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <FormItem>
+            <FormLabel>Description</FormLabel>
+            <FormControl>
+              <Textarea
+                className="resize-none"
+                {...form.register("description")}
+              />
+            </FormControl>
+            <FormDescription>
+              A brief description of your project.
+            </FormDescription>
+            <FormMessage>
+              {form.formState.errors.description?.message}
+            </FormMessage>
+          </FormItem>
+          <div className="flex gap-2 justify-end">
+            <Button onClick={deleteProject}>Delete</Button>
+            <Button onClick={form.handleSubmit(onSubmit)}>Save</Button>
+          </div>
         </form>
       </Form>
     </>
