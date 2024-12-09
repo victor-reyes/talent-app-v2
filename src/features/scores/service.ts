@@ -3,7 +3,6 @@ import { createRepository } from "./repository";
 import { calculateCategoriesScores } from "./logic";
 import { NewScores, Scores } from "./types";
 
-
 export const createService = (db: Db) => {
   const repository = createRepository(db);
   return {
@@ -48,7 +47,7 @@ export const createService = (db: Db) => {
         };
       }
     },
-    patchScores: async (userId: number, newScores: NewScores) => {
+    updateScores: async (userId: number, newScores: NewScores) => {
       await repository.updateScore(userId, newScores)
     },
     addScores: async (newScores: NewScores) => {

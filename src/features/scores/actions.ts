@@ -20,5 +20,5 @@ export async function updateScoresAction(formData: FormData) {
     management: Number(management),
   };
 
-  scoresService.patchScores(2, newScores);
+  scoresService.updateScores(2, newScores);
 }
