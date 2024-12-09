@@ -22,7 +22,7 @@ jobs:
           node-version: '22'
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: npm install pnpm
 
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
