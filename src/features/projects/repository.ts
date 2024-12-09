@@ -19,6 +19,9 @@ export function createRepository(db: Db) {
         })
         .where(eq(updatedProject.id, projectTable.id));
     },
+    delete: async (id: any) => {
+      await db.delete(projectTable).where(eq(projectTable.id, id));
+    },
   };
 }
 

@@ -19,7 +19,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Project } from "../types";
-import { updateAction } from "../actions";
+import { updateAction, deleteAction } from "../actions";
 
 type Props = {
   project: Project;
@@ -45,7 +45,7 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
       await updateAction({
         description: values.description,
         title: values.title,
-        id: project.id
+        id: project.id,
       });
       setShowDetails(true);
     } catch (error) {
@@ -55,6 +55,10 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
 
   function toggleEdit() {
     setShowDetails(true);
+  }
+
+  async function deleteProject() {
+    await deleteAction(project.id);
   }
 
   return (
@@ -129,7 +133,10 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
               {form.formState.errors.description?.message}
             </FormMessage>
           </FormItem>
-          <Button>Save</Button>
+          <div className="flex gap-2 justify-end">
+            <Button onClick={deleteProject}>Delete</Button>
+            <Button onClick={form.handleSubmit(onSubmit)}>Save</Button>
+          </div>
         </form>
       </Form>
     </>
