@@ -40,7 +40,7 @@ export default function ProjectForm() {
         values.repository,
         values.title,
         values.description,
-        values.performance
+        Number(values.performance)
       );
       toast({
         title: "Project added",

@@ -18,7 +18,7 @@ export async function seed(count: number = 50) {
         avatarUrl: avatars[index],
         languages: faker.helpers.arrayElements(
           ["English", "Swedish", "Spanish", "French", "German"],
-          3,
+          3
         ),
         educations: faker.helpers.arrayElements(
           [
@@ -28,7 +28,7 @@ export async function seed(count: number = 50) {
             "Diploma in Data Science",
             "Certificate in UX Design",
           ],
-          2,
+          2
         ),
         skills: faker.helpers.arrayElements(skills, 10),
         links: faker.helpers
@@ -42,7 +42,7 @@ export async function seed(count: number = 50) {
           ])
           .sort((a, b) => a.name.localeCompare(b.name)),
       };
-    },
+    }
   );
   backgrounds.forEach((background) => {
     repository.add(background);
@@ -52,7 +52,9 @@ export async function seed(count: number = 50) {
 async function getAvatars(count: number) {
   const result = await fetch(`https://randomuser.me/api/?results=${count}`);
   const data = await result.json();
-  return data.results.map((user) => user.picture.large);
+  return data.results.map(
+    (user: { picture: { large: unknown } }) => user.picture.large
+  );
 }
 
 seed();
