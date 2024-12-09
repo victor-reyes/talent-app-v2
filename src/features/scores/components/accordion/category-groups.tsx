@@ -7,7 +7,7 @@ type Props = {
   scores: CompleteScores;
 };
 
-export function AccordionBoard({ scores: scores }: Props) {
+export function CategoryGroups({ scores: scores }: Props) {
   return (
     <>
       <Communication scores={scores} />

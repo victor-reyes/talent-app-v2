@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { AccordionBoard } from "./accordion/accordion-board";
+import { AccordionBoard } from "./accordion/category-groups";
 import { AverageScore } from "./average-score";
 import { SpiderGraph } from "./spider-graph";
 import { H2 } from "@/components/ui/header/header-h2";

@@ -1,1 +1,1 @@
-export * from "./accordion-board";
+export * from "./category-groups";
