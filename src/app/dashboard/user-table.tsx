@@ -20,10 +20,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Separator } from "@/components/ui/separator";
 import { Arrow } from "@radix-ui/react-dropdown-menu";
 
 export type Developer = {
@@ -39,12 +37,8 @@ const columns: ColumnDef<Developer>[] = [
     header: "Name",
   },
   {
-    accessorKey: "course",
-    header: "Course",
-  },
-  {
     accessorKey: "jobStatus",
-    header: "Job Status",
+    header: "Status",
   },
   {
     accessorKey: "until",
@@ -110,7 +104,10 @@ export function DataTable<TData, TValue>({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="font-semibold">
+                  <TableHead
+                    key={header.id}
+                    className="px-2 font-serif text-slate-900"
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -131,7 +128,7 @@ export function DataTable<TData, TValue>({
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="text-xs">
+                  <TableCell key={cell.id} className="px-2 text-xs">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -152,7 +149,7 @@ export function DataTable<TData, TValue>({
 
 export function UserTable({ data }: { data: Developer[] }) {
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-2">
       <DataTable columns={columns} data={data} />
     </div>
   );
