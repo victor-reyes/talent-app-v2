@@ -1,5 +1,5 @@
 import { Db } from "@/db";
-import { projectInsert, projectTable } from "./db/schema";
+import { projectInsert, projectTable } from "./db";
 
 export function createRepository(db: Db) {
   return {

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
-import { Separator } from "@/components/ui/separator";
 import { Pencil } from "lucide-react";
 import { z } from "zod";
 import {
@@ -12,11 +11,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+  Input,
+  Textarea,
+  Separator,
+} from "@/components";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Project } from "../types";
 
 type Props = {

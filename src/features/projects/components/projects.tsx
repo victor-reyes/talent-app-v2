@@ -1,5 +1,4 @@
-import { H2 } from "@/components/ui/header/header-h2";
-import { Separator } from "@/components/ui/separator";
+import { Separator, H2 } from "@/components";
 import { projectService } from "../instance";
 import AddProject from "./add-project";
 import ProjectDetails from "./project-details";

@@ -1,6 +1,6 @@
 import { Db } from "@/db";
 import { createRepository } from "./repository";
-import { projectInsert } from "./db/schema";
+import { projectInsert } from "./db";
 // import { createClient } from "./api/api";
 import { ProjectData } from "./types";
 

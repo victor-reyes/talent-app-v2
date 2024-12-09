@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
-import { H3 } from "@/components/ui/header/header-h3";
+import { H3, Separator } from "@/components";
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
 import { ProjectDescription } from "./project-description";
 import { Pencil } from "lucide-react";
 import { Project } from "../types";
