@@ -1,5 +1,5 @@
 import { seed } from "@/features/background/seed/seed";
-import { seedScores } from "@/features/scores/seed";
+import { seedScores } from "@/features";
 import { seedProjects } from "@/features/projects/db/seed";
 
 (async () => {
