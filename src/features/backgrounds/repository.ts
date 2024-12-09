@@ -14,7 +14,7 @@ export function createRepository(db: Db) {
         .where(eq(backgroundsTable.id, id));
     },
     async add(background: BackgroundInsert) {
-      return await db.insert(backgroundsTable).values({ ...background });
+      return await db.insert(backgroundsTable).values(background);
     },
     async update(background: BackgroundSelect) {
       const { id, ...rest } = background;
