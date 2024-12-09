@@ -1,5 +1,5 @@
 import { Repository } from "./repository";
-import { BackgroundInsert, BackgroundSelect } from "./schema";
+import { BackgroundInsert, BackgroundSelect, BackgroundUpdate } from "./schema";
 
 export function createBackgroundsService(repository: Repository) {
   return {
@@ -13,7 +13,7 @@ export function createBackgroundsService(repository: Repository) {
     async add(background: BackgroundInsert) {
       await repository.add(background);
     },
-    async update(background: BackgroundSelect) {
+    async update(background: BackgroundUpdate) {
       await repository.update(background);
     },
   };

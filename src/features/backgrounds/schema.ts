@@ -15,6 +15,8 @@ export const backgroundsTable = pgTable("backgrounds", {
 
 export type BackgroundInsert = typeof backgroundsTable.$inferInsert;
 export type BackgroundSelect = typeof backgroundsTable.$inferSelect;
+export type BackgroundUpdate = Partial<BackgroundSelect> & Required<Pick<BackgroundSelect, "id">>;
+
 export type SocialLink = {
   url: string;
   name: "Github" | "LinkedIn" | "Resume";

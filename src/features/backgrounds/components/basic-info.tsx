@@ -21,7 +21,7 @@ export function BackgroundBasicInfo({ name, title, bio, avatarURL }: Props) {
           </div>
         </div>
 
-        <EditInfoForm />
+        
       </section>
     </>
   );

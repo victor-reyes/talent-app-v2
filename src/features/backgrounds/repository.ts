@@ -1,6 +1,6 @@
 import { Db } from "@/db";
 import { eq } from "drizzle-orm";
-import { backgroundsTable, BackgroundInsert, BackgroundSelect } from "./schema";
+import { backgroundsTable, BackgroundInsert, BackgroundSelect, BackgroundUpdate } from "./schema";
 
 export function createRepository(db: Db) {
   return {
@@ -16,7 +16,7 @@ export function createRepository(db: Db) {
     async add(background: BackgroundInsert) {
       return await db.insert(backgroundsTable).values(background);
     },
-    async update(background: BackgroundSelect) {
+    async update(background: BackgroundUpdate) {
       const { id, ...rest } = background;
       return db
         .update(backgroundsTable)

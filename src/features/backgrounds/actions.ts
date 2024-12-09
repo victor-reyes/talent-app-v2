@@ -29,11 +29,6 @@ export async function updateBackgroundAction(formData: FormData) {
     name,
     title,
     bio,
-    avatarUrl: "/avatar.png",
-    languages: [],
-    educations: [],
-    skills: [],
-    links: [],
   });
   revalidatePath("/");
 }
