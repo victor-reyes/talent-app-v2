@@ -2,6 +2,8 @@ import { H1 } from "@/components/ui/header/header-h1";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserTable } from "./user-table";
 import { DEVELOPERS } from "./data";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return (
@@ -15,6 +17,10 @@ export default function Page() {
         </TabsList>
 
         <TabsContent value="developers">
+          <div className="flex gap-1 justify-between pt-4">
+            <Input type="search" placeholder="Filter" className="w-fit rounded-xl"/>
+            <Button className="rounded-2xl">Create Salty</Button>
+          </div>
           <UserTable data={DEVELOPERS} />
         </TabsContent>
         <TabsContent value="core">List with core team.</TabsContent>
