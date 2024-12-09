@@ -10,12 +10,12 @@ import { Project } from "../types";
 
 type Props = {
   project: Project;
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-export default function ProjectDetails({ project }: Props) {
+export default function ProjectDetails({ project, setShowDetails }: Props) {
   function toggleEdit() {
-    // setEditDetails(false);
-    //toggle of and toggle on
+    setShowDetails(false)
   }
 
   return (
