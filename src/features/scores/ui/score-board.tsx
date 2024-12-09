@@ -14,7 +14,7 @@ export async function ScoreBoard() {
   return (
     <section className="min-w-72">
       <Separator className="my-4" />
-      <H2>Salt Scoring!!</H2>
+      <H2>Salt Scoring</H2>
       <AverageScore averageScore={scores.averageScore} />
       <SpiderGraph scores={scores} />
       <AccordionBoard scores={scores} />
