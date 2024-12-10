@@ -17,7 +17,7 @@ export async function ScoreBoard() {
     <section className="min-w-72">
       <Separator className="my-4" />
       <H2>Salt Scoring</H2>
-{/*       <AverageScore averageScore={scores.averageScore} /> */}
+      <AverageScore assignments={assignments} /> 
 {/*       <SpiderGraph scores={scores} /> */}
       <AddAssignment/>
       <Assignments assignments={assignments}/>
