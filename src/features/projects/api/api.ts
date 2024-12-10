@@ -75,29 +75,5 @@ export const createClient = () => {
 
       return performanceScore * 100;
     },
-    getImage: async (user: string, repo: string, image: string) => {
-      const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
-      try {
-        const response = await fetch(
-          `https://raw.githubusercontent.com/${user}/${repo}/main/${image}`,
-          {
-            headers: {
-              Authorization: `token ${token}`,
-            },
-            next: {
-              revalidate: 3600,
-            },
-          }
-        );
-        if (!response.ok) {
-          return null;
-        }
-
-        return response;
-      } catch (error) {
-        console.error("Error fetching image:", error);
-        return;
-      }
-    },
   };
 };
