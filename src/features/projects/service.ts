@@ -23,7 +23,7 @@ export function createService(db: Db) {
       const commits = "120";
       const issues = "52";
       console.log(projectWebsite)
-      const newPerformance = await client.testPagePerformance(projectWebsite);
+      const performance = await client.testPagePerformance(projectWebsite);
 
       const { username, title } = extractRepositoryDetails(repository);
 
@@ -31,7 +31,7 @@ export function createService(db: Db) {
         username,
         repository,
         title,
-        performance: newPerformance,
+        performance,
         description,
         issues,
         commits,

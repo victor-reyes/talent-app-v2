@@ -14,7 +14,6 @@ export type Project = {
 export type ProjectData = {
   repository: string;
   description: string;
-  performance: string;
   projectWebsite: string;
 };
 
