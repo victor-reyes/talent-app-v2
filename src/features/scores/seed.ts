@@ -23,7 +23,7 @@ export const seedAssignments = async () => {
     const newAssignment = {
         userId: 1,
         title: "tdd-event-sourcing",
-        comment: "Hej Hej",
+        comment: "Hej Hej vill du köpa jultidningar? - Anton",
         score: Math.round(Math.random() * 100),
         tags: ["frontend", "backend", "individualCommunication", "teamCollaboration", "design", "management",]
     };
@@ -33,4 +33,3 @@ export const seedAssignments = async () => {
         console.error("Something went wrong when seeding assigments " + error);
     }
 }
-seedAssignments()
