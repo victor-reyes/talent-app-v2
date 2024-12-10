@@ -73,7 +73,7 @@ export const createClient = () => {
         return "NA";
       }
 
-      return (performanceScore * 100).toString();
+      return `${(performanceScore * 100).toString()}%`;
     },
   };
 };

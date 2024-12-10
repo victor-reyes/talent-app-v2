@@ -1,6 +1,6 @@
 import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
 
-export const projectTable = pgTable("project_table", {
+export const projects = pgTable("projects", {
   id: uuid("id").primaryKey().defaultRandom(),
   username: varchar("username").notNull(),
   repository: varchar("repository").notNull(),
@@ -13,5 +13,5 @@ export const projectTable = pgTable("project_table", {
   userId: uuid("userId").notNull().defaultRandom(),
 });
 
-export type projectInsert = typeof projectTable.$inferInsert;
-export type projectSelect = typeof projectTable.$inferSelect;
+export type ProjectInsert = typeof projects.$inferInsert;
+export type ProjectSelect = typeof projects.$inferSelect;

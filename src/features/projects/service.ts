@@ -1,6 +1,6 @@
 import { Db } from "@/db";
 import { createRepository } from "./repository";
-import { projectInsert } from "./db";
+import { ProjectInsert } from "./db";
 import { createClient } from "./api/api";
 import { ProjectData, UpdatedProject } from "./types";
 import { extractRepositoryDetails } from "./logic";
@@ -13,21 +13,18 @@ export function createService(db: Db) {
       return await reps.getAll(userId);
     },
     add: async ({ repository, description, projectWebsite }: ProjectData) => {
-      //const commits = await client.getTotalOfCommits(username, title);
-      //const issuesArr = await client.getAllIssues(username, title);
-      // const images = "image.png";
       const commits = "120";
       const issues = "52";
       console.log(projectWebsite);
-      const newPerformance = await client.testPagePerformance(projectWebsite);
+      const performance = await client.testPagePerformance(projectWebsite);
 
       const { username, title } = extractRepositoryDetails(repository);
 
-      const newProject: projectInsert = {
+      const newProject: ProjectInsert = {
         username,
         repository,
         title,
-        performance: newPerformance,
+        performance,
         description,
         issues,
         commits,

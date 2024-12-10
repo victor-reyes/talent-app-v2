@@ -39,7 +39,6 @@ export default function ProjectForm() {
         repository: values.repository,
         projectWebsite:values.projectWebsite? values.projectWebsite : "",
         description: values.description,
-        performance: values.performance,
       });
       toast({
         title: "Project added",
@@ -101,23 +100,6 @@ export default function ProjectForm() {
               </FormDescription>
               <FormMessage>
                 {form.formState.errors.projectWebsite?.message}
-              </FormMessage>
-            </FormItem>
-            <FormItem>
-              <FormLabel></FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="92"
-                  type="text"
-                  {...form.register("performance")}
-                />
-              </FormControl>
-              <FormDescription>
-                The lighthouse performance of the project. Enter a number
-                between 0 and 100.
-              </FormDescription>
-              <FormMessage>
-                {form.formState.errors.performance?.message}
               </FormMessage>
             </FormItem>
             <FormItem>

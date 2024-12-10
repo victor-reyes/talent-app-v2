@@ -8,7 +8,6 @@ export async function seedProjects() {
         "KYC360 is a full-stack application designed to streamline the KYC (Know Your Customer) process for bank employees. This system ensures compliance with GDPR by enabling secure and efficient document collection directly from customers.",
       imageUrl:
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
-      performance: "95",
       projectWebsite: "",
       userId: "ecd3c615-35d6-4890-b867-4e51a411f34d",
     },
@@ -18,7 +17,6 @@ export async function seedProjects() {
         "This project is a showcase of my skills, experience, and a little about myself.",
       imageUrl:
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
-      performance: "99",
       projectWebsite: "",
       userId: "ecd3c615-35d6-4890-b867-4e51a411f34d",
     },
