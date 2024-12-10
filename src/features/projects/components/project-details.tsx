@@ -13,6 +13,7 @@ type Props = {
 };
 
 export default function ProjectDetails({ project }: Props) {
+  console.log("img:", project.imageUrl);
   return (
     <>
       <div className="flex justify-between items-baseline">
@@ -32,10 +33,15 @@ export default function ProjectDetails({ project }: Props) {
       </div>
       <section className="flex justify-between items-start mt-2 gap-2">
         <Image
-          src="/placholder-img.png"
+          src={
+            project.imageUrl
+              ? `https://raw.githubusercontent.com/${project.username}/${project.repository}/main/public/${project.imageUrl}`
+              : "/placholder-img.png"
+          }
           width={250}
           height={240}
           alt=""
+          unoptimized
           className="m-2 object-cover rounded-lg"
         />
         <div className="flex flex-col items-center justify-between gap-4 mt-2 mr-2">
