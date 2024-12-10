@@ -3,6 +3,7 @@ import { scoresTable } from "./schema";
 import { eq } from "drizzle-orm";
 import { NewScores } from "./types";
 
+
 export function createRepository(db: Db) {
   return {
     async getById(userId: number) {
@@ -16,5 +17,8 @@ export function createRepository(db: Db) {
     async addScore(newScores: NewScores) {
       await db.insert(scoresTable).values(newScores);
     },
+    async addAssignment(){
+      console.log("anton")
+    }
   };
 }
