@@ -19,6 +19,9 @@ export function createRepository(db: Db) {
     },
     async addAssignment(newAssigment: NewAssignment){
       await db.insert(assignmentTable).values(newAssigment)
+    },
+    async getAssignmentsById(userId: number) {
+      return await db.select().from(assignmentTable).where(eq(assignmentTable.userId, userId))
     }
   };
 }
