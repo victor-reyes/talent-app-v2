@@ -5,18 +5,15 @@ import { FaGithub } from "react-icons/fa6";
 import { H3, Separator } from "@/components";
 import Link from "next/link";
 import { ProjectDescription } from "./project-description";
-import { Pencil } from "lucide-react";
 import { Project } from "../types";
+import EditProjectDetails from "./edit-project-details";
 
 type Props = {
   project: Project;
-  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-export default function ProjectDetails({ project, setShowDetails }: Props) {
-  function toggleEdit() {
-    setShowDetails(false)
-  }
+export default function ProjectDetails({ project }: Props) {
+  
 
   return (
     <>
@@ -33,9 +30,7 @@ export default function ProjectDetails({ project, setShowDetails }: Props) {
             </p>
           </Link>
         </div>
-        <button onClick={toggleEdit}>
-          <Pencil className="mr-4 " size={16} />
-        </button>
+       <EditProjectDetails project={project}/>
       </div>
       <section className="flex justify-between items-start mt-2 gap-2">
         <Image

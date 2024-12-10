@@ -1,7 +1,7 @@
 import { Separator, H2 } from "@/components";
 import { projectService } from "../instance";
 import AddProject from "./add-project";
-import { EditButton } from "./edit-button";
+import ProjectDetails from "./project-details";
 
 export async function Projects() {
   const projects = await projectService.getAll();
@@ -24,7 +24,7 @@ export async function Projects() {
       <div className="flex flex-col justify-center mt-4">
         {projects.map((project, index) => (
           <div key={index}>
-            <EditButton project={project} />
+            <ProjectDetails project={project} />
             <Separator className="mt-4 mb-6" />
           </div>
         ))}

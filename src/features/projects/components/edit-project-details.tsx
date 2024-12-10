@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { FaGithub } from "react-icons/fa6";
-import { Pencil, X } from "lucide-react";
+import { Pencil} from "lucide-react";
 import { z } from "zod";
 import {
   Form,
@@ -12,7 +10,6 @@ import {
   FormMessage,
   Input,
   Textarea,
-  Separator,
   FormDescription,
   Button,
   Dialog,
@@ -30,7 +27,6 @@ import { updateAction, deleteAction } from "../actions";
 
 type Props = {
   project: Project;
-  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const formSchema = z.object({
@@ -38,7 +34,7 @@ const formSchema = z.object({
   description: z.string(),
 });
 
-export default function EditProjectDetails({ project, setShowDetails }: Props) {
+export default function EditProjectDetails({ project}: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,16 +49,12 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
       title: values.title,
       id: project.id,
     };
+
     try {
       await updateAction(updatedProject);
-      setShowDetails(true);
     } catch (error) {
       console.error("Form submission error", error);
     }
-  }
-
-  function toggleEdit() {
-    setShowDetails(true);
   }
 
   async function deleteProject() {
