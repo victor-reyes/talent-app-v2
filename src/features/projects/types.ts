@@ -15,6 +15,7 @@ export type ProjectData = {
   repository: string;
   description: string;
   projectWebsite: string;
+  userId: string;
 };
 
 export type UpdatedProject = {

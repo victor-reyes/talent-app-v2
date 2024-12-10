@@ -25,6 +25,10 @@ import { addProjectAction } from "../actions";
 import { useToast } from "@/hooks/use-toast";
 import { formSchema } from "../validation";
 
+const mockUser = {
+  userId: "ecd3c615-35d6-4890-b867-4e51a411f34d",
+};
+
 export default function ProjectForm() {
   const { toast } = useToast();
 
@@ -37,8 +41,9 @@ export default function ProjectForm() {
     try {
       await addProjectAction({
         repository: values.repository,
-        projectWebsite:values.projectWebsite? values.projectWebsite : "",
+        projectWebsite: values.projectWebsite ? values.projectWebsite : "",
         description: values.description,
+        userId: mockUser.userId,
       });
       toast({
         title: "Project added",
@@ -97,6 +102,23 @@ export default function ProjectForm() {
               </FormControl>
               <FormDescription>
                 The live website for your project, if available.
+              </FormDescription>
+              <FormMessage>
+                {form.formState.errors.projectWebsite?.message}
+              </FormMessage>
+            </FormItem>
+            <FormItem>
+              <FormLabel>Image</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="image.png"
+                  type="text"
+                  {...form.register("projectWebsite")}
+                />
+              </FormControl>
+              <FormDescription>
+                The name of a picture in your public-folder. Make sure it is
+                available on the main branch.
               </FormDescription>
               <FormMessage>
                 {form.formState.errors.projectWebsite?.message}

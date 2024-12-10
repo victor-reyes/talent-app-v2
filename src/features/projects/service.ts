@@ -12,7 +12,12 @@ export function createService(db: Db) {
     getAll: async (userId: string) => {
       return await reps.getAll(userId);
     },
-    add: async ({ repository, description, projectWebsite }: ProjectData) => {
+    add: async ({
+      repository,
+      description,
+      projectWebsite,
+      userId,
+    }: ProjectData) => {
       const commits = "120";
       const issues = "52";
       let performance: string;
@@ -33,6 +38,7 @@ export function createService(db: Db) {
         description,
         issues,
         commits,
+        userId,
       };
 
       await reps.add(newProject);
