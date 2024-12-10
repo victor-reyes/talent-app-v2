@@ -14,11 +14,11 @@ import {
 import { BackgroundSelect } from "../schema";
 
 type Props = { background: BackgroundSelect };
-export function EditInfoForm({background}: Props) {
+export function DialogForm({ background }: Props) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Pencil type="submit" size={16}/>
+        <Pencil type="submit" size={16} />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -30,7 +30,12 @@ export function EditInfoForm({background}: Props) {
         <form action={updateBackgroundAction}>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
-              <input type="text" name={"userId"} defaultValue={background.id} hidden />
+              <input
+                type="text"
+                name={"userId"}
+                defaultValue={background.id}
+                hidden
+              />
               <label htmlFor="name" className="text-right">
                 Name
               </label>
@@ -44,13 +49,21 @@ export function EditInfoForm({background}: Props) {
               <label htmlFor="username" className="text-right">
                 Title
               </label>
-              <input placeholder={background.title} name="title" className="col-span-3" />
+              <input
+                placeholder={background.title}
+                name="title"
+                className="col-span-3"
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <label htmlFor="bio" className="text-right">
                 Bio
               </label>
-              <input placeholder={background.bio} name="bio" className="col-span-3" />
+              <input
+                placeholder={background.bio}
+                name="bio"
+                className="col-span-3"
+              />
             </div>
           </div>
 

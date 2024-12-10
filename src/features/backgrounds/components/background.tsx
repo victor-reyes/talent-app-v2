@@ -3,7 +3,7 @@ import { SocialLink } from "./social-link";
 import { BackgroundBasicInfo } from "./basic-info";
 import { backgroundsService } from "../instance";
 import SkillsInput from "./skills-input";
-import { EditInfoForm } from "./form-info";
+import { DialogForm } from "./dialog-form";
 
 export async function Background() {
   const background = (await backgroundsService.getById(1))[0];
@@ -21,7 +21,7 @@ export async function Background() {
         avatarURL={background.avatarUrl!}
       />
 
-      <EditInfoForm background={background} />
+      <DialogForm background={background} />
       <div>
         <Row title="Languages" content={background.languages} />
         <Row title="Education" content={background.educations} />
