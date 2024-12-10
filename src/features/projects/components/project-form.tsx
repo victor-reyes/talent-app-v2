@@ -71,20 +71,6 @@ export default function ProjectForm() {
             className="flex flex-col gap-3"
           >
             <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="devUser42"
-                  type="text"
-                  {...form.register("username")}
-                />
-              </FormControl>
-              <FormDescription>This is your Github username.</FormDescription>
-              <FormMessage>
-                {form.formState.errors.username?.message}
-              </FormMessage>
-            </FormItem>
-            <FormItem>
               <FormLabel>Repository</FormLabel>
               <FormControl>
                 <Input
@@ -99,20 +85,6 @@ export default function ProjectForm() {
               <FormMessage>
                 {form.formState.errors.repository?.message}
               </FormMessage>
-            </FormItem>
-            <FormItem>
-              <FormLabel>Title</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Project Tracker"
-                  type="text"
-                  {...form.register("title")}
-                />
-              </FormControl>
-              <FormDescription>
-                This is your Github repository title.
-              </FormDescription>
-              <FormMessage>{form.formState.errors.title?.message}</FormMessage>
             </FormItem>
             <FormItem>
               <FormLabel>Performance</FormLabel>
