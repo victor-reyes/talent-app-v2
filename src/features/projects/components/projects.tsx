@@ -1,11 +1,22 @@
-import { H2 } from "@/components/ui/header/header-h2";
-import { Separator } from "@/components/ui/separator";
+import { Separator, H2 } from "@/components";
 import { projectService } from "../instance";
 import AddProject from "./add-project";
-import ProjectDetails from "./project-details";
+import { EditButton } from "./edit-button";
 
-export async function ProjectCard() {
+export async function Projects() {
   const projects = await projectService.getAll();
+
+  if (projects.length === 0) {
+    return (
+      <div>
+        <H2>Projects</H2>
+        <div className="flex flex-col justify-center mt-4">
+          <p>No projects found</p>
+        </div>
+        <AddProject />
+      </div>
+    );
+  }
 
   return (
     <div className="mt-4">
@@ -13,7 +24,7 @@ export async function ProjectCard() {
       <div className="flex flex-col justify-center mt-4">
         {projects.map((project, index) => (
           <div key={index}>
-            <ProjectDetails project={project} />
+            <EditButton project={project} />
             <Separator className="mt-4 mb-6" />
           </div>
         ))}

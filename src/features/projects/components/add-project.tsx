@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import ProjectForm from "./project-form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components";
 
 export default function AddProject() {
   const [showForm, setShowForm] = useState(false);

@@ -1,6 +1,6 @@
 import { backgroundsSeed } from "@/features/backgrounds/seed/seed";
 import { seedScores } from "@/features";
-import { seedProjects } from "@/features/projects/db/seed";
+import { seedProjects } from "@/features/projects/seed";
 
 (async () => {
   console.log("Start seeding...");
