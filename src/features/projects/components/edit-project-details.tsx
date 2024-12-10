@@ -40,16 +40,14 @@ export default function EditProjectDetails({ project }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: project.title,
       description: project.description,
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const updatedProject = {
-      description: values.description,
-      title: values.title,
       id: project.id,
+      description: values.description,
     };
 
     try {
@@ -90,18 +88,6 @@ export default function EditProjectDetails({ project }: Props) {
               onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col gap-4"
             >
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Input type="text" {...form.register("title")} />
-                </FormControl>
-                <FormDescription>
-                  This is your Github repository title.
-                </FormDescription>
-                <FormMessage>
-                  {form.formState.errors.title?.message}
-                </FormMessage>
-              </FormItem>
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
