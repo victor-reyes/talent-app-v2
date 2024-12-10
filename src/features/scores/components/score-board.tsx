@@ -8,18 +8,19 @@ import { Assignments } from "./accordion/assignments";
 
 export async function ScoreBoard() {
   const hardcodedUserId = 1;
-  const scores =
-    await scoresService.getScoreById(hardcodedUserId);
-    const assignments = scoresService.get
+/*   const scores = */
+/*     await scoresService.getScoreById(hardcodedUserId); */
+    const assignments =  await scoresService.getAssignmentsById(hardcodedUserId)
+
 
   return (
     <section className="min-w-72">
       <Separator className="my-4" />
       <H2>Salt Scoring</H2>
-      <AverageScore averageScore={scores.averageScore} />
-      <SpiderGraph scores={scores} />
+{/*       <AverageScore averageScore={scores.averageScore} /> */}
+{/*       <SpiderGraph scores={scores} /> */}
       <AddAssignment/>
-      <Assignments/>
+      <Assignments assignments={assignments}/>
     </section>
   );
 }
