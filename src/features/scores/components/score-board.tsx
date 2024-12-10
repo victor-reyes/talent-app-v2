@@ -10,6 +10,7 @@ export async function ScoreBoard() {
   const hardcodedUserId = 1;
   const scores =
     await scoresService.getScoreById(hardcodedUserId);
+    const assignments = scoresService.get
 
   return (
     <section className="min-w-72">
