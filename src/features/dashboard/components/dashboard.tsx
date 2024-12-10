@@ -3,10 +3,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { UserTable } from "@/features/dashboard/components/user-table";
-import { DEVELOPERS } from "@/features/dashboard/components/data";
+import { dashboardService } from "../instance";
+import { DeveloperProfileList } from "./developer-profile-list";
 
-export function Dashboard() {
+export async function Dashboard() {
+  const developers = await dashboardService.getAllDeveloperProfiles();
+
   return (
     <div className="container mx-auto flex flex-col justify-center px-4 gap-4">
       <H1>Dashboard</H1>
@@ -26,7 +28,17 @@ export function Dashboard() {
             />
             <Button className="rounded-2xl">Create Salty</Button>
           </div>
-          <UserTable data={DEVELOPERS} />
+          {Array.isArray(developers) ? (
+            developers.map((developer) => (
+              <DeveloperProfileList
+                key={developer.id}
+                name={developer.name}
+                email={developer.email}
+              />
+            ))
+          ) : (
+            <p>{developers}</p>
+          )}
         </TabsContent>
         <TabsContent value="core">List with core team.</TabsContent>
         <TabsContent value="customers">List with customers</TabsContent>

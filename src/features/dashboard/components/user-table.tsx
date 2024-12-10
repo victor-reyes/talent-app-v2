@@ -27,7 +27,6 @@ import { Switch } from "@/components/ui/switch";
 
 export type Developer = {
   name: string;
-  course: "JavaScript" | "Java" | "C#" | "Cobolt";
   jobStatus: string;
   until: Date;
   published: boolean;
@@ -59,7 +58,7 @@ const columns: ColumnDef<Developer>[] = [
     header: "Published",
     cell({ row }) {
       const published = row.getValue("published_status") as boolean;
-      return <Switch className="scale-[0.6]"/>;
+      return <Switch className="scale-[0.6]" />;
     },
   },
   {
@@ -122,7 +121,7 @@ export function DataTable<TData, TValue>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )}
                   </TableHead>
                 );

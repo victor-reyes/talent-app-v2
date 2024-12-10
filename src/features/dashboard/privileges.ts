@@ -1,3 +1,3 @@
-export function hasAccess(){
-  return true
+export function hasAccess() {
+  return true;
 }
