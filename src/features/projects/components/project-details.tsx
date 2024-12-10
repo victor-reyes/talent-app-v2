@@ -13,8 +13,6 @@ type Props = {
 };
 
 export default function ProjectDetails({ project }: Props) {
-  
-
   return (
     <>
       <div className="flex justify-between items-baseline">
@@ -30,11 +28,11 @@ export default function ProjectDetails({ project }: Props) {
             </p>
           </Link>
         </div>
-       <EditProjectDetails project={project}/>
+        <EditProjectDetails project={project} />
       </div>
       <section className="flex justify-between items-start mt-2 gap-2">
         <Image
-          src="/restaurant1.png"
+          src="/placholder-img.png"
           width={250}
           height={240}
           alt=""
