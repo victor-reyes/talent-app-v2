@@ -27,6 +27,7 @@ export function createService(db: Db) {
       const newProject: ProjectInsert = {
         username,
         repository,
+        projectWebsite,
         title,
         performance,
         description,
