@@ -62,7 +62,7 @@ export default function ProjectForm() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Add project</DialogTitle>
           <DialogDescription>
             Add a new project here. Click submit when you´re done.
           </DialogDescription>
