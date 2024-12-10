@@ -13,13 +13,13 @@ type Props = {
 };
 
 export default function ProjectDetails({ project }: Props) {
-  console.log("img:", project.imageUrl);
+  const repository = project.repository.split("/")[4];
   return (
     <>
       <div className="flex justify-between items-baseline">
         <div className="flex flex-col ">
           <Link
-            href={`https://github.com/${project.username}/${project.repository}`}
+            href={project.repository}
             className="ml-2  opacity-80 hover:opacity-100"
           >
             <H3>{project.title}</H3>
@@ -35,7 +35,7 @@ export default function ProjectDetails({ project }: Props) {
         <Image
           src={
             project.imageUrl
-              ? `https://raw.githubusercontent.com/${project.username}/${project.repository}/main/public/${project.imageUrl}`
+              ? `https://raw.githubusercontent.com/${project.username}/${repository}/main/public/${project.imageUrl}`
               : "/placholder-img.png"
           }
           width={250}
