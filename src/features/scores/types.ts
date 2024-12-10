@@ -17,7 +17,7 @@ export type CompleteScores = Scores & {
 
 export type NewAssignment = {
   userId: number,
-  score: string,
+  score: number,
   title: string,
   comment: string,
   tags: string[],
