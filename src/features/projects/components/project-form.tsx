@@ -68,12 +68,15 @@ export default function ProjectForm() {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-3">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-3"
+          >
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
                 <Input
-                  placeholder=""
+                  placeholder="devUser42"
                   type="text"
                   {...form.register("username")}
                 />
@@ -87,7 +90,7 @@ export default function ProjectForm() {
               <FormLabel>Repository</FormLabel>
               <FormControl>
                 <Input
-                  placeholder=""
+                  placeholder="https://github.com/devUser42/project-tracker"
                   type="text"
                   {...form.register("repository")}
                 />
@@ -102,7 +105,11 @@ export default function ProjectForm() {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input placeholder="" type="text" {...form.register("title")} />
+                <Input
+                  placeholder="Project Tracker"
+                  type="text"
+                  {...form.register("title")}
+                />
               </FormControl>
               <FormDescription>
                 This is your Github repository title.
@@ -113,13 +120,14 @@ export default function ProjectForm() {
               <FormLabel>Performance</FormLabel>
               <FormControl>
                 <Input
-                  placeholder=""
+                  placeholder="92"
                   type="text"
                   {...form.register("performance")}
                 />
               </FormControl>
               <FormDescription>
-                The lighthouse performance of the project
+                The lighthouse performance of the project. Enter a number
+                between 0 and 100.
               </FormDescription>
               <FormMessage>
                 {form.formState.errors.performance?.message}
@@ -129,7 +137,7 @@ export default function ProjectForm() {
               <FormLabel>Description</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Placeholder"
+                  placeholder="A comprehensive tool for tracking project milestones and tasks."
                   className="resize-none"
                   {...form.register("description")}
                 />
