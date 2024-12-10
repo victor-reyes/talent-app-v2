@@ -1,5 +1,5 @@
 import { Db } from "@/db";
-import { developers, users } from "./schema";
+import { DeveloperInsert, developers, UserInsert, users } from "./schema";
 import { eq } from "drizzle-orm";
 
 export function createRepository(db: Db) {
@@ -9,6 +9,12 @@ export function createRepository(db: Db) {
     },
     async getAllDevelopers() {
       return await db.select().from(developers).execute();
+    },
+    async addUser(user: UserInsert) {
+      return await db.insert(users).values(user);
+    },
+    async addDeveloper(developer: DeveloperInsert) {
+      return await db.insert(developers).values(developer);
     },
   };
 }
