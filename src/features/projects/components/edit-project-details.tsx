@@ -1,6 +1,6 @@
 "use client";
 
-import { Pencil} from "lucide-react";
+import { Pencil } from "lucide-react";
 import { z } from "zod";
 import {
   Form,
@@ -34,7 +34,7 @@ const formSchema = z.object({
   description: z.string(),
 });
 
-export default function EditProjectDetails({ project}: Props) {
+export default function EditProjectDetails({ project }: Props) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -62,58 +62,53 @@ export default function EditProjectDetails({ project}: Props) {
   }
 
   return (
- <Dialog>
-   <DialogTrigger asChild>
-     <Pencil type="submit" size={16} />
-   </DialogTrigger>
-   <DialogContent className="sm:max-w-[425px]">
-     <DialogHeader>
-       <DialogTitle>Edit project</DialogTitle>
-       <DialogDescription>
-         Make changes to your project here. Click save when you´re done.
-       </DialogDescription>
-     </DialogHeader>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-                <FormItem>
-                  <FormLabel>Title</FormLabel>
-                  <FormControl>
-                    <Input type="text" {...form.register("title")} />
-                  </FormControl>
-                  <FormDescription>
-                    This is your Github repository title.
-                  </FormDescription>
-                  <FormMessage>
-                    {form.formState.errors.title?.message}
-                  </FormMessage>
-                </FormItem>
-          <FormItem>
-            <FormLabel>Description</FormLabel>
-            <FormControl>
-              <Textarea
-                className="resize-none"
-                {...form.register("description")}
-              />
-            </FormControl>
-            <FormDescription>
-              A brief description of your project.
-            </FormDescription>
-            <FormMessage>
-              {form.formState.errors.description?.message}
-            </FormMessage>
-          </FormItem>
-       <DialogFooter>
-          <div className="flex gap-2 justify-end">
-            <Button onClick={deleteProject}>Delete</Button>
-            <Button onClick={form.handleSubmit(onSubmit)}>Save</Button>
-          </div>
-       </DialogFooter>
-        </form>
-      </Form>
-   </DialogContent>
- </Dialog>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Pencil type="submit" size={16} />
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Edit project</DialogTitle>
+          <DialogDescription>
+            Make changes to your project here. Click save when you´re done.
+          </DialogDescription>
+        </DialogHeader>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+            <FormItem>
+              <FormLabel>Title</FormLabel>
+              <FormControl>
+                <Input type="text" {...form.register("title")} />
+              </FormControl>
+              <FormDescription>
+                This is your Github repository title.
+              </FormDescription>
+              <FormMessage>{form.formState.errors.title?.message}</FormMessage>
+            </FormItem>
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Textarea
+                  className="resize-none"
+                  {...form.register("description")}
+                />
+              </FormControl>
+              <FormDescription>
+                A brief description of your project.
+              </FormDescription>
+              <FormMessage>
+                {form.formState.errors.description?.message}
+              </FormMessage>
+            </FormItem>
+            <DialogFooter>
+              <div className="flex gap-6 justify-end">
+                <Button onClick={deleteProject}>Delete project</Button>
+                <Button onClick={form.handleSubmit(onSubmit)}>Save</Button>
+              </div>
+            </DialogFooter>
+          </form>
+        </Form>
+      </DialogContent>
+    </Dialog>
   );
 }
-
