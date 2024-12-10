@@ -25,7 +25,7 @@ export function createService(db: Db) {
       console.log(projectWebsite)
       const newPerformance = await client.testPagePerformance(projectWebsite);
 
-      const {username, title} = extractRepositoryDetails(repository)
+      const { username, title } = extractRepositoryDetails(repository);
 
       const newProject: projectInsert = {
         username,
@@ -44,9 +44,6 @@ export function createService(db: Db) {
     },
     delete: async (id: string) => {
       await reps.delete(id);
-    },
-    getImage: async (username: string, title: string, image: string) => {
-      return await client.getImage(username, title, image);
     },
   };
 }

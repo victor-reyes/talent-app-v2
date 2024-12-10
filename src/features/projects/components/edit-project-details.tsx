@@ -31,11 +31,16 @@ type Props = {
 };
 
 const formSchema = z.object({
-  title: z.string(),
   description: z.string(),
 });
 
 export default function EditProjectDetails({ project }: Props) {
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState({
+    title: "",
+    description: "",
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,11 +61,6 @@ export default function EditProjectDetails({ project }: Props) {
     }
   }
 
-  const [toastOpen, setToastOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState({
-    title: "",
-    description: "",
-  });
   async function deleteProject() {
     setToastMessage({
       title: "Confirm Deletion",

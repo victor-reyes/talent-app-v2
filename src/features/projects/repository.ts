@@ -16,7 +16,6 @@ export function createRepository(db: Db) {
         .update(projectTable)
         .set({
           description: updatedProject.description,
-          title: updatedProject.title,
         })
         .where(eq(projectTable.id, updatedProject.id));
     },
