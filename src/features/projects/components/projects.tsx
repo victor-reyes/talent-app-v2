@@ -2,6 +2,7 @@ import { Separator, H2 } from "@/components";
 import { projectService } from "../instance";
 import AddProject from "./add-project";
 import { EditButton } from "./edit-button";
+import ProjectForm from "./project-form";
 
 export async function Projects() {
   const projects = await projectService.getAll();
@@ -29,7 +30,7 @@ export async function Projects() {
           </div>
         ))}
       </div>
-      <AddProject />
+      <ProjectForm />
     </div>
   );
 }
