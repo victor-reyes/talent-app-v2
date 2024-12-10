@@ -16,7 +16,7 @@ export function Assignment({ assignment }: Props) {
     <Accordion type="single" collapsible className="mx-auto max-w-96">
       <AccordionItem value="item-1">
         <AccordionTrigger>
-          <ProgressRing percentage={100} />
+          <ProgressRing percentage={assignment.score} />
           {assignment.title}
         </AccordionTrigger>
         <AccordionContent>
