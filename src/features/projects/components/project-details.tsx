@@ -29,7 +29,7 @@ export default function ProjectDetails({ project }: Props) {
             </p>
           </Link>
         </div>
-        <EditProjectDetails project={project} />
+        <EditProjectDetails key={project.id} project={project} />
       </div>
       <section className="flex justify-between items-start mt-2 gap-2">
         <Image
