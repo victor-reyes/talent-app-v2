@@ -64,14 +64,11 @@ export default function ProjectForm() {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you´re done.
+            Add a new project here. Click submit when you´re done.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 max-w-3xl mx-auto py-10"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-3">
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
@@ -144,12 +141,11 @@ export default function ProjectForm() {
                 {form.formState.errors.description?.message}
               </FormMessage>
             </FormItem>
-            <Button>Submit</Button>
+            <DialogFooter>
+              <Button>Submit</Button>
+            </DialogFooter>
           </form>
         </Form>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
