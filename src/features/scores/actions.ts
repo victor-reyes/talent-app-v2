@@ -30,8 +30,8 @@ export async function addAssigmentAction(formData: FormData) {
   const newAssignment = {
     userId: 1,
     comment,
-    score,
-    title,
+    score: Number(score),
+    title, 
     tags,
   };
 
