@@ -4,7 +4,8 @@ import ProjectDetails from "./project-details";
 import ProjectForm from "./project-form";
 
 export async function Projects() {
-  const projects = await projectService.getAll();
+  const userId = "ecd3c615-35d6-4890-b867-4e51a411f34d";
+  const projects = await projectService.getAll(userId);
 
   if (projects.length === 0) {
     return (
@@ -14,7 +15,7 @@ export async function Projects() {
           <p>No projects found</p>
         </div>
         <div className="flex justify-end">
-        <ProjectForm />
+          <ProjectForm />
         </div>
       </div>
     );
@@ -32,7 +33,7 @@ export async function Projects() {
         ))}
       </div>
       <div className="flex justify-end mb-4">
-      <ProjectForm />
+        <ProjectForm />
       </div>
     </div>
   );

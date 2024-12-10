@@ -10,6 +10,7 @@ export async function seedProjects() {
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: "95",
       projectWebsite: "",
+      userId: "ecd3c615-35d6-4890-b867-4e51a411f34d",
     },
     {
       repository: "https://github.com/alimohseni99/portfolio",
@@ -19,6 +20,7 @@ export async function seedProjects() {
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: "99",
       projectWebsite: "",
+      userId: "ecd3c615-35d6-4890-b867-4e51a411f34d",
     },
   ];
 
