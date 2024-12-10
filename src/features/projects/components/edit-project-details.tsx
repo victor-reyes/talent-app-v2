@@ -24,6 +24,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Project } from "../types";
 import { updateAction, deleteAction } from "../actions";
+import { toast } from "@/hooks/use-toast";
 
 type Props = {
   project: Project;
@@ -58,7 +59,21 @@ export default function EditProjectDetails({ project }: Props) {
   }
 
   async function deleteProject() {
-    await deleteAction(project.id);
+    const confirmed = confirm("Are you sure you want to delete this project?");
+    if (confirmed) {
+      try {
+        await deleteAction(project.id);
+        toast({
+          title: "Project deleted",
+          description: "Project deleted successfully",
+        });
+      } catch (error) {
+        toast({
+          title: "Something went wrong",
+          description: error instanceof Error ? error.message : String(error),
+        });
+      }
+    }
   }
 
   return (
@@ -74,7 +89,10 @@ export default function EditProjectDetails({ project }: Props) {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4"
+          >
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
@@ -102,7 +120,7 @@ export default function EditProjectDetails({ project }: Props) {
             </FormItem>
             <DialogFooter>
               <div className="flex gap-6 justify-end">
-                <Button onClick={deleteProject}>Delete project</Button>
+                <Button onClick={deleteProject}>Delete</Button>
                 <Button onClick={form.handleSubmit(onSubmit)}>Save</Button>
               </div>
             </DialogFooter>
