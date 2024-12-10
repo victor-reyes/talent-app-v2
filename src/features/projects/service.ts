@@ -15,13 +15,15 @@ export function createService(db: Db) {
     add: async ({
       repository,
       description,
-      performance,
+      projectWebsite,
     }: ProjectData) => {
       //const commits = await client.getTotalOfCommits(username, title);
       //const issuesArr = await client.getAllIssues(username, title);
       // const images = "image.png";
       const commits = "120";
       const issues = "52";
+      console.log(projectWebsite)
+      const newPerformance = await client.testPagePerformance(projectWebsite);
 
       const {username, title} = extractRepositoryDetails(repository)
 
@@ -29,7 +31,7 @@ export function createService(db: Db) {
         username,
         repository,
         title,
-        performance,
+        performance: newPerformance,
         description,
         issues,
         commits,

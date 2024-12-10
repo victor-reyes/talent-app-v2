@@ -54,13 +54,13 @@ export const createClient = () => {
 
     testPagePerformance: async (url: string) => {
       const apiKey = process.env.GOOGLE_API_KEY;
-      const isPerformanceFeatureEnabled =
-        process.env.PERFORMANCE_FEATURE_ENABLED === "true";
+      // const isPerformanceFeatureEnabled =
+      //   process.env.PERFORMANCE_FEATURE_ENABLED === "true";
 
-      if (!isPerformanceFeatureEnabled || !apiKey) {
-        console.log("Skipping performance test");
-        return null;
-      }
+      // if (!isPerformanceFeatureEnabled || !apiKey) {
+      //   console.log("Skipping performance test");
+      //   return "NA";
+      // }
       const pageUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${apiKey}`;
       let performanceScore = 0;
 
@@ -70,10 +70,10 @@ export const createClient = () => {
         performanceScore = data.lighthouseResult.categories.performance.score;
       } catch (error) {
         console.error("Error fetching performance score:", error);
-        return null;
+        return "NA";
       }
 
-      return performanceScore * 100;
+      return (performanceScore * 100).toString();
     },
     getImage: async (user: string, repo: string, image: string) => {
       const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;

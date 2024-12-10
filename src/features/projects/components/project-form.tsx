@@ -37,7 +37,7 @@ export default function ProjectForm() {
     try {
       await addProjectAction({
         repository: values.repository,
-        projectWebsite:values.projectWebsite || "",
+        projectWebsite:values.projectWebsite? values.projectWebsite : "",
         description: values.description,
         performance: values.performance,
       });
