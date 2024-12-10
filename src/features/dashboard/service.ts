@@ -1,23 +1,27 @@
 import { hasAccess } from "./privileges";
 import { Repository } from "./repository";
-import { DeveloperInsert, UserInsert } from "./schema";
+import { DeveloperProfileInsert, IdentityInsert } from "./schema";
 
 export function createService(repository: Repository) {
   return {
-    async getUserById(id: number) {
-      return hasAccess() ? await repository.getUserById(id) : "Access denied";
-    },
-    async getAllDevelopers() {
+    async getIdentityById(id: number) {
       return hasAccess()
-        ? await repository.getAllDevelopers()
+        ? await repository.getIdentityById(id)
         : "Access denied";
     },
-    async addUser(user: UserInsert) {
-      return hasAccess() ? await repository.addUser(user) : "Access denied";
-    },
-    async addDeveloper(developer: DeveloperInsert) {
+    async getAllDeveloperProfiles() {
       return hasAccess()
-        ? await repository.addDeveloper(developer)
+        ? await repository.getAllDeveloperProfiles()
+        : "Access denied";
+    },
+    async addIdentity(identity: IdentityInsert) {
+      return hasAccess()
+        ? await repository.addIdentity(identity)
+        : "Access denied";
+    },
+    async addDeveloperProfile(developerProfile: DeveloperProfileInsert) {
+      return hasAccess()
+        ? await repository.addDeveloperProfile(developerProfile)
         : "Access denied";
     },
   };

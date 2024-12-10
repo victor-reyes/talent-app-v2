@@ -1,6 +1,6 @@
 import { pgEnum, pgTable, integer, varchar } from "drizzle-orm/pg-core";
 
-export const role = pgEnum("role", [
+export const roles = pgEnum("roles", [
   "pending",
   "developer",
   "client",
@@ -14,24 +14,24 @@ export const developersStatus = pgEnum("developers_status", [
   "highlighted",
 ]);
 
-export const users = pgTable("users", {
+export const identities = pgTable("identities", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   clerkId: integer("clerk_id"),
-  role: role().notNull(),
+  roles: roles().notNull().default("pending"),
 });
 
-export const developers = pgTable("developers", {
+export const developerProfiles = pgTable("developer_profiles", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   userId: integer("user_id")
     .notNull()
-    .references(() => users.id),
+    .references(() => identities.id),
   name: varchar().notNull(),
   email: varchar().notNull(),
   status: developersStatus().notNull().default("unpublished"),
 });
 
-export type UserSelect = typeof users.$inferSelect;
-export type UserInsert = typeof users.$inferInsert;
+export type IdentititySelect = typeof identities.$inferSelect;
+export type IdentityInsert = typeof identities.$inferInsert;
 
-export type DeveloperSelect = typeof developers.$inferSelect;
-export type DeveloperInsert = typeof developers.$inferInsert;
+export type DeveloperProfileSelect = typeof developerProfiles.$inferSelect;
+export type DeveloperProfileInsert = typeof developerProfiles.$inferInsert;

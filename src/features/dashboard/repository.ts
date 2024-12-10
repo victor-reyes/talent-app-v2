@@ -1,20 +1,28 @@
 import { Db } from "@/db";
-import { DeveloperInsert, developers, UserInsert, users } from "./schema";
+import {
+  DeveloperProfileInsert,
+  developerProfiles,
+  IdentityInsert,
+  identities,
+} from "./schema";
 import { eq } from "drizzle-orm";
 
 export function createRepository(db: Db) {
   return {
-    async getUserById(id: number) {
-      return await db.select().from(users).where(eq(users.id, id));
+    async getIdentityById(id: number) {
+      return await db.select().from(identities).where(eq(identities.id, id));
     },
-    async getAllDevelopers() {
-      return await db.select().from(developers).execute();
+    async getAllDeveloperProfiles() {
+      return await db.select().from(developerProfiles).execute();
     },
-    async addUser(user: UserInsert) {
-      return await db.insert(users).values(user);
+    async addIdentity(identity: IdentityInsert) {
+      return await db
+        .insert(identities)
+        .values(identity)
+        .returning({ id: identities.id });
     },
-    async addDeveloper(developer: DeveloperInsert) {
-      return await db.insert(developers).values(developer);
+    async addDeveloperProfile(developerProfile: DeveloperProfileInsert) {
+      return await db.insert(developerProfiles).values(developerProfile);
     },
   };
 }
