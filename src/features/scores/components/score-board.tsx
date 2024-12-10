@@ -3,7 +3,6 @@ import { AverageScore } from "./average-score";
 import { SpiderGraph } from "./spider-graph";
 import { H2 } from "@/components/ui/header/header-h2";
 import { scoresService } from "../instance";
-import { CategoryGroups } from "./accordion";
 import { AddAssignment } from "./add-assignment";
 import { Assignments } from "./accordion/assignments";
 
@@ -20,7 +19,6 @@ export async function ScoreBoard() {
       <SpiderGraph scores={scores} />
       <AddAssignment/>
       <Assignments/>
-      <CategoryGroups scores={scores}/>
     </section>
   );
 }
