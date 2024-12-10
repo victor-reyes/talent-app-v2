@@ -12,9 +12,7 @@ export type Project = {
 };
 
 export type ProjectData = {
-  username: string;
   repository: string;
-  title: string;
   description: string;
   performance: string;
 };

@@ -36,9 +36,7 @@ export default function ProjectForm() {
     console.log("Form submitted with values:", values);
     try {
       await addProjectAction({
-        username: values.username,
         repository: values.repository,
-        title: values.title,
         description: values.description,
         performance: values.performance,
       });

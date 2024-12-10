@@ -13,9 +13,7 @@ export function createService(db: Db) {
       return await reps.getAll();
     },
     add: async ({
-      username,
       repository,
-      title,
       description,
       performance,
     }: ProjectData) => {
@@ -25,12 +23,12 @@ export function createService(db: Db) {
       const commits = "120";
       const issues = "52";
 
-      const {newUsername, newTitle} = extractRepositoryDetails(repository)
+      const {username, title} = extractRepositoryDetails(repository)
 
       const newProject: projectInsert = {
-        username: newUsername,
+        username,
         repository,
-        title: newTitle,
+        title,
         performance,
         description,
         issues,
