@@ -4,6 +4,7 @@ import { SpiderGraph } from "./spider-graph";
 import { H2 } from "@/components/ui/header/header-h2";
 import { scoresService } from "../instance";
 import { CategoryGroups } from "./accordion";
+import { EditScoreForm } from "./accordion/edit-score-form";
 
 export async function ScoreBoard() {
   const hardcodedUserId = 1;
@@ -12,6 +13,7 @@ export async function ScoreBoard() {
 
   return (
     <section className="min-w-72">
+      <EditScoreForm scores={scores}/>
       <Separator className="my-4" />
       <H2>Salt Scoring</H2>
       <AverageScore averageScore={scores.averageScore} />
