@@ -1,7 +1,7 @@
 import { Db } from "@/db";
-import { scoresTable } from "./schema";
+import { assignmentTable, scoresTable } from "./schema";
 import { eq } from "drizzle-orm";
-import { NewScores } from "./types";
+import { NewAssignment, NewScores } from "./types";
 
 
 export function createRepository(db: Db) {
@@ -17,8 +17,8 @@ export function createRepository(db: Db) {
     async addScore(newScores: NewScores) {
       await db.insert(scoresTable).values(newScores);
     },
-    async addAssignment(){
-      console.log("anton")
+    async addAssignment(newAssigment: NewAssignment){
+      await db.insert(assignmentTable).values(newAssigment)
     }
   };
 }
