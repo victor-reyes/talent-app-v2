@@ -66,6 +66,7 @@ export function DialogForm({ background }: Props) {
                 className="col-span-3"
               />
             </div>
+
             <SkillsInput tags={background.skills} />
           </div>
 
