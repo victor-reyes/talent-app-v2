@@ -29,3 +29,9 @@ export const developers = pgTable("developers", {
   email: varchar().notNull(),
   status: developersStatus().notNull().default("unpublished"),
 });
+
+export type UserSelect = typeof users.$inferSelect;
+export type UserInsert = typeof users.$inferInsert;
+
+export type DeveloperSelect = typeof developers.$inferSelect;
+export type DeveloperInsert = typeof developers.$inferInsert;
