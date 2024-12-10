@@ -10,14 +10,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Scores } from "../types";
-import { updateScoresAction } from "../actions";
+import { addAssigmentAction } from "../actions";
 
-type Props = {
-  scores: Scores;
-};
 
-export function AddAssignment({ scores: scores }: Props) {
+export function AddAssignment() {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -36,7 +32,7 @@ export function AddAssignment({ scores: scores }: Props) {
             Fill out the details below to add a new assignment.
           </DialogDescription>
         </DialogHeader>
-        <form action={updateScoresAction} className="space-y-4">
+        <form action={addAssigmentAction} className="space-y-4">
           <div className="grid gap-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <label
