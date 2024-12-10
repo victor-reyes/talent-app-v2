@@ -15,12 +15,14 @@ export type CompleteScores = Scores & {
   averageScore: number;
 };
 
-export type NewAssignment = {
-  userId: number,
-  score: number,
-  title: string,
-  comment: string,
-  tags: string[],
+export type Assignment = {
+  id: number;
+  userId: number;
+  score: number;
+  title: string;
+  comment: string | null;
+  tags: string[];
 };
 
+export type NewAssignment = Omit<Assignment, "id">;
 export type NewScores = Omit<Scores, "id">;
