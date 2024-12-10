@@ -1,12 +1,11 @@
+import { Assignment } from "../assignment";
 
-type Props = {
-  scores: CompleteScores;
-};
 
-export function Assignment({ scores: scores }: Props) {
+export function Assignments() {
+
   return (
     <>
-      <Assignments  />
+      <Assignment />
     </>
   );
 }
