@@ -3,6 +3,7 @@ import { createRepository } from "./repository";
 import { projectInsert } from "./db";
 import { createClient } from "./api/api";
 import { ProjectData, UpdatedProject } from "./types";
+import { extractRepositoryDetails } from "./logic";
 
 export function createService(db: Db) {
   const reps = createRepository(db);
@@ -24,10 +25,12 @@ export function createService(db: Db) {
       const commits = "120";
       const issues = "52";
 
+      const {newUsername, newTitle} = extractRepositoryDetails(repository)
+
       const newProject: projectInsert = {
-        username,
+        username: newUsername,
         repository,
-        title,
+        title: newTitle,
         performance,
         description,
         issues,
