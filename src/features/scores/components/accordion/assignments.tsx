@@ -1,11 +1,18 @@
+import { Assignment as AssignmentType } from "../../types";
 import { Assignment } from "../assignment";
 
 
-export function Assignments() {
+type Props = {
+  assignments: AssignmentType[]
+}
+
+export function Assignments({assignments}: Props) {
 
   return (
     <>
-      <Assignment />
+    {assignments.map((assignment) => {
+      return <Assignment key={assignment.id} assignment={assignment}/>
+    })}
     </>
   );
 }
