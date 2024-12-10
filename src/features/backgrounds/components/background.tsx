@@ -4,6 +4,7 @@ import { BackgroundBasicInfo } from "./basic-info";
 import { backgroundsService } from "../instance";
 
 import { DialogForm } from "./dialog-form";
+import { SkillsBadges } from ".";
 
 export async function Background() {
   const background = (await backgroundsService.getById(1))[0];
@@ -25,7 +26,7 @@ export async function Background() {
       <div>
         <Row title="Languages" content={background.languages} />
         <Row title="Education" content={background.educations} />
-
+        <SkillsBadges skills={background.skills} />
         <ul className="flex gap-1 justify-end mt-2">
           {background.links &&
             background.links.map((link) => (
