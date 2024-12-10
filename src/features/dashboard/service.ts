@@ -6,5 +6,8 @@ export function createService(repository: Repository) {
     async getUserById(id: number) {
       return hasAccess() ? await repository.getUserById(id) : "Access denied";
     },
+    async getAllDevelopers(){
+      return hasAccess() ? await repository.getAllDevelopers() : "Access denied";
+    }
   };
 }
