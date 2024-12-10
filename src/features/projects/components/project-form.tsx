@@ -120,7 +120,7 @@ export default function ProjectForm() {
               </FormMessage>
             </FormItem>
             <DialogFooter>
-              <Button>Submit</Button>
+              <Button onClick={form.handleSubmit(onSubmit)}>Submit</Button>
             </DialogFooter>
           </form>
         </Form>
