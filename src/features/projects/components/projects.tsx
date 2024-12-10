@@ -1,6 +1,5 @@
 import { Separator, H2 } from "@/components";
 import { projectService } from "../instance";
-import AddProject from "./add-project";
 import ProjectDetails from "./project-details";
 import ProjectForm from "./project-form";
 
@@ -15,7 +14,7 @@ export async function Projects() {
           <p>No projects found</p>
         </div>
         <div className="flex justify-end">
-        <AddProject />
+        <ProjectForm />
         </div>
       </div>
     );
