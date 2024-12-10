@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa6";
-import { X } from "lucide-react";
+import { Pencil, X } from "lucide-react";
 import { z } from "zod";
 import {
   Form,
@@ -15,6 +15,13 @@ import {
   Separator,
   FormDescription,
   Button,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
 } from "@/components";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -63,7 +70,17 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
   }
 
   return (
-    <>
+ <Dialog>
+   <DialogTrigger asChild>
+     <Pencil type="submit" size={16} />
+   </DialogTrigger>
+   <DialogContent className="sm:max-w-[425px]">
+     <DialogHeader>
+       <DialogTitle>Edit project</DialogTitle>
+       <DialogDescription>
+         Make changes to your project here. Click save when you´re done.
+       </DialogDescription>
+     </DialogHeader>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -134,12 +151,16 @@ export default function EditProjectDetails({ project, setShowDetails }: Props) {
               {form.formState.errors.description?.message}
             </FormMessage>
           </FormItem>
+       <DialogFooter>
           <div className="flex gap-2 justify-end">
             <Button onClick={deleteProject}>Delete</Button>
             <Button onClick={form.handleSubmit(onSubmit)}>Save</Button>
           </div>
+       </DialogFooter>
         </form>
       </Form>
-    </>
+   </DialogContent>
+ </Dialog>
   );
 }
+
