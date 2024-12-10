@@ -19,7 +19,7 @@ export function createService(db: Db) {
       if (projectWebsite.length !== 0) {
         performance = await client.testPagePerformance(projectWebsite);
       } else {
-        performance = "0";
+        performance = "NA";
       }
 
       const { username, title } = extractRepositoryDetails(repository);
