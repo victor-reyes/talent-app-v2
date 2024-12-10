@@ -80,14 +80,30 @@ export default function ProjectForm() {
                 />
               </FormControl>
               <FormDescription>
-                This is the repository link that you want to display.
+                This is the GitHub repository link that you want to display.
               </FormDescription>
               <FormMessage>
                 {form.formState.errors.repository?.message}
               </FormMessage>
             </FormItem>
             <FormItem>
-              <FormLabel>Performance</FormLabel>
+              <FormLabel>Project Website (Optional)</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="https://example.com"
+                  type="text"
+                  {...form.register("projectWebsite")}
+                />
+              </FormControl>
+              <FormDescription>
+                The live website for your project, if available.
+              </FormDescription>
+              <FormMessage>
+                {form.formState.errors.projectWebsite?.message}
+              </FormMessage>
+            </FormItem>
+            <FormItem>
+              <FormLabel></FormLabel>
               <FormControl>
                 <Input
                   placeholder="92"
