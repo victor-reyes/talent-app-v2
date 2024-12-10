@@ -19,7 +19,7 @@ type Props = {
 };
 
 export function AddAssignment({ scores: scores }: Props) {
-  const [frontendValue, setFrontendValue] = useState(scores.frontend);
+/*   const [frontendValue, setFrontendValue] = useState(scores.frontend);
   const [title, setTitle] = useState("title");
 
   const [backendValue, setBackendValue] = useState(scores.backend);
@@ -29,9 +29,7 @@ export function AddAssignment({ scores: scores }: Props) {
   const [designValue, setDesignValue] = useState(scores.design);
   const [individualComunicationValue, setIndividualComunicationValue] =
     useState(scores.individualCommunication);
-  const [managementValue, setManagementValue] = useState(
-    scores.management
-  );
+  const [managementValue, setManagementValue] = useState(scores.management); */
 
   return (
     <Dialog>
@@ -41,8 +39,7 @@ export function AddAssignment({ scores: scores }: Props) {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add new assignment</DialogTitle>
-          <DialogDescription>
-          </DialogDescription>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
         <form action={updateScoresAction}>
           <div className="grid gap-4 py-4">
@@ -50,74 +47,34 @@ export function AddAssignment({ scores: scores }: Props) {
               <label htmlFor="title" className="text-right">
                 Title
               </label>
-              <input
-                value={title}
-                onChange={(e) =>
-                  setTitle(e.target.value)
-                }
-                name="title"
-                className="col-span-3"
-              />
+              <input type="text" name="title" className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="teamCollaboration" className="text-right">
-                Team Collaboration
+              <label htmlFor="score" className="text-right">
+                Score
               </label>
               <input
-                value={teamCollaborationValue}
-                onChange={(e) =>
-                  setTeamCollaborationValue(Number(e.target.value))
-                }
+                type="number"
+                min="0"
+                max="100"
                 name="teamCollaboration"
                 className="col-span-3"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="management" className="text-right">
-                Management
+              <label htmlFor="comment" className="text-right">
+                Comments
               </label>
-              <input
-                value={managementValue}
-                onChange={(e) => setManagementValue(Number(e.target.value))}
-                name="management"
-                className="col-span-3"
-              />
+              <textarea name="comment" className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="design" className="text-right">
-                Design
+              <label htmlFor="Tags" className="text-right">
+                Tags
               </label>
-              <input
-                value={designValue}
-                onChange={(e) => setDesignValue(Number(e.target.value))}
-                name="design"
-                className="col-span-3"
-              />
+              <input name="Tags" className="col-span-3" />
             </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="backend" className="text-right">
-                Backend
-              </label>
-              <input
-                value={backendValue}
-                onChange={(e) => setBackendValue(Number(e.target.value))}
-                name="backend"
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="frontend" className="text-right">
-                Frontend
-              </label>
-              <input
-                value={frontendValue}
-                onChange={(e) => setFrontendValue(Number(e.target.value))}
-                name="frontend"
-                className="col-span-3"
-              />
-            </div>
+            <div className="grid grid-cols-4 items-center gap-4"></div>
           </div>
-
           <DialogFooter>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
