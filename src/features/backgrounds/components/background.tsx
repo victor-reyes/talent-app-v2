@@ -6,7 +6,7 @@ import SkillsInput from "./skills-input";
 import { EditInfoForm } from "./form-info";
 
 export async function Background() {
-  const background = (await backgroundsService.getById(2))[0];
+  const background = (await backgroundsService.getById(1))[0];
 
   if (!background) {
     return null;
