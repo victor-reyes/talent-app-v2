@@ -4,6 +4,7 @@ export const projects = pgTable("projects", {
   id: uuid("id").primaryKey().defaultRandom(),
   username: varchar("username").notNull(),
   repository: varchar("repository").notNull(),
+  projectWebsite: varchar("repository"),
   title: varchar("title").notNull(),
   imageUrl: varchar("image_url", { length: 500 }),
   description: varchar("description").notNull(),
