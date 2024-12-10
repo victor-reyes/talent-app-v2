@@ -1,7 +1,8 @@
 import { Db } from "@/db";
 import { createRepository } from "./repository";
 import { calculateCategoriesScores } from "./logic";
-import { NewScores, Scores } from "./types";
+import { NewAssignment, NewScores, Scores } from "./types";
+import { AddAssignment } from "./components/add-assignment";
 
 export const createService = (db: Db) => {
   const repository = createRepository(db);
@@ -52,6 +53,9 @@ export const createService = (db: Db) => {
     },
     addScores: async (newScores: NewScores) => {
       await repository.addScore(newScores);
-    }
+    },
+     addAssignment: async (newAssigment: NewAssignment) => {
+      await repository.addAssignment(newAssigment);
+    } 
   };
 };
