@@ -9,6 +9,7 @@ export async function seedProjects() {
       imageUrl:
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: "95",
+      projectWebsite: "",
     },
     {
       repository: "https://github.com/alimohseni99/portfolio",
@@ -17,6 +18,7 @@ export async function seedProjects() {
       imageUrl:
         "https://ca.slack-edge.com/TA01UCHBN-U07BFHZF4CB-c7ee64bed20c-512",
       performance: "99",
+      projectWebsite: "",
     },
   ];
 
