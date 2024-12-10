@@ -5,8 +5,8 @@ import { UpdatedProject } from "./types";
 
 export function createRepository(db: Db) {
   return {
-    async getAll() {
-      return db.select().from(projects);
+    async getAll(userId: string) {
+      return db.select().from(projects).where(eq(projects.userId, userId));
     },
     add: async (project: ProjectInsert) => {
       await db.insert(projects).values(project);

@@ -9,17 +9,13 @@ export function createService(db: Db) {
   const reps = createRepository(db);
   const client = createClient();
   return {
-    getAll: async () => {
-      return await reps.getAll();
+    getAll: async (userId: string) => {
+      return await reps.getAll(userId);
     },
-    add: async ({
-      repository,
-      description,
-      projectWebsite,
-    }: ProjectData) => {
+    add: async ({ repository, description, projectWebsite }: ProjectData) => {
       const commits = "120";
       const issues = "52";
-      console.log(projectWebsite)
+      console.log(projectWebsite);
       const performance = await client.testPagePerformance(projectWebsite);
 
       const { username, title } = extractRepositoryDetails(repository);
