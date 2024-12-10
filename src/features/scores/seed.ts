@@ -1,4 +1,4 @@
-import { title } from "process";
+
 import { scoresService } from "./instance";
 
 export const seedScores = async () => {
@@ -33,5 +33,4 @@ export const seedAssignments = async () => {
         console.error("Something went wrong when seeding assigments " + error);
     }
 }
-
 seedAssignments()
