@@ -55,6 +55,9 @@ export const createService = (db: Db) => {
     },
      addAssignment: async (newAssigment: NewAssignment) => {
       await repository.addAssignment(newAssigment);
-    } 
+    },
+    getAssignmentsById: async (userId: number) => {
+      return await repository.getAssignmentsById(userId)
+    },
   };
 };
