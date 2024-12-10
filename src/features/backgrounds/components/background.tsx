@@ -2,7 +2,7 @@ import { Row } from "./row";
 import { SocialLink } from "./social-link";
 import { BackgroundBasicInfo } from "./basic-info";
 import { backgroundsService } from "../instance";
-import SkillsInput from "./skills-input";
+
 import { DialogForm } from "./dialog-form";
 
 export async function Background() {
@@ -25,7 +25,7 @@ export async function Background() {
       <div>
         <Row title="Languages" content={background.languages} />
         <Row title="Education" content={background.educations} />
-        <SkillsInput tags={background.skills} />
+
         <ul className="flex gap-1 justify-end mt-2">
           {background.links &&
             background.links.map((link) => (

@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Tag, TagInput } from "emblor";
 import { useState } from "react";
 
-export default function SkillsInput({ tags }: { tags: Tag[] }) {
+export function SkillsInput({ tags }: { tags: Tag[] }) {
   const [exampleTags, setExampleTags] = useState<Tag[]>(tags);
   const [activeTagIndex, setActiveTagIndex] = useState<number | null>(null);
   return (
