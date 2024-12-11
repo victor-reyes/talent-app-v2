@@ -9,11 +9,11 @@ COPY package.json pnpm-lock.yaml drizzle.config.ts ./
 # Install dependencies
 RUN npm --legacy-peer-deps install
 
-# Push drizzle-schema
-RUN npx drizzle-kit push
-
 # Copy the app's source code to the container
 COPY . .
+
+# Push drizzle-schema
+RUN npx drizzle-kit push
 
 # Build the Next app
 RUN npm run build
