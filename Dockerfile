@@ -7,7 +7,7 @@ WORKDIR /src
 COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN npm install
+RUN npm --legacy-peer-deps install
 
 # Copy the app's source code to the container
 COPY . .
