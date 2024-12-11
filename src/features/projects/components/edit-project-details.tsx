@@ -69,6 +69,23 @@ export default function EditProjectDetails({ project }: Props) {
     setToastOpen(true);
   }
 
+  async function deleteInToast() {
+    try {
+      await deleteAction(project.id);
+      setToastMessage({
+        title: "Project deleted",
+        description: "Project deleted successfully",
+      });
+    } catch (error) {
+      setToastMessage({
+        title: "Something went wrong",
+        description: error instanceof Error ? error.message : String(error),
+      });
+    } finally {
+      setToastOpen(false);
+    }
+  }
+
   return (
     <>
       <Dialog>
@@ -127,25 +144,7 @@ export default function EditProjectDetails({ project }: Props) {
                 {toastMessage.title === "Confirm Deletion" && (
                   <button
                     className="bg-slate-400 text-white px-4 py-2 rounded-lg hover:bg-slate-500"
-                    onClick={async () => {
-                      try {
-                        await deleteAction(project.id);
-                        setToastMessage({
-                          title: "Project deleted",
-                          description: "Project deleted successfully",
-                        });
-                      } catch (error) {
-                        setToastMessage({
-                          title: "Something went wrong",
-                          description:
-                            error instanceof Error
-                              ? error.message
-                              : String(error),
-                        });
-                      } finally {
-                        setToastOpen(true);
-                      }
-                    }}
+                    onClick={deleteInToast}
                   >
                     Delete
                   </button>
