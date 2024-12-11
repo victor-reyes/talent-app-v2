@@ -4,7 +4,7 @@ FROM node:23.1.0
 WORKDIR /src
 
 # Copy package.json and yarn.lock to the container
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml drizzle.config.ts ./
 
 # Install dependencies
 RUN npm --legacy-peer-deps install
