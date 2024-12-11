@@ -66,6 +66,7 @@ export default function EditProjectDetails({ project }: Props) {
       title: "Confirm Deletion",
       description: "Do you really want to delete this project?",
     });
+    console.log(project.id)
     setToastOpen(true);
   }
 
