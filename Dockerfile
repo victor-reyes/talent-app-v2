@@ -9,6 +9,9 @@ COPY package.json pnpm-lock.yaml ./
 # Install dependencies
 RUN npm --legacy-peer-deps install
 
+# Push drizzle-schema
+RUN npx drizzle-kit push
+
 # Copy the app's source code to the container
 COPY . .
 
